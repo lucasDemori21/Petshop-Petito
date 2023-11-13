@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('cliente', function (Blueprint $table) {
             
-            $table->id('id_cliente')->primary()->autoIncrement();
+            $table->id('id_cliente');
             $table->string('nome_cliente', 100)->nullable(false);
             $table->string('email', 45)->unique()->nullable(false);
             $table->string('senha', 255)->nullable(false);
@@ -35,7 +35,7 @@ return new class extends Migration
 
         Schema::create('funcionario', function (Blueprint $table) {
             
-            $table->id('id_func')->primary()->autoIncrement();
+            $table->id('id_func');
             $table->string('nome_func', 100)->nullable(false);
             $table->string('email', 45)->unique()->nullable(false);
             $table->string('senha', 255)->nullable(false);
@@ -58,7 +58,7 @@ return new class extends Migration
         });
 
         Schema::create('procedimento', function (Blueprint $table) {
-            $table->id('id_procedimento')->primary()->autoIncrement();
+            $table->id('id_procedimento');
             $table->string('titulo', 100)->nullable(false)->unique();
             $table->longText('descricao')->nullable(false);
             $table->timestamp('create_time')->nullable(false);
@@ -67,7 +67,7 @@ return new class extends Migration
         });
 
         Schema::create('animal', function (Blueprint $table) {
-            $table->id('id_animal')->primary()->autoIncrement();
+            $table->id('id_animal');
             $table->string('nome_pet', 50)->nullable(false);
             $table->date('data_nasc')->nullable(false);
             $table->string('tipo_animal')->nullable(false)->unique();
@@ -79,14 +79,13 @@ return new class extends Migration
         });
 
         Schema::create('categoria', function (Blueprint $table) {
-            $table->id('id_categoria')->primary()->autoIncrement();
+            $table->id('id_categoria');
             $table->string('nome_categoria')->nullable(false)->unique();
         });
         
         Schema::create('produto', function (Blueprint $table) {
-            // $table->id('id_categoria')->nullable(false);
-            $table->id('id_produto')->primary()->autoIncrement();
-            $table->foreign('id_categoria')->references('id_categoria')->on('categoria');
+            $table->id('id_produto');
+            $table->foreignId('id_categoria')->constrained('categoria', 'id_categoria');
             $table->string('titulo')->nullable(false);
             $table->longText('descricao')->nullable(false);
             $table->integer('qtd_produto');
@@ -97,11 +96,9 @@ return new class extends Migration
         });
 
         Schema::create('venda', function (Blueprint $table) {
-            // $table->id('id_cliente')->nullable(false);
-            // $table->id('id_produto')->nullable(false);
-            $table->id('id_venda')->primary()->autoIncrement();
-            $table->foreign('id_cliente')->references('id_cliente')->on('cliente');
-            $table->foreign('id_produto')->references('id_produto')->on('produto');
+            $table->id('id_venda');
+            $table->foreignId('id_cliente')->constrained('cliente', 'id_cliente');
+            $table->foreignId('id_produto')->constrained('produto', 'id_produto');
             $table->date('date_compra')->nullable(false);
             $table->integer('qtd_produto');
             $table->decimal('valor', 10, 2)->nullable(false);
@@ -110,15 +107,10 @@ return new class extends Migration
         });
 
         Schema::create('agendamento', function (Blueprint $table) {
-            // $table->id('id_func')->nullable(false);
-            // $table->id('id_cliente')->nullable(false);
-            // $table->id('id_procedimento')->nullable(false);
-            // $table->id('id_animal')->nullable(false);
-            $table->id('id_agendamento')->primary()->autoIncrement();
-            $table->foreign('id_agendamento')->references('id_agendamento')->on('agendamento');
-            $table->foreign('id_func')->references('id_func')->on('funcionario');
-            $table->foreign('id_cliente')->references('id_cliente')->on('cliente');
-            $table->foreign('id_animal')->references('id_animal')->on('animal');
+            $table->id('id_agendamento');
+            $table->foreignId('id_func')->constrained('funcionario', 'id_func');
+            $table->foreignId('id_cliente')->constrained('cliente', 'id_cliente');
+            $table->foreignId('id_animal')->constrained('animal', 'id_animal');
             $table->longText('descricao')->nullable(false);
             $table->dateTime('agendamento')->nullable(false);
             $table->timestamp('create_time')->nullable(false);
@@ -129,7 +121,7 @@ return new class extends Migration
 
         Schema::create('dados_empresa', function (Blueprint $table) {
             
-            $table->id('id_dados')->primary()->autoIncrement();
+            $table->id('id_dados');
             $table->string('razao_social')->nullable(false);
             $table->string('razao_empresa')->nullable(false);
             $table->string('nome_fantasia')->nullable(false);
