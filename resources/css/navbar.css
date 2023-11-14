@@ -1,0 +1,38 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.logo-header {
+    font-size: 25px;
+    padding: 0;
+    margin: 0;
+}
+
+.input-search {
+    border-radius: 50px;
+    border: 2px black solid
+}
+
+.input-search:focus {
+    box-shadow: none;
+}
+
+.btn-search {
+    border-radius: 50px
+}
+
+.btn-warning:hover {
+    background-color: rgb(255, 119, 65) !important;
+}
+.logo-home{
+    width: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo-home img{
+    min-width: 90px;
+    width: 100%;
+}
