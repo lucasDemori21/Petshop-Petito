@@ -36,3 +36,37 @@
     min-width: 90px;
     width: 100%;
 }
+
+ .carousel-indicators {
+      position: absolute;
+      bottom: -30px; 
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 15;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+      list-style: none;
+    }
+
+    .carousel .carousel-indicators button {
+      display: inline-block;
+      width: 15px;
+      height: 15px;
+      margin: 0 5px;
+      text-indent: 0;
+      cursor: pointer;
+      border: 1px solid black;
+      background-color: gray;
+      border-radius: 50%; 
+      opacity: 0.5; 
+    }
+
+    .carousel .carousel-indicators .active {
+      width: 17px;
+      height: 17px;
+      background-color: #E7671F;
+      border: 1px solid black;
+      opacity: 1;
+    }
