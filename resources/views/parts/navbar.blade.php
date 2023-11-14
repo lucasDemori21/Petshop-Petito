@@ -8,49 +8,10 @@
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link href="https://fonts.cdnfonts.com/css/cotane-beach" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="{{ asset('./resources/css/navbar.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/navbar.css') }}">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </head>
-    <style>
-        /* *{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
-.logo-header {
-    font-size: 25px;
-    padding: 0;
-    margin: 0;
-}
 
-.input-search {
-    border-radius: 50px;
-    border: 2px black solid
-}
-
-.input-search:focus {
-    box-shadow: none;
-}
-
-.btn-search {
-    border-radius: 50px
-}
-
-.btn-warning:hover {
-    background-color: rgb(255, 119, 65) !important;
-}
-.logo-home{
-    width: 120px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.logo-home img{
-    min-width: 90px;
-    width: 100%;
-} */
-    </style>
     <nav class="navbar navbar-expand-lg p-0" style="background-color: #ffffff;">
         <div class="container-fluid">
             <a class="logo-home" href="#">
