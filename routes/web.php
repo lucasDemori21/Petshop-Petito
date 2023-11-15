@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AuthController;
+use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,4 +17,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('index');
+});
+
+Route::get('/login', [AuthController::class, 'login'])->name('auth.login');
+Route::get('/cadastrar', [AuthController::class, 'cadastrar'])->name('auth.cadastrar');
+
+
+Route::get('/cadastrar', function () {
+    return view('auth/cadastrar');
 });
