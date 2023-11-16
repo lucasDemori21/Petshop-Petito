@@ -21,8 +21,3 @@ Route::get('/', function () {
 
 Route::get('/login', [AuthController::class, 'login'])->name('auth.login');
 Route::get('/cadastrar', [AuthController::class, 'cadastrar'])->name('auth.cadastrar');
-
-
-Route::get('/cadastrar', function () {
-    return view('auth/cadastrar');
-});

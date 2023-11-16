@@ -1,6 +1,6 @@
 @include('parts.navbar')
 
-<div class="w-50 h-50 mx-auto my-3">
+<div class="w-75 h-50 mx-auto my-3">
     <div id="carouselExampleIndicators" class="carousel slide p-3 border border-light-subtle">
         <div class="carousel-indicators">
             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"

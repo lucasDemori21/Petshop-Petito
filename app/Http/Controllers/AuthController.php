@@ -12,7 +12,7 @@ class AuthController extends Controller
         return view('auth.login');
     }
 
-    public function cadatrar():View
+    public function cadastrar():View
     {
         return view('auth.cadastrar');
     }

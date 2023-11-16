@@ -70,3 +70,9 @@
       border: 1px solid black;
       opacity: 1;
     }
+
+    @media(max-width: 991px){
+        .nav-mobile{
+            margin-top: 2%;
+        }
+    }
