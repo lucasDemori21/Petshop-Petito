@@ -7,13 +7,25 @@ use Illuminate\Http\Request;
 
 class AuthController extends Controller
 {
-    public function login():View
+    public function showLogin():View
     {
         return view('auth.login');
     }
 
-    public function cadastrar():View
+    public function showCadastrar():View
     {
         return view('auth.cadastrar');
+    }
+
+    public function cadastrar(Request $request): View{
+
+        return dd($request);
+
+    }
+
+    public function login(Request $request): View{
+
+        return dd($request);
+
     }
 }

@@ -47,8 +47,8 @@
                         </li>
                     </div>
                         <li class="nav-item mx-1 text-center fw-bold d-flex flex-column nav-mobile" style="font-size: 14px">
-                            <a class="text-dark" href="{{ route('auth.login') }}">Entrar</a>
-                            <a class="text-dark" href="{{ route('auth.cadastrar') }}"> Cadastrar-se</a>
+                            <a class="text-dark" href="{{ route('login.show') }}">Entrar</a>
+                            <a class="text-dark" href="{{ route('cadastrar.show') }}"> Cadastrar-se</a>
                         </li>
                 </ul>
 
