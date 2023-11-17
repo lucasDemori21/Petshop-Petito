@@ -15,7 +15,7 @@ return [
 
     'defaults' => [
         'guard' => 'web',
-        'passwords' => 'users',
+        'passwords' => 'cliente',
     ],
 
     /*
@@ -36,9 +36,14 @@ return [
     */
 
     'guards' => [
-        'web' => [
+        'cliente' => [
             'driver' => 'session',
-            'provider' => 'users',
+            'provider' => 'cliente',
+        ],
+    
+        'funcionario' => [
+            'driver' => 'session',
+            'provider' => 'funcionario',
         ],
     ],
 
@@ -60,15 +65,15 @@ return [
     */
 
     'providers' => [
-        'users' => [
+        'cliente' => [
             'driver' => 'eloquent',
-            'model' => App\Models\User::class,
+            'model' => App\Models\Cliente::class,
         ],
-
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+    
+        'funcionario' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Funcionario::class,
+        ],
     ],
 
     /*
@@ -91,14 +96,21 @@ return [
     */
 
     'passwords' => [
-        'users' => [
-            'provider' => 'users',
-            'table' => 'password_reset_tokens',
+        'cliente' => [
+            'provider' => 'cliente',
+            'table' => 'password_reset_tokens_cliente',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+    
+        'funcionario' => [
+            'provider' => 'funcionario',
+            'table' => 'password_reset_tokens_funcionario',
             'expire' => 60,
             'throttle' => 60,
         ],
     ],
-
+    
     /*
     |--------------------------------------------------------------------------
     | Password Confirmation Timeout
@@ -109,7 +121,7 @@ return [
     | confirmation screen. By default, the timeout lasts for three hours.
     |
     */
-
+    
     'password_timeout' => 10800,
 
 ];
