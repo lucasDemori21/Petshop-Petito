@@ -12,7 +12,7 @@ class DatabaseSeeder extends Seeder
     /**
      * Seed the application's database.
      */
-    public function run()
+    public function run(): void
     {
         // Criar dois clientes
         DB::table('cliente')->insert([
@@ -95,5 +95,6 @@ class DatabaseSeeder extends Seeder
             'funcao' => 'Analista de TI',
             'salario' => 6000.00,
         ]);
+
     }
 }
