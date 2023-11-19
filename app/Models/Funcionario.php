@@ -39,8 +39,7 @@ class Funcionario extends Authenticatable
      * @var array<string, string>
      */
     protected $casts = [
-        'email_verified_at' => 'datetime',
-        'senha' => 'hashed',
+        'email_verified_at' => 'datetime'
     ];
 
     // outras configurações...
