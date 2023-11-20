@@ -31,7 +31,7 @@ class AuthController extends Controller
         $request->validate(
             [
                 'email' => 'required|email',
-                'password' => 'required|min:8'
+                'password' => 'required|min:4'
             ], [
                 'email.required' => 'Campo email é obrigatório.',
                 'email.email' => 'Email não é válido.',
@@ -51,6 +51,6 @@ class AuthController extends Controller
         }
 
             
-        return redirect()->route('login.show')->withErrors(['email' => 'Email inválidas', 'password' => 'Senha Invalida']);
+        return redirect()->route('login.show')->withErrors(['email' => 'Email não cadastrado!', 'password' => 'Senha Invalida']);
     }
 }
