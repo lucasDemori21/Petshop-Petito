@@ -3,6 +3,11 @@
     margin: 0;
     box-sizing: border-box;
 }
+
+body{
+    background-color: #FDF5F5;
+}
+
 .logo-header {
     font-size: 25px;
     padding: 0;

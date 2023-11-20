@@ -16,7 +16,7 @@ return new class extends Migration
             $table->id('id_cliente');
             $table->string('nome_cliente', 100)->nullable(false);
             $table->string('email', 45)->unique()->nullable(false);
-            $table->string('senha', 255)->nullable(false);
+            $table->string('password', 255)->nullable(false);
             $table->timestamp('create_time')->nullable(false);
             $table->string('cpf', 14)->nullable(false)->unique();
             $table->date('data_nasc')->nullable(false);
@@ -38,7 +38,7 @@ return new class extends Migration
             $table->id('id_func');
             $table->string('nome_func', 100)->nullable(false);
             $table->string('email', 45)->unique()->nullable(false);
-            $table->string('senha', 255)->nullable(false);
+            $table->string('password', 255)->nullable(false);
             $table->timestamp('create_time')->nullable(false);
             $table->string('cpf', 14)->nullable(false)->unique();
             $table->date('data_nasc')->nullable(false);

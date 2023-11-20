@@ -14,10 +14,10 @@
     </script>
 </head>
 
-<nav class="navbar navbar-expand-lg p-0" style="background-color: #ffffff;">
+<nav class="navbar navbar-expand-lg p-0">
     <div class="container-fluid">
         <a class="logo-home" href="#">
-            <img src="{{ asset('images/logo-petito.png') }}" alt="Logo Petito">
+            <img src="{{ asset('images/logos/logo-petito.png') }}" alt="Logo Petito">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -53,12 +53,12 @@
                 </ul>
 
                 <div class="btn-group flex-wrap mt-3 p-0" role="group" aria-label="Basic mixed styles example">
-                    <a href="#" class="btn btn-light mx-2 my-1 rounded fw-bold">Cachorro</a>
-                    <a href="#" class="btn btn-light mx-2 my-1 rounded fw-bold">Gato</a>
-                    <a href="#" class="btn btn-light mx-2 my-1 rounded fw-bold">Pássaro</a>
-                    <a href="#" class="btn btn-light mx-2 my-1 rounded fw-bold">Peixe</a>
-                    <a href="#" class="btn btn-light mx-2 my-1 rounded fw-bold">Outros Pets</a>
-                    <a href="#" class="btn btn-light mx-2 my-1 rounded fw-bold">Serviços</a>
+                    <a href="#" class="btn btn-light m-1 rounded fw-bold" style="background-color: #A5E1E9;">Cachorro</a>
+                    <a href="#" class="btn btn-light m-1 rounded fw-bold" style="background-color: #FFC296;">Gato</a>
+                    <a href="#" class="btn btn-light m-1 rounded fw-bold" style="background-color: #C4BDF3;">Pássaro</a>
+                    <a href="#" class="btn btn-light m-1 rounded fw-bold" style="background-color: #FCE8A5;">Peixe</a>
+                    <a href="#" class="btn btn-light m-1 rounded fw-bold" style="background-color: #D5EDB9;">Outros Pets</a>
+                    <a href="#" class="btn btn-light m-1 rounded fw-bold" style="background-color: #F8CADC;">Serviços</a>
                 </div>
             </div>
         </div>

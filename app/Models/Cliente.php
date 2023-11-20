@@ -20,7 +20,7 @@ class Cliente extends Authenticatable
     protected $fillable = [
         'nome_cliente',
         'email',
-        'senha',
+        'password',
     ];
 
     /**
@@ -29,7 +29,7 @@ class Cliente extends Authenticatable
      * @var array<int, string>
      */
     protected $hidden = [
-        'senha',
+        'password',
         'remember_token',
     ];
 
@@ -40,7 +40,7 @@ class Cliente extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
-        'senha' => 'hashed',
+        'password' => 'hashed',
     ];
 }
 

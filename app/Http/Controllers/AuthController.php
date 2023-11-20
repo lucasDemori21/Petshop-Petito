@@ -24,31 +24,32 @@ class AuthController extends Controller
         return dd($request);
     }
 
-    public function login(Request $request): View
+    public function login(Request $request)
     {
 
         $request->validate(
             [
                 'email' => 'required|email',
-                'senha' => 'required|min:8'
+                'password' => 'required|min:8'
             ], [
                 'email.required' => 'Campo email é obrigatório.',
                 'email.email' => 'Email não é válido.',
-                'senha.required' => 'Senha é obrigatória.',
-                'senha.min' => 'Senha precisa ser maior que :min caracteres.']
+                'password.required' => 'password é obrigatória.',
+                'password.min' => 'password precisa ser maior que :min caracteres.']
         );
 
-        $credentials = $request->only('email', 'senha');
+        $credentials = $request->only('email', 'password');
 
         if (Auth::guard('cliente')->attempt($credentials)) {
-            // Cliente autenticado com sucesso
-        }
-        
-        // Para funcionários
-        if (Auth::guard('funcionario')->attempt($credentials)) {
-            // Funcionário autenticado com sucesso
+            return redirect()->route('login.show')->with('success', 'Logado com sucesso! (Cliente)');
+
         }
 
-        return dd($request);
+        if (Auth::guard('funcionario')->attempt($credentials)) {
+            return redirect()->route('login.show')->with('success', 'Logado com sucesso! (Funcionario)');
+        }
+
+            
+        return redirect()->route('login.show')->withErrors(['email' => 'Email inválidas', 'password' => 'Senha Invalida']);
     }
 }
