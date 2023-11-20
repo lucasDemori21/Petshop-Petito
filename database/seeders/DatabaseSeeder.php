@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
         DB::table('cliente')->insert([
             'nome_cliente' => 'Cliente 1',
             'email' => 'cliente1@example.com',
-            'senha' => Hash::make('1234'),
+            'password' => Hash::make('1234'),
             'create_time' => now(),
             'cpf' => '123.456.789-01',
             'data_nasc' => '1990-01-01',
@@ -37,7 +37,7 @@ class DatabaseSeeder extends Seeder
         DB::table('cliente')->insert([
             'nome_cliente' => 'Cliente 2',
             'email' => 'cliente2@example.com',
-            'senha' => Hash::make('senha_cliente2'),
+            'password' => Hash::make('1234'),
             'create_time' => now(),
             'cpf' => '987.654.321-09',
             'data_nasc' => '1985-05-15',
@@ -57,7 +57,7 @@ class DatabaseSeeder extends Seeder
         DB::table('funcionario')->insert([
             'nome_func' => 'Funcionário 1',
             'email' => 'funcionario1@example.com',
-            'senha' => Hash::make('1234'),
+            'password' => Hash::make('1234'),
             'create_time' => now(),
             'cpf' => '111.222.333-44',
             'data_nasc' => '1980-03-10',
@@ -78,7 +78,7 @@ class DatabaseSeeder extends Seeder
         DB::table('funcionario')->insert([
             'nome_func' => 'Funcionário 2',
             'email' => 'funcionario2@example.com',
-            'senha' => Hash::make('senha_funcionario2'),
+            'password' => Hash::make('1234'),
             'create_time' => now(),
             'cpf' => '555.666.777-88',
             'data_nasc' => '1975-12-05',
