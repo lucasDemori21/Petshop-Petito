@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -27,8 +26,8 @@ class ClienteSeeder extends Seeder
                 'nome_cliente' => $faker->name,
                 'email' => $faker->unique()->safeEmail,
                 'password' => Hash::make('1234'),
-                'create_time' => Carbon::now(),
-                'update_time' => Carbon::now(),
+                'create_time' => now(),
+                'update_time' => now(),
                 'cpf' => $cpf,
                 'data_nasc' => $faker->date,
                 'status' => $faker->randomElement([0, 1]),

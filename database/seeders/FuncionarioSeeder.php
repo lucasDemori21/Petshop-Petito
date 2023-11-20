@@ -2,11 +2,9 @@
 
 namespace Database\Seeders;
 
-use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Str;
 use Faker\Factory as Faker;
 
 class FuncionarioSeeder extends Seeder
@@ -28,8 +26,8 @@ class FuncionarioSeeder extends Seeder
                 'nome_func' => $faker->name,
                 'email' => $faker->unique()->safeEmail,
                 'password' => Hash::make('12345678'),
-                'create_time' => Carbon::now(),
-                'update_time' => Carbon::now(),
+                'create_time' => now(),
+                'update_time' => now(),
                 'cpf' => $cpf,
                 'data_nasc' => $faker->date,
                 'status' => $faker->randomElement([0, 1]),
