@@ -8,12 +8,13 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/login-register.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body>
     <div class="container-p">
         <div class="logo">
-            <a href="#">
+            <a href="{{ route('index') }}">
                 <img src="{{ asset('images/logos/logo-petito.png') }}" alt="logo-petito">
             </a>
         </div>
@@ -23,17 +24,25 @@
                 @csrf()
                 <div class="input-form">
                     <label for="login">Usuário:</label>
-                    <input type="email" class="form-control" id='email' name="email" placeholder="email">
+                    <input type="email" class="form-control" id='email' name="email" value="{{ old('email') }}"
+                        placeholder="example@email.com">
                 </div>
+
+                @if ($errors->any())
+                    <span class="text-center text-danger my-2">
+                        {{ $errors->first('error-email-login') }}
+                    </span>
+                @endif
 
                 <div class="input-form">
                     <label for="senha">Senha:</label>
                     <input type="password" class="form-control" name="password" id="senha" placeholder="********">
                 </div>
 
+
                 @if ($errors->any())
                     <span class="text-center text-danger my-2">
-                        {{ $errors->first() }}
+                        {{ $errors->first('error-login') }}
                     </span>
                 @endif
 
@@ -56,19 +65,20 @@
 
                 <div class="input-form">
                     <label for="nome">Nome completo:</label>
-                    <input type="text" class="form-control" id='nome' name="nome" placeholder="João Carsk">
+                    <input type="text" class="form-control" id='nome' name="nome"
+                        placeholder="João Carsk" value="{{old('nome')}}">
                 </div>
 
                 <div class="input-form">
                     <label for="cpf">CPF:</label>
                     <input type="text" class="form-control" id='cpf' name="cpf"
-                        placeholder="000.000.000-00">
+                        placeholder="000.000.000-00" value="{{old('cpf')}}">
                 </div>
 
                 <div class="input-form">
                     <label for="email">E-mail:</label>
-                    <input type="email" class="form-control" name="email" id="email"
-                        placeholder="example@gmail.com">
+                    <input type="email" class="form-control" name="email" id="email-cadastro"
+                        placeholder="example@gmail.com" value="{{old('email')}}">
                 </div>
 
                 <div class="d-flex justify-content-center mt-3">
@@ -90,52 +100,51 @@
 
                             <div class="input-form col-md-6">
                                 <label for="login">Data de nascimento:</label>
-                                <input type="date" class="form-control" id='data' name="data">
+                                <input type="date" class="form-control" id='data' name="data" value="{{old('data')}}">
                             </div>
 
                             <div class="input-form col-md-6">
                                 <label for="telefone">Telefone/Celular:</label>
                                 <input type="text" class="form-control" id='telefone' name="telefone"
-                                    placeholder="(47) 99635-6349">
+                                    placeholder="(99) 99999-9999" value="{{old('telefone')}}">
                             </div>
 
                             <div class="input-form col-md-5">
                                 <label for="login">CEP</label>
                                 <input type="text" class="form-control" id='cep' name="cep"
-                                    placeholder="00000-000">
+                                    placeholder="00000-000" value="{{old('cep')}}">
                             </div>
                             <div class="input-form col-md-7">
                                 <label for="estado">Estado:</label>
                                 <select id="estado" name="estado" class="form-select">
                                     <option selected disabled value="">Selecione</option>
-                                    <option value="AC">Acre</option>
-                                    <option value="AL">Alagoas</option>
-                                    <option value="AP">Amapá</option>
-                                    <option value="AM">Amazonas</option>
-                                    <option value="BA">Bahia</option>
-                                    <option value="CE">Ceará</option>
-                                    <option value="DF">Distrito Federal</option>
-                                    <option value="ES">Espírito Santo</option>
-                                    <option value="GO">Goiás</option>
-                                    <option value="MA">Maranhão</option>
-                                    <option value="MT">Mato Grosso</option>
-                                    <option value="MS">Mato Grosso do Sul</option>
-                                    <option value="MG">Minas Gerais</option>
-                                    <option value="PA">Pará</option>
-                                    <option value="PB">Paraíba</option>
-                                    <option value="PR">Paraná</option>
-                                    <option value="PE">Pernambuco</option>
-                                    <option value="PI">Piauí</option>
-                                    <option value="RJ">Rio de Janeiro</option>
-                                    <option value="RN">Rio Grande do Norte</option>
-                                    <option value="RS">Rio Grande do Sul</option>
-                                    <option value="RO">Rondônia</option>
-                                    <option value="RR">Roraima</option>
-                                    <option value="SC">Santa Catarina</option>
-                                    <option value="SP">São Paulo</option>
-                                    <option value="SE">Sergipe</option>
-                                    <option value="TO">Tocantins</option>
-                                    <option value="EX">Estrangeiro</option>
+                                    <option value="AC" {{ old('estado') == 'AC' ? 'selected' : '' }}>Acre</option>
+                                    <option value="AL" {{ old('estado') == 'AL' ? 'selected' : '' }}>Alagoas</option>
+                                    <option value="AP" {{ old('estado') == 'AP' ? 'selected' : '' }}>Amapá</option>
+                                    <option value="AM" {{ old('estado') == 'AM' ? 'selected' : '' }}>Amazonas</option>
+                                    <option value="BA" {{ old('estado') == 'BA' ? 'selected' : '' }}>Bahia</option>
+                                    <option value="CE" {{ old('estado') == 'CE' ? 'selected' : '' }}>Ceará</option>
+                                    <option value="DF" {{ old('estado') == 'DF' ? 'selected' : '' }}>Distrito Federal</option>
+                                    <option value="ES" {{ old('estado') == 'ES' ? 'selected' : '' }}>Espírito Santo</option>
+                                    <option value="GO" {{ old('estado') == 'GO' ? 'selected' : '' }}>Goiás</option>
+                                    <option value="MA" {{ old('estado') == 'MA' ? 'selected' : '' }}>Maranhão</option>
+                                    <option value="MT" {{ old('estado') == 'MT' ? 'selected' : '' }}>Mato Grosso</option>
+                                    <option value="MS" {{ old('estado') == 'MS' ? 'selected' : '' }}>Mato Grosso do Sul</option>
+                                    <option value="MG" {{ old('estado') == 'MG' ? 'selected' : '' }}>Minas Gerais</option>
+                                    <option value="PA" {{ old('estado') == 'PA' ? 'selected' : '' }}>Pará</option>
+                                    <option value="PB" {{ old('estado') == 'PB' ? 'selected' : '' }}>Paraíba</option>
+                                    <option value="PR" {{ old('estado') == 'PR' ? 'selected' : '' }}>Paraná</option>
+                                    <option value="PE" {{ old('estado') == 'PE' ? 'selected' : '' }}>Pernambuco</option>
+                                    <option value="PI" {{ old('estado') == 'PI' ? 'selected' : '' }}>Piauí</option>
+                                    <option value="RJ" {{ old('estado') == 'RJ' ? 'selected' : '' }}>Rio de Janeiro</option>
+                                    <option value="RN" {{ old('estado') == 'RN' ? 'selected' : '' }}>Rio Grande do Norte</option>
+                                    <option value="RS" {{ old('estado') == 'RS' ? 'selected' : '' }}>Rio Grande do Sul</option>
+                                    <option value="RO" {{ old('estado') == 'RO' ? 'selected' : '' }}>Rondônia</option>
+                                    <option value="RR" {{ old('estado') == 'RR' ? 'selected' : '' }}>Roraima</option>
+                                    <option value="SC" {{ old('estado') == 'SC' ? 'selected' : '' }}>Santa Catarina</option>
+                                    <option value="SP" {{ old('estado') == 'SP' ? 'selected' : '' }}>São Paulo</option>
+                                    <option value="SE" {{ old('estado') == 'SE' ? 'selected' : '' }}>Sergipe</option>
+                                    <option value="TO" {{ old('estado') == 'TO' ? 'selected' : '' }}>Tocantins</option>
                                 </select>
                             </div>
 
@@ -179,7 +188,18 @@
                         </div>
                     </div>
                 </div>
+                @if ($errors->any())
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                @endif
             </form>
+            @if ($errors->has('error-cadastro'))
+                {{ $errors->first('error-cadastro') }}
+            @endif
+            @if (session('success'))
+                {!! session('success') !!}
+            @endif
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"

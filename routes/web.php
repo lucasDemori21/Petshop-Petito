@@ -17,11 +17,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('index');
-});
+})->name('index');
 
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login.show');
 
 Route::get('/cadastrar', [AuthController::class, 'showCadastrar'])->name('cadastrar.show');
 
 Route::post('/login/auth', [AuthController::class, 'login'])->name('auth.login');
+
 Route::post('/cadastrar/auth', [AuthController::class, 'cadastrar'])->name('auth.cadastrar');

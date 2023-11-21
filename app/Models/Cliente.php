@@ -18,7 +18,19 @@ class Cliente extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
+        'nome_cliente',
         'email',
+        'cpf',
+        'data_nasc',
+        'status',
+        'cep',
+        'estado',
+        'cidade',
+        'bairro',
+        'rua',
+        'numero_casa',
+        'complemento',
+        'celular',
         'password',
     ];
 

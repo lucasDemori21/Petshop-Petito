@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('nome_cliente', 100)->nullable(false);
             $table->string('email', 45)->unique()->nullable(false);
             $table->string('password', 255)->nullable(false);
-            $table->timestamp('create_time')->nullable(false);
+            $table->timestamp('created_at')->nullable(false);
             $table->string('cpf', 14)->nullable(false)->unique();
             $table->date('data_nasc')->nullable(false);
             $table->tinyInteger('status')->nullable(false);
@@ -29,7 +29,7 @@ return new class extends Migration
             $table->string('numero_casa', 20)->nullable(false);
             $table->string('complemento', 100);
             $table->string('celular', 20)->nullable(false);
-            $table->timestamp('update_time');
+            $table->timestamp('updated_at');
 
         });
 
@@ -39,7 +39,7 @@ return new class extends Migration
             $table->string('nome_func', 100)->nullable(false);
             $table->string('email', 45)->unique()->nullable(false);
             $table->string('password', 255)->nullable(false);
-            $table->timestamp('create_time')->nullable(false);
+            $table->timestamp('created_at')->nullable(false);
             $table->string('cpf', 14)->nullable(false)->unique();
             $table->date('data_nasc')->nullable(false);
             $table->tinyInteger('status')->nullable(false);
@@ -51,7 +51,7 @@ return new class extends Migration
             $table->string('numero_casa', 20)->nullable(false);
             $table->string('complemento', 100);
             $table->string('celular', 20)->nullable(false);
-            $table->timestamp('update_time');
+            $table->timestamp('updated_at');
             $table->string('funcao', 45)->nullable(false);
             $table->decimal('salario', 10, 2)->nullable();
 
