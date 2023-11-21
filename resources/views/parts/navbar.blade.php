@@ -46,19 +46,31 @@
                                     class="bi bi-whatsapp fill text-success"></i></a>
                         </li>
                     </div>
+                    @guest
                         <li class="nav-item mx-1 text-center fw-bold d-flex flex-column nav-mobile" style="font-size: 14px">
                             <a class="text-dark" href="{{ route('login.show') }}">Entrar</a>
                             <a class="text-dark" href="{{ route('cadastrar.show') }}"> Cadastrar-se</a>
                         </li>
+                    @else
+                        <li class="nav-item mx-1 text-center fw-bold d-flex flex-column nav-mobile" style="font-size: 14px">
+                            <button>{{ Auth::user()->email }}</button>
+                        </li>
+                    @endguest
                 </ul>
 
                 <div class="btn-group flex-wrap mt-3 p-0" role="group" aria-label="Basic mixed styles example">
-                    <a href="#" class="btn btn-light m-1 rounded fw-bold" style="background-color: #A5E1E9;">Cachorro</a>
-                    <a href="#" class="btn btn-light m-1 rounded fw-bold" style="background-color: #FFC296;">Gato</a>
-                    <a href="#" class="btn btn-light m-1 rounded fw-bold" style="background-color: #C4BDF3;">Pássaro</a>
-                    <a href="#" class="btn btn-light m-1 rounded fw-bold" style="background-color: #FCE8A5;">Peixe</a>
-                    <a href="#" class="btn btn-light m-1 rounded fw-bold" style="background-color: #D5EDB9;">Outros Pets</a>
-                    <a href="#" class="btn btn-light m-1 rounded fw-bold" style="background-color: #F8CADC;">Serviços</a>
+                    <a href="#" class="btn btn-light m-1 rounded fw-bold"
+                        style="background-color: #A5E1E9;">Cachorro</a>
+                    <a href="#" class="btn btn-light m-1 rounded fw-bold"
+                        style="background-color: #FFC296;">Gato</a>
+                    <a href="#" class="btn btn-light m-1 rounded fw-bold"
+                        style="background-color: #C4BDF3;">Pássaro</a>
+                    <a href="#" class="btn btn-light m-1 rounded fw-bold"
+                        style="background-color: #FCE8A5;">Peixe</a>
+                    <a href="#" class="btn btn-light m-1 rounded fw-bold"
+                        style="background-color: #D5EDB9;">Outros Pets</a>
+                    <a href="#" class="btn btn-light m-1 rounded fw-bold"
+                        style="background-color: #F8CADC;">Serviços</a>
                 </div>
             </div>
         </div>
