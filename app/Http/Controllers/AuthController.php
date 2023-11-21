@@ -51,6 +51,6 @@ class AuthController extends Controller
         }
 
             
-        return redirect()->route('login.show')->withErrors(['email' => 'Email não cadastrado!', 'password' => 'Senha Invalida']);
+        return redirect()->route('login.show')->withErrors(['email' => 'E-mail ou senha incorretos!']);
     }
 }
