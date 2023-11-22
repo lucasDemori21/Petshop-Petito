@@ -24,7 +24,7 @@
                 @csrf()
                 <div class="input-form">
                     <label for="login">Usuário:</label>
-                    <input type="email" class="form-control" id='email' name="email" value="{{ old('email') }}"
+                    <input type="email" class="form-control" value="{{ old('email') }}" id='email' name="email" value="{{ old('email') }}"
                         placeholder="example@email.com">
                 </div>
 
@@ -150,30 +150,30 @@
 
                             <div class="input-form col-md-12">
                                 <label for="cidade">Cidade:</label>
-                                <input type="text" class="form-control" id='cidade' name="cidade"
+                                <input type="text" class="form-control" value="{{ old('cidade') }}" id='cidade' name="cidade"
                                     placeholder="São Paulo">
                             </div>
 
                             <div class="input-form col-md-12">
                                 <label for="bairro">Bairro:</label>
-                                <input type="text" class="form-control" name="bairro" id="bairro"
+                                <input type="text" class="form-control" value="{{ old('bairro') }}" name="bairro" id="bairro"
                                     placeholder="Osasco">
                             </div>
 
                             <div class="input-form col-md-12">
                                 <label for="rua">Rua:</label>
-                                <input type="text" class="form-control" name="rua" id="rua"
+                                <input type="text" class="form-control" value="{{ old('rua') }}" name="rua" id="rua"
                                     placeholder="João pessoa">
                             </div>
 
                             <div class="input-form col-md-6">
                                 <label for="numero">Número:</label>
-                                <input type="text" class="form-control" name="numero" id="numero">
+                                <input type="text" class="form-control" value="{{ old('numero') }}" name="numero" id="numero">
                             </div>
 
                             <div class="input-form col-md-6">
                                 <label for="senha">Complemento:</label>
-                                <input type="text" class="form-control" name="complemento" id="complemento">
+                                <input type="text" class="form-control" value="{{ old('complemento') }}" name="complemento" id="complemento">
                             </div>
 
                             <div class="input-form col-md-12">

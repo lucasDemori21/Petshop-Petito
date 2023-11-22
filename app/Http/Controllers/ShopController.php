@@ -9,6 +9,7 @@ use Illuminate\View\View;
 class ShopController extends Controller
 {
     public function exibirProdutos(): View {
+        
         return view('shop');
     }
 }

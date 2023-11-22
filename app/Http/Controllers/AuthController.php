@@ -29,9 +29,39 @@ class AuthController extends Controller
                 'cpf' => 'required',
                 'data' => 'required|date|before:' . now()->subYears(18)->format('Y-m-d'),
                 'telefone' => 'required',
-                'password' => 'required|min:4'
+                'password' => 'required|min:4',
+                'telefone' => 'required',
+                'bairro' => 'required',
+                'estado' => 'required',
+                'cidade' => 'required',
+                'numero' => 'required'
+            ], [
+                'nome.required' => 'O campo "Nome Completo" precisa ser preenchido!',
+
+                'email.required' => 'O campo "E-mail" precisa ser preenchido!',
+                'email.email' => 'E-mail inválido',
+
+                'cpf.required' => 'O campo "CPF" precisa ser preenchido!',
+
+                'data.required' => 'O campo "Data de nascimento" precisa ser preenchido!',
+                'data.date' => 'O campo "Data de nascimento" precisa ser uma data válida!',
+                'data.before' => 'Você precisa ser maior de 18 anos para efetuar compras nesse site!',
+
+                'password.required' => 'O campo "Senha" precisa ser preenchido!',
+                'password.min' => 'O campo "Senha" precisa ter no minimo min: caracteres!',
+
+                'telefone.required' => 'O campo "Telefone" precisa ser preenchido!',
+
+                'bairro.required' => 'O campo "Bairro" precisa ser preenchido!',
+
+                'estado.required' => 'O campo "Estado" precisa ser preenchido!',
+
+                'cidade.required' => 'O campo "Cidade" precisa ser preenchido!',
+
+                'numero.required' => 'O campo "Número da casa" precisa ser preenchido!',
+
             ]
-            );
+        );
             
             // dd($request->nome);
             // dd($request);
