@@ -46,16 +46,27 @@
                                     class="bi bi-whatsapp fill text-success"></i></a>
                         </li>
                     </div>
-                    @guest
+                    {{-- @guest('cliente')
                         <li class="nav-item mx-1 text-center fw-bold d-flex flex-column nav-mobile" style="font-size: 14px">
-                            <a class="text-dark" href="{{ route('login.show') }}">Entrar</a>
-                            <a class="text-dark" href="{{ route('cadastrar.show') }}"> Cadastrar-se</a>
+                            <a class="text-dark" href="{{ route('login.show') }}">Entrar ou Cadastrar-se</a>
                         </li>
                     @else
-                        <li class="nav-item mx-1 text-center fw-bold d-flex flex-column nav-mobile" style="font-size: 14px">
-                            <button>{{ Auth::user()->email }}</button>
-                        </li>
+                        <p>Bem-vindo, {{ Auth::guard('cliente')->user()->name }}</p>
                     @endguest
+
+                    @guest('funcionario')
+                        <li class="nav-item mx-1 text-center fw-bold d-flex flex-column nav-mobile" style="font-size: 14px">
+                            <a class="text-dark" href="{{ route('login.show') }}">Entrar ou Cadastrar-se</a>
+                        </li>
+                    @else
+                        <p>Bem-vindo, {{ Auth::guard('funcionario')->user()->name }}</p>
+                    @endguest --}}
+                    @if(Auth::check())
+    <p>Bem-vindo, {{ Auth::user()->name }}!</p>
+    <a href="{{ route('logout') }}">Sair</a>
+@else
+    <a href="{{ route('login') }}">Login</a>
+@endif
                 </ul>
 
                 <div class="btn-group flex-wrap mt-3 p-0" role="group" aria-label="Basic mixed styles example">

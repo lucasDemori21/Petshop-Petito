@@ -4,11 +4,12 @@
 
 </style>
 <style>
-    body,html{
+    body,
+    html {
         height: 80%;
     }
 
-    .nav-categorias{
+    .nav-categorias {
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -19,7 +20,7 @@
 
     }
 
-    .container-produtos{
+    .container-produtos {
         width: 80%;
         display: flex;
         justify-content: space-around;
@@ -27,29 +28,33 @@
         margin: 0 auto;
     }
 
-    .produtos{
-   
+    .produtos {
+
         background-color: aliceblue;
         margin: 1.5% 1%;
         border: 1px solid black;
-        
+
         width: 200px;
         height: 200px;
 
     }
-    .container-shop{
+
+    .container-shop {
         display: flex;
         flex-direction: row;
         width: 100%;
         height: 100%;
     }
 
-    @media(max-width: 768px){
-        .container-shop{
+    @media(max-width: 768px) {
+        .container-shop {
             flex-direction: column;
         }
     }
-    
+
+    .bloco {
+        text-align: center;
+    }
 </style>
 <div class="container-shop">
     <div class="nav-categorias">
@@ -64,40 +69,59 @@
         <a class="nav-link my-1" style="font-size: 18px;" href="#">Acessorio de alimentação</a>
     </div>
     <div class="container-produtos">
-        <div class="produtos">
-            
-        </div>
-        <div class="produtos">
-            
-        </div>
-        <div class="produtos">
-            
-        </div>
-        <div class="produtos">
-            
-        </div>
-        <div class="produtos">
-            
-        </div>
-        <div class="produtos">
-            
-        </div>
-        <div class="produtos">
-            
-        </div>
-        <div class="produtos">
-            
-        </div>
-        <div class="produtos">
-            
-        </div>
-        <div class="produtos">
-            
-        </div>
+        <a href="#" class="produtos">
+            <div class="bloco">
+                <div class="bloco-produto">
+                    <img src="{{ asset('images/logos/logo-petito.png') }}" width='120px' alt="img">
+                </div>
+                <div class="bloco-produto d-flex flex-column">
+                    <span>Titulo</span>
+
+                    <span>Preço</span>
+                </div>
+            </div>
+        </a>
+        <a href="#" class="produtos">
+            <div class="bloco">
+                <div class="bloco-produto">
+                    <img src="{{ asset('images/logos/logo-petito.png') }}" width='120px' alt="img">
+                </div>
+                <div class="bloco-produto d-flex flex-column">
+                    <span>Titulo</span>
+
+                    <span>Preço</span>
+                </div>
+            </div>
+        </a>
+        <a href="#" class="produtos">
+            <div class="bloco">
+                <div class="bloco-produto">
+                    <img src="{{ asset('images/logos/logo-petito.png') }}" width='120px' alt="img">
+                </div>
+                <div class="bloco-produto d-flex flex-column">
+                    <span>Titulo</span>
+
+                    <span>Preço</span>
+                </div>
+            </div>
+        </a>
+        <a href="#" class="produtos">
+            <div class="bloco">
+                <div class="bloco-produto">
+                    <img src="{{ asset('images/logos/logo-petito.png') }}" width='120px' alt="img">
+                </div>
+                <div class="bloco-produto d-flex flex-column">
+                    <span>Titulo</span>
+
+                    <span>Preço</span>
+                </div>
+            </div>
+        </a>
     </div>
 </div>
 
 
 
 </body>
+
 </html>

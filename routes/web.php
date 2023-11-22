@@ -21,11 +21,11 @@ Route::get('/', function () {
     return view('index');
 })->name('index');
 
+// Route::get('/', [AuthController::class, 'index'])->middleware('auth')->name('index');
+
 Route::get('/shop', [ShopController::class, 'exibirProdutos'])->name('shop.produtos');
 
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login.show');
-
-Route::get('/cadastrar', [AuthController::class, 'showCadastrar'])->name('cadastrar.show');
 
 Route::post('/login/auth', [AuthController::class, 'login'])->name('auth.login');
 

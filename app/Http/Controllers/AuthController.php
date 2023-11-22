@@ -8,9 +8,14 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use PhpParser\Node\Stmt\Return_;
 
 class AuthController extends Controller
 {
+    public function index(): View{
+        return view('index');
+    }
+
     public function showLogin():View
     {
         return view('auth.login');
@@ -152,11 +157,13 @@ class AuthController extends Controller
 
 
         if (Auth::guard('cliente')->attempt($credentials)) {
-            return redirect()->route('login.show')->with('success', 'Logado com sucesso! (Cliente)');
+            $request->session()->regenerate();
+            return redirect()->route('index');
         }
 
         if (Auth::guard('funcionario')->attempt($credentials)) {
-            return redirect()->route('login.show')->with('success', 'Logado com sucesso! (Funcionario)');
+            $request->session()->regenerate();
+            return redirect()->route('index');
         }
 
         return back()->withErrors(['error-login' => "Senha incorreta!"])->withInput();
