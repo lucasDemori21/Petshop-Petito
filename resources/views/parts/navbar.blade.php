@@ -28,6 +28,7 @@
 
                 <ul class="navbar-nav d-flex justify-content-between w-100">
                     <form class="d-flex w-75 mx-auto nav-mobile" role="search">
+                        @csrf
                         <input class="form-control me-2 input-search" type="search" placeholder="Search"
                             aria-label="Search">
                         <button class="btn btn-warning btn-search" type="submit"><i class="bi bi-search"></i></button>
@@ -46,27 +47,18 @@
                                     class="bi bi-whatsapp fill text-success"></i></a>
                         </li>
                     </div>
-                    {{-- @guest('cliente')
-                        <li class="nav-item mx-1 text-center fw-bold d-flex flex-column nav-mobile" style="font-size: 14px">
-                            <a class="text-dark" href="{{ route('login.show') }}">Entrar ou Cadastrar-se</a>
-                        </li>
+                    
+                    @if(auth('cliente')->check())
+                        <p>Bem-vindo como cliente!</p>
+                        <a href="{{ route('logout') }}">Sair</a>
+                    @elseif(auth('funcionario')->check())
+                        <p>Bem-vindo como funcionário!</p>
+                        <a href="{{ route('logout') }}">Sair</a>
                     @else
-                        <p>Bem-vindo, {{ Auth::guard('cliente')->user()->name }}</p>
-                    @endguest
-
-                    @guest('funcionario')
-                        <li class="nav-item mx-1 text-center fw-bold d-flex flex-column nav-mobile" style="font-size: 14px">
-                            <a class="text-dark" href="{{ route('login.show') }}">Entrar ou Cadastrar-se</a>
-                        </li>
-                    @else
-                        <p>Bem-vindo, {{ Auth::guard('funcionario')->user()->name }}</p>
-                    @endguest --}}
-                    @if(Auth::check())
-    <p>Bem-vindo, {{ Auth::user()->name }}!</p>
-    <a href="{{ route('logout') }}">Sair</a>
-@else
-    <a href="{{ route('login') }}">Login</a>
-@endif
+                    <li class="nav-item mx-1 text-center fw-bold d-flex flex-column nav-mobile" style="font-size: 14px">
+                        <a class="text-dark" href="{{ route('login.show') }}">Entrar <br> Cadastre-se</a>
+                    </li>
+                    @endauth
                 </ul>
 
                 <div class="btn-group flex-wrap mt-3 p-0" role="group" aria-label="Basic mixed styles example">

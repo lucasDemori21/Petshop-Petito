@@ -11,6 +11,7 @@ class Cliente extends Authenticatable
     use HasFactory, Notifiable;
 
     protected $table = 'cliente';
+    protected $primaryKey = 'id_cliente';
 
    /**
      * The attributes that are mass assignable.
@@ -32,6 +33,7 @@ class Cliente extends Authenticatable
         'complemento',
         'celular',
         'password',
+        'remember_token',
     ];
 
     /**

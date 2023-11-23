@@ -30,6 +30,8 @@ return new class extends Migration
             $table->string('complemento', 100);
             $table->string('celular', 20)->nullable(false);
             $table->timestamp('updated_at');
+            $table->rememberToken();
+
 
         });
 
@@ -54,6 +56,8 @@ return new class extends Migration
             $table->timestamp('updated_at');
             $table->string('funcao', 45)->nullable(false);
             $table->decimal('salario', 10, 2)->nullable();
+            $table->rememberToken();
+
 
         });
 

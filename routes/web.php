@@ -17,16 +17,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-})->name('index');
+    Route::get('/', function () {
+        return view('index');
+    })->name('index');
+        
+    Route::get('/shop', [ShopController::class, 'exibirProdutos'])->name('shop.produtos');
+    
+    Route::get('/login', [AuthController::class, 'showLogin'])->name('login.show');
+    
+    Route::post('/login/auth', [AuthController::class, 'login'])->name('auth.login');
+    
+    Route::post('/cadastrar/auth', [AuthController::class, 'cadastrar'])->name('auth.cadastrar');
 
-// Route::get('/', [AuthController::class, 'index'])->middleware('auth')->name('index');
-
-Route::get('/shop', [ShopController::class, 'exibirProdutos'])->name('shop.produtos');
-
-Route::get('/login', [AuthController::class, 'showLogin'])->name('login.show');
-
-Route::post('/login/auth', [AuthController::class, 'login'])->name('auth.login');
-
-Route::post('/cadastrar/auth', [AuthController::class, 'cadastrar'])->name('auth.cadastrar');
+    Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+    
+// });

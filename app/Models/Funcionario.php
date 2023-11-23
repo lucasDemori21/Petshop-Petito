@@ -11,6 +11,7 @@ class Funcionario extends Authenticatable
     use HasFactory, Notifiable;
 
     protected $table = 'funcionario';
+    protected $primaryKey = 'id_func';
 
    /**
      * The attributes that are mass assignable.
@@ -18,8 +19,23 @@ class Funcionario extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
+        'nome_funcionario',
         'email',
+        'cpf',
+        'data_nasc',
+        'status',
+        'cep',
+        'estado',
+        'cidade',
+        'bairro',
+        'rua',
+        'numero_casa',
+        'complemento',
+        'celular',
         'password',
+        'funcao',
+        'salario',
+        'remember_token',
     ];
 
     /**

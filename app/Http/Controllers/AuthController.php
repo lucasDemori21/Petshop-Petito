@@ -12,6 +12,7 @@ use PhpParser\Node\Stmt\Return_;
 
 class AuthController extends Controller
 {
+
     public function index(): View{
         return view('index');
     }
@@ -21,9 +22,12 @@ class AuthController extends Controller
         return view('auth.login');
     }
 
-    public function showCadastrar():View
+    public function logout()
     {
-        return view('auth.cadastrar');
+        Auth::guard('cliente')->logout();
+        Auth::guard('funcionario')->logout();
+        return redirect()->route('login.show');
+
     }
 
     public function cadastrar(Request $request){
@@ -156,13 +160,16 @@ class AuthController extends Controller
         }
 
 
-        if (Auth::guard('cliente')->attempt($credentials)) {
-            $request->session()->regenerate();
+        if (Auth::guard('cliente')->attempt($credentials, true)) {
+            // dd(Auth::guard('cliente'));
+            // session_start();        
+            // session(['user_id' => 1, 'user_nome' => 'João']);
+
             return redirect()->route('index');
         }
 
-        if (Auth::guard('funcionario')->attempt($credentials)) {
-            $request->session()->regenerate();
+        if (Auth::guard('funcionario')->attempt($credentials, true)) {
+           
             return redirect()->route('index');
         }
 
