@@ -163,15 +163,14 @@ class AuthController extends Controller
         if (Auth::guard('cliente')->attempt($credentials)) {
 
             $request->session()->regenerate();
- 
-            return redirect()->intended('index');
+            return redirect()->route('index');
         }
 
         if (Auth::guard('funcionario')->attempt($credentials)) {
            
             $request->session()->regenerate();
- 
-            return redirect()->intended('index');
+            return redirect()->route('index');
+            
         }
 
         return back()->withErrors(['error-login' => "Senha incorreta!"])->withInput();
