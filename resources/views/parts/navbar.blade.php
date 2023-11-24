@@ -36,8 +36,13 @@
                     <div class="d-flex justify-content-center mx-auto flex-wrap nav-mobile">
 
                         <li class="nav-item mx-1">
-                            <a class="nav-link logo-header" aria-current="page" href="#"><i
-                                    class="bi bi-bag-heart"></i></a>
+                            <a class="nav-link logo-header position-relative" aria-current="page" href="#"><i
+                                    class="bi bi-bag-heart"></i>
+                                <span class="position-absolute translate-middle badge rounded-pill bg-danger">
+                                    2
+                                    <span class="visually-hidden">unread messages</span>
+                                </span>
+                            </a>
                         </li>
                         <li class="nav-item mx-1">
                             <a class="nav-link logo-header" href="#"><i class="bi bi-heart"></i></a>
@@ -47,35 +52,55 @@
                                     class="bi bi-whatsapp fill text-success"></i></a>
                         </li>
                     </div>
-                    
-                    @if(auth('cliente')->check())
-                        <p>Bem-vindo como cliente!</p>
-                        <a href="{{ route('logout') }}">Sair</a>
-                    @elseif(auth('funcionario')->check())
-                        <p>Bem-vindo como funcionário!</p>
-                        <a href="{{ route('logout') }}">Sair</a>
-                    @else
-                    <li class="nav-item mx-1 text-center fw-bold d-flex flex-column nav-mobile" style="font-size: 14px">
-                        <a class="text-dark" href="{{ route('login.show') }}">Entrar <br> Cadastre-se</a>
-                    </li>
-                    @endauth
-                </ul>
 
-                <div class="btn-group flex-wrap mt-3 p-0" role="group" aria-label="Basic mixed styles example">
-                    <a href="#" class="btn btn-light m-1 rounded fw-bold"
-                        style="background-color: #A5E1E9;">Cachorro</a>
-                    <a href="#" class="btn btn-light m-1 rounded fw-bold"
-                        style="background-color: #FFC296;">Gato</a>
-                    <a href="#" class="btn btn-light m-1 rounded fw-bold"
-                        style="background-color: #C4BDF3;">Pássaro</a>
-                    <a href="#" class="btn btn-light m-1 rounded fw-bold"
-                        style="background-color: #FCE8A5;">Peixe</a>
-                    <a href="#" class="btn btn-light m-1 rounded fw-bold"
-                        style="background-color: #D5EDB9;">Outros Pets</a>
-                    <a href="#" class="btn btn-light m-1 rounded fw-bold"
-                        style="background-color: #F8CADC;">Serviços</a>
-                </div>
+                    <li class="nav-item m-auto text-center fw-bold d-flex flex-column nav-mobile">
+                        @if (auth('cliente')->check() || auth('funcionario')->check())
+                            @if (auth('cliente')->check())
+                                <?php $nome_user = explode(' ', Auth::guard('cliente')->user()->nome_cliente)[0]; ?>
+                            @elseif(auth('funcionario')->check())
+                                <?php $nome_user = explode(' ', Auth::guard('funcionario')->user()->nome_func)[0]; ?>
+                            @endif
+                            <div class="btn-group dropstart">
+                                <button type="button" class="btn btn-light dropdown-toggle dropdown-toggle-split"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    <span class="visually-hidden"></span>
+                                </button>
+                                <ul class="dropdown-menu">
+
+                                    <li><a class="dropdown-item" href="#">Action</a></li>
+                                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                    <li><a class="dropdown-item" href="{{ route('logout') }}">Sair</a></li>
+
+                                </ul>
+                                <button type="button" class="btn btn-light" style=" max-width:200px;">
+                                    Olá, {{ $nome_user }}
+                                </button>
+                            </div>
+                        @else
+                            <a class="text-dark" href="{{ route('login.show') }}">Entrar <br> Cadastre-se</a>
+                        @endauth
+                </li>
+            </ul>
+
+            <div class="btn-group flex-wrap mt-3 p-0" role="group" aria-label="Basic mixed styles example">
+                <a href="#" class="btn btn-light m-1 rounded fw-bold"
+                    style="background-color: #A5E1E9;">Cachorro</a>
+                <a href="#" class="btn btn-light m-1 rounded fw-bold"
+                    style="background-color: #FFC296;">Gato</a>
+                <a href="#" class="btn btn-light m-1 rounded fw-bold"
+                    style="background-color: #C4BDF3;">Pássaro</a>
+                <a href="#" class="btn btn-light m-1 rounded fw-bold"
+                    style="background-color: #FCE8A5;">Peixe</a>
+                <a href="#" class="btn btn-light m-1 rounded fw-bold"
+                    style="background-color: #D5EDB9;">Outros Pets</a>
+                <a href="#" class="btn btn-light m-1 rounded fw-bold"
+                    style="background-color: #F8CADC;">Serviços</a>
             </div>
         </div>
     </div>
+</div>
 </nav>

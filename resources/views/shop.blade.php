@@ -32,8 +32,8 @@
 
         background-color: aliceblue;
         margin: 1.5% 1%;
-        border: 1px solid black;
-
+        box-shadow: 0 0 10px 1px rgba(0,0,0, 0.3);
+        border-radius: 6px;
         width: 200px;
         height: 200px;
 
@@ -71,52 +71,49 @@
     <div class="container-produtos">
         <a href="#" class="produtos">
             <div class="bloco">
-                <div class="bloco-produto">
-                    <img src="{{ asset('images/logos/logo-petito.png') }}" width='120px' alt="img">
+                <div class="bloco-produto mt-1">
+                    <img src="{{ asset('images/produtos/racao.png') }}" width='120px' alt="img">
                 </div>
-                <div class="bloco-produto d-flex flex-column">
-                    <span>Titulo</span>
-
-                    <span>Preço</span>
-                </div>
-            </div>
-        </a>
-        <a href="#" class="produtos">
-            <div class="bloco">
-                <div class="bloco-produto">
-                    <img src="{{ asset('images/logos/logo-petito.png') }}" width='120px' alt="img">
-                </div>
-                <div class="bloco-produto d-flex flex-column">
-                    <span>Titulo</span>
-
-                    <span>Preço</span>
+                <div class="bloco-produto d-flex flex-column mt-2">
+                    <span>Pacote 3 kg ração</span>
+                    <span>R$ 49,90</span>
                 </div>
             </div>
         </a>
         <a href="#" class="produtos">
             <div class="bloco">
-                <div class="bloco-produto">
-                    <img src="{{ asset('images/logos/logo-petito.png') }}" width='120px' alt="img">
+                <div class="bloco-produto mt-1">
+                    <img src="{{ asset('images/produtos/racao.png') }}" width='120px' alt="img">
                 </div>
-                <div class="bloco-produto d-flex flex-column">
-                    <span>Titulo</span>
-
-                    <span>Preço</span>
+                <div class="bloco-produto d-flex flex-column mt-2">
+                    <span>Pacote 3 kg ração</span>
+                    <span>R$ 49,90</span>
                 </div>
             </div>
         </a>
         <a href="#" class="produtos">
             <div class="bloco">
-                <div class="bloco-produto">
-                    <img src="{{ asset('images/logos/logo-petito.png') }}" width='120px' alt="img">
+                <div class="bloco-produto mt-1">
+                    <img src="{{ asset('images/produtos/racao.png') }}" width='120px' alt="img">
                 </div>
-                <div class="bloco-produto d-flex flex-column">
-                    <span>Titulo</span>
-
-                    <span>Preço</span>
+                <div class="bloco-produto d-flex flex-column mt-2">
+                    <span>Pacote 3 kg ração</span>
+                    <span>R$ 49,90</span>
                 </div>
             </div>
         </a>
+        <a href="#" class="produtos">
+            <div class="bloco">
+                <div class="bloco-produto mt-1">
+                    <img src="{{ asset('images/produtos/racao.png') }}" width='120px' alt="img">
+                </div>
+                <div class="bloco-produto d-flex flex-column mt-2">
+                    <span>Pacote 3 kg ração</span>
+                    <span>R$ 49,90</span>
+                </div>
+            </div>
+        </a>
+        
     </div>
 </div>
 
