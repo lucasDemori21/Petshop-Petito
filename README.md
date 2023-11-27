@@ -18,24 +18,25 @@
 <h4>Pré-requisitos:</h4> 
 Certifique-se de ter o PHP 8 instalado em sua máquina. Instale o Composer, uma ferramenta para gerenciar as dependências do PHP. 
 
-Passo a Passo: 
+<h4>Passo a Passo:</h4> 
 
-Clone o Repositório:
+<h4>Clone o Repositório:</h4>
 bash Copy code git clone https://github.com/seu-usuario/petito.git 
 
-Instale as Dependências:
-bash Copy code cd petito composer install Configure o Ambiente:
+<h4>Instale as Dependências:</h4>
+bash Copy code "cd petito" e depois "composer install" 
 
+<h4>Configure o Ambiente:</h4>
 Copie o arquivo .env.example para um novo arquivo chamado .env. Configure seu banco de dados no arquivo .env. 
 
-Gere a Chave de Aplicação:
-bash Copy code php artisan key:generate 
+<h4>Gere a Chave de Aplicação:</h4>
+bash Copy code "php artisan key:generate" 
 
-Execute as Migrações do Banco de Dados:
-bash Copy code php artisan migrate Inicie o Servidor Local:
+<h4>Execute as Migrações do Banco de Dados:</h4>
+bash Copy code "php artisan migrate" Inicie o Servidor Local:
 
-bash Copy code php artisan serve Acesse o Sistema:
+bash Copy code "php artisan serve" Acesse o Sistema:
 
-Abra seu navegador e visite http://localhost:8000. 
+Abra seu navegador e visite "http://localhost:8000". 
 
 Agora, você deverá ter o projeto Petito rodando localmente em seu ambiente de desenvolvimento.
