@@ -1,7 +1,7 @@
 <h1>Projeto Petito - Sistema de Gestão para Pet Shop</h1>
 
 <h3>Descrição do Projeto:</h3> 
-    O projeto Petito é um sistema de gestão web e móvel desenvolvido para atender às necessidades específicas de um Pet Shop chamado "Petito". Este sistema oferece funcionalidades como vendas online, agendamento de serviços, gerenciamento de estoque e um painel de controle personalizado para os funcionários. Ele é construído utilizando tecnologias modernas como PHP 8 com o framework Laravel, HTML5, CSS3, JavaScript, Bootstrap e MySQL para o banco de dados.
+    O projeto Petito é um sistema de gestão web e móvel desenvolvido para atender às necessidades específicas de um Pet Shop chamado "Petito". Este sistema oferece funcionalidades como vendas online, agendamento de serviços e um painel de controle personalizado para os funcionários. Ele é construído utilizando tecnologias modernas como PHP 8 com o framework Laravel, HTML5, CSS3, JavaScript, Bootstrap e MySQL para o banco de dados.
 
 <h3>Motivação para Aprimorar Conhecimentos no Laravel:</h3> 
     A escolha do framework Laravel para este projeto visa aprimorar os conhecimentos em desenvolvimento web, especialmente no contexto de PHP. Laravel é conhecido por sua elegância, simplicidade e eficiência, proporcionando uma experiência de desenvolvimento ágil e estruturada. Ao trabalhar com o Laravel, você terá a oportunidade de explorar práticas modernas de desenvolvimento, arquitetura MVC e a vasta gama de ferramentas que o framework oferece.
