@@ -16,20 +16,26 @@
 <h3>Como Iniciar o Projeto: Siga os passos abaixo para instalar e inicializar o projeto localmente:</h3>
 
 <h4>Pré-requisitos:</h4> 
-Certifique-se de ter o PHP 8 instalado em sua máquina. Instale o Composer, uma ferramenta para gerenciar as dependências do PHP. Passo a Passo: Clone o Repositório:
+Certifique-se de ter o PHP 8 instalado em sua máquina. Instale o Composer, uma ferramenta para gerenciar as dependências do PHP. 
 
-bash Copy code git clone https://github.com/seu-usuario/petito.git Instale as Dependências:
+Passo a Passo: 
 
+Clone o Repositório:
+bash Copy code git clone https://github.com/seu-usuario/petito.git 
+
+Instale as Dependências:
 bash Copy code cd petito composer install Configure o Ambiente:
 
-Copie o arquivo .env.example para um novo arquivo chamado .env. Configure seu banco de dados no arquivo .env. Gere a Chave de Aplicação:
+Copie o arquivo .env.example para um novo arquivo chamado .env. Configure seu banco de dados no arquivo .env. 
 
-bash Copy code php artisan key:generate Execute as Migrações do Banco de Dados:
+Gere a Chave de Aplicação:
+bash Copy code php artisan key:generate 
 
+Execute as Migrações do Banco de Dados:
 bash Copy code php artisan migrate Inicie o Servidor Local:
 
 bash Copy code php artisan serve Acesse o Sistema:
 
-Abra seu navegador e visite http://localhost:8000. Agora, você deverá ter o projeto Petito rodando localmente em seu ambiente de desenvolvimento.
+Abra seu navegador e visite http://localhost:8000. 
 
-Observação: Este é um guia básico. Certifique-se de consultar a documentação oficial do Laravel para obter informações mais detalhadas sobre configurações e recursos avançados.
+Agora, você deverá ter o projeto Petito rodando localmente em seu ambiente de desenvolvimento.
