@@ -30,11 +30,10 @@ bash Copy code "cd petito" e depois "composer install"
 Copie o arquivo .env.example para um novo arquivo chamado .env. Configure seu banco de dados no arquivo .env. 
 
 <h4>Gere a Chave de Aplicação:</h4>
-bash Copy code "php artisan key:generate" 
+bash Copy code "php artisan key:generate"
 
 <h4>Execute as Migrações do Banco de Dados:</h4>
-bash Copy code "php artisan migrate" Inicie o Servidor Local:
-
+bash Copy code "php artisan migrate" Inicie o Servidor Local<br>
 bash Copy code "php artisan serve" Acesse o Sistema:
 
 Abra seu navegador e visite "http://localhost:8000". 
