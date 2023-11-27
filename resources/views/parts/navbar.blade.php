@@ -70,6 +70,18 @@
                                     <li><a class="dropdown-item" href="#">Action</a></li>
                                     <li><a class="dropdown-item" href="#">Another action</a></li>
                                     <li><a class="dropdown-item" href="#">Something else here</a></li>
+
+                                    @if (auth('funcionario')->check())
+                                        
+                                        <li>
+                                            <hr class="dropdown-divider">
+                                        </li>
+                                        <li><a class="dropdown-item" href="#">Dashboard</a></li>
+                                        <li><a class="dropdown-item" href="#">Estoque</a></li>
+                                        <li><a class="dropdown-item" href="{{route('show.cadastrar_produto') }}">Cadastrar anúncio</a></li>
+                                        
+                                    @endif
+
                                     <li>
                                         <hr class="dropdown-divider">
                                     </li>
