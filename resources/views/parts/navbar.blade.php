@@ -16,7 +16,7 @@
 
 <nav class="navbar navbar-expand-lg p-0">
     <div class="container-fluid">
-        <a class="logo-home" href="#">
+        <a class="logo-home" href="{{ route('index') }}">
             <img src="{{ asset('images/logos/logo-petito.png') }}" alt="Logo Petito">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"

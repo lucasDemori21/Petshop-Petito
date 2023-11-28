@@ -20,7 +20,7 @@
     .container-produtos {
         width: 80%;
         display: flex;
-        justify-content: start;
+        justify-content: space-around;
         flex-wrap: wrap;
         margin: 0 auto;
     }
@@ -28,7 +28,7 @@
     .produtos {
 
         background-color: aliceblue;
-        margin: 1.5% 3%;
+        margin: 1.5% 1%;
         box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.3);
         border-radius: 6px;
         
@@ -87,9 +87,9 @@
     </div>
 </div>
 
-<footer style="height: 50px; background-color: black; bottom: 0;" class="w-100 position-absolute" >
+{{-- <footer style="height: 50px; background-color: black; bottom: 0;" class="w-100 position-absolute" >
 
-</footer>
+</footer> --}}
 </body>
 
 </html>
