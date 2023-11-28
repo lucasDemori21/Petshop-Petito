@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\ShopController;
 use App\Providers\RouteServiceProvider;
@@ -30,5 +31,9 @@ use Illuminate\Support\Facades\Route;
     Route::post('/cadastrar/auth', [AuthController::class, 'cadastrar'])->name('auth.cadastrar');
 
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+
+    Route::get('admin/cadastrar_produto',[AdminController::class, 'showCadastrarProduto'])->middleware('funcionario')->name('show.cadastrar_produto');
     
+    
+
 // });

@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
-    public function showCadastroProduto(): View{
+    public function showCadastrarProduto(): View{
 
         return view('admin.cadastro_produto');
 

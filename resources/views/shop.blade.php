@@ -1,9 +1,6 @@
 @include('parts.navbar')
 
 <style>
-
-</style>
-<style>
     body,
     html {
         height: 80%;
@@ -23,7 +20,7 @@
     .container-produtos {
         width: 80%;
         display: flex;
-        justify-content: space-around;
+        justify-content: start;
         flex-wrap: wrap;
         margin: 0 auto;
     }
@@ -31,9 +28,10 @@
     .produtos {
 
         background-color: aliceblue;
-        margin: 1.5% 1%;
-        box-shadow: 0 0 10px 1px rgba(0,0,0, 0.3);
+        margin: 1.5% 3%;
+        box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.3);
         border-radius: 6px;
+        
         width: 200px;
         height: 200px;
 
@@ -44,6 +42,7 @@
         flex-direction: row;
         width: 100%;
         height: 100%;
+        
     }
 
     @media(max-width: 768px) {
@@ -56,6 +55,7 @@
         text-align: center;
     }
 </style>
+
 <div class="container-shop">
     <div class="nav-categorias">
         <span class="title" style="font-family: 'Cotane Beach', sans-serif; font-size: 25px;">Categoria</span>
@@ -69,56 +69,27 @@
         <a class="nav-link my-1" style="font-size: 18px;" href="#">Acessorio de alimentação</a>
     </div>
     <div class="container-produtos">
-        <a href="#" class="produtos">
-            <div class="bloco">
-                <div class="bloco-produto mt-1">
-                    <img src="{{ asset('images/produtos/racao.png') }}" width='120px' alt="img">
+        @foreach ($produto as $item)
+            <a href="#" class="produtos">
+                <div class="bloco">
+                    <div class="bloco-produto mt-1">
+                        <img src="{{ $item->img_produto }}" width='120px' alt="img">
+                    </div>
+                    <div class="bloco-produto d-flex flex-column mt-2">
+                        <span>{{ $item->titulo }}</span>
+                        <span>
+                            {{ 'R$ ' . number_format($item->valor, 2, ',', '.') }}
+                        </span>
+                    </div>
                 </div>
-                <div class="bloco-produto d-flex flex-column mt-2">
-                    <span>Pacote 3 kg ração</span>
-                    <span>R$ 49,90</span>
-                </div>
-            </div>
-        </a>
-        <a href="#" class="produtos">
-            <div class="bloco">
-                <div class="bloco-produto mt-1">
-                    <img src="{{ asset('images/produtos/racao.png') }}" width='120px' alt="img">
-                </div>
-                <div class="bloco-produto d-flex flex-column mt-2">
-                    <span>Pacote 3 kg ração</span>
-                    <span>R$ 49,90</span>
-                </div>
-            </div>
-        </a>
-        <a href="#" class="produtos">
-            <div class="bloco">
-                <div class="bloco-produto mt-1">
-                    <img src="{{ asset('images/produtos/racao.png') }}" width='120px' alt="img">
-                </div>
-                <div class="bloco-produto d-flex flex-column mt-2">
-                    <span>Pacote 3 kg ração</span>
-                    <span>R$ 49,90</span>
-                </div>
-            </div>
-        </a>
-        <a href="#" class="produtos">
-            <div class="bloco">
-                <div class="bloco-produto mt-1">
-                    <img src="{{ asset('images/produtos/racao.png') }}" width='120px' alt="img">
-                </div>
-                <div class="bloco-produto d-flex flex-column mt-2">
-                    <span>Pacote 3 kg ração</span>
-                    <span>R$ 49,90</span>
-                </div>
-            </div>
-        </a>
-        
+            </a>
+        @endforeach
     </div>
 </div>
 
+<footer style="height: 50px; background-color: black; bottom: 0;" class="w-100 position-absolute" >
 
-
+</footer>
 </body>
 
 </html>
