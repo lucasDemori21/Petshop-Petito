@@ -23,18 +23,17 @@ use Illuminate\Support\Facades\Route;
     })->name('index');
         
     Route::get('/shop/{categoria}', [ShopController::class, 'exibirProdutos'])->name('shop.produtos');
-
     Route::get('/shop', [ShopController::class, 'searchProdutos'])->name('shop.search');
-    
     Route::get('/login', [AuthController::class, 'showLogin'])->name('login.show');
+    Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
     
-    Route::post('/login/auth', [AuthController::class, 'login'])->name('auth.login');
-    
+    Route::post('/login/auth', [AuthController::class, 'login'])->name('auth.login');    
     Route::post('/cadastrar/auth', [AuthController::class, 'cadastrar'])->name('auth.cadastrar');
 
-    Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
-    Route::get('admin/cadastrar_produto',[AdminController::class, 'showCadastrarProduto'])->middleware('funcionario')->name('show.cadastrar_produto');
+    Route::middleware(['funcionario'])->group(function () {
+        Route::get('admin/cadastrar_produto', [AdminController::class, 'showCadastrarProduto'])->name('show.cadastrar_produto');
+    });
     
     
 

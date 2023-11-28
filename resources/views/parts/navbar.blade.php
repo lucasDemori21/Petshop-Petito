@@ -48,7 +48,7 @@
                             <a class="nav-link logo-header" href="#"><i class="bi bi-heart"></i></a>
                         </li>
                         <li class="nav-item mx-1">
-                            <a class="nav-link logo-header" href="#" aria-disabled="true"><i
+                            <a class="nav-link logo-header" href="https://api.whatsapp.com/send?phone=47996356349&text=Ol%C3%A1,%20eu%20gostaria%20de%20fazer%20um%20agendamento." target="_blank" aria-disabled="true"><i
                                     class="bi bi-whatsapp fill text-success"></i></a>
                         </li>
                     </div>
