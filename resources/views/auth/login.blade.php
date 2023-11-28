@@ -57,6 +57,9 @@
 
             </form>
         </div>
+
+            <span class="line-middle"></span>
+    
         <div class="container-right">
             <h5>Faça seu cadastro</h5>
             <form class="form-auth" action="{{ route('auth.cadastrar') }}" method="POST">
@@ -87,7 +90,7 @@
                         aria-controls="offcanvasScrolling">Continuar</button>
                 </div>
 
-                <div class="offcanvas offcanvas-end w-50" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1"
+                <div class="offcanvas offcanvas-end" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1"
                     id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
                     <div class="offcanvas-header">
                         <h5 class="offcanvas-title" id="offcanvasScrollingLabel">Cadastro</h5>

@@ -45,10 +45,34 @@ body, html{
 }
 
 .logo img{
-    min-width: 130px;
+    min-width: 95px;
     width: 10%;
     position: fixed;
 }
 .offcanvas{
     background-color: #FDF5F5;
+    width: 50% !important;
+}
+
+.line-middle{
+    display: block;
+}
+
+@media(max-width: 991px){
+   .container-p{
+    flex-direction: column;
+   }
+   .container-left, .container-right{
+    width: 100%;
+    margin: auto;
+    border: none;
+   }
+
+   .line-middle{
+    width: 100%;
+    border: 1px solid rgba(0,0,0,0.2);
+   }
+   .offcanvas{
+        width: 100% !important;
+   }
 }

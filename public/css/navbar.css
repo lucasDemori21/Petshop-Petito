@@ -23,7 +23,8 @@ body{
 
 .input-search {
     border-radius: 50px;
-    border: 2px black solid
+    border: 2px black solid;
+    height: 45px;
 }
 
 .input-search:focus {
@@ -31,7 +32,8 @@ body{
 }
 
 .btn-search {
-    border-radius: 50px
+    border-radius: 50px;
+    height: 45px;
 }
 
 .btn-warning:hover {
@@ -87,4 +89,9 @@ body{
         .nav-mobile{
             margin-top: 2%;
         }
+        .dropstart{
+            margin-top: 5%;
+        }
+
+        
     }

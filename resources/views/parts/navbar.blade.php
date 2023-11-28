@@ -27,7 +27,7 @@
             <div class="d-flex flex-column w-100">
 
                 <ul class="navbar-nav d-flex justify-content-between w-100">
-                    <form class="d-flex w-75 mx-auto nav-mobile" role="search" action="{{ route('shop.search') }}">
+                    <form class="d-flex w-75 m-auto nav-mobile" role="search" action="{{ route('shop.search') }}">
                         @csrf
                         <input class="form-control me-2 input-search" name="search" type="search" placeholder="Search"
                             aria-label="Search">
@@ -61,7 +61,7 @@
                                 <?php $nome_user = explode(' ', Auth::guard('funcionario')->user()->nome_func)[0]; ?>
                             @endif
                             <div class="btn-group dropstart">
-                                <button type="button" class="btn btn-light dropdown-toggle dropdown-toggle-split"
+                                <button type="button" class="btn btn-light dropdown-toggle dropdown-toggle-split" style="height: 45px;"
                                     data-bs-toggle="dropdown" aria-expanded="false">
                                     <span class="visually-hidden"></span>
                                 </button>
@@ -88,7 +88,7 @@
                                     <li><a class="dropdown-item" href="{{ route('logout') }}">Sair</a></li>
 
                                 </ul>
-                                <button type="button" class="btn btn-light" style=" max-width:200px;">
+                                <button type="button" class="btn btn-light" style=" max-width:200px; height: 45px; white-space: nowrap;">
                                     Olá, {{ $nome_user }}
                                 </button>
                             </div>
