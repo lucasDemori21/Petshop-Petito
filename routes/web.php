@@ -22,7 +22,9 @@ use Illuminate\Support\Facades\Route;
         return view('index');
     })->name('index');
         
-    Route::get('/shop', [ShopController::class, 'exibirProdutos'])->name('shop.produtos');
+    Route::get('/shop/{categoria}', [ShopController::class, 'exibirProdutos'])->name('shop.produtos');
+
+    Route::get('/shop', [ShopController::class, 'searchProdutos'])->name('shop.search');
     
     Route::get('/login', [AuthController::class, 'showLogin'])->name('login.show');
     

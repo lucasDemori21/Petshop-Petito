@@ -86,10 +86,6 @@
         @endforeach
     </div>
 </div>
-
-{{-- <footer style="height: 50px; background-color: black; bottom: 0;" class="w-100 position-absolute" >
-
-</footer> --}}
 </body>
 
 </html>

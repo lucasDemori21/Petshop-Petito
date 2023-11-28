@@ -27,9 +27,9 @@
             <div class="d-flex flex-column w-100">
 
                 <ul class="navbar-nav d-flex justify-content-between w-100">
-                    <form class="d-flex w-75 mx-auto nav-mobile" role="search">
+                    <form class="d-flex w-75 mx-auto nav-mobile" role="search" action="{{ route('shop.search') }}">
                         @csrf
-                        <input class="form-control me-2 input-search" type="search" placeholder="Search"
+                        <input class="form-control me-2 input-search" name="search" type="search" placeholder="Search"
                             aria-label="Search">
                         <button class="btn btn-warning btn-search" type="submit"><i class="bi bi-search"></i></button>
                     </form>
@@ -94,22 +94,22 @@
                             </div>
                         @else
                             <a class="text-dark" href="{{ route('login.show') }}">Entrar <br> Cadastre-se</a>
-                        @endauth
+                        @endif
                 </li>
             </ul>
 
             <div class="btn-group flex-wrap mt-3 p-0" role="group" aria-label="Basic mixed styles example">
-                <a href="#" class="btn btn-light m-1 rounded fw-bold"
+                <a href="{{ route('shop.produtos', 1) }}" class="btn btn-light m-1 rounded fw-bold"
                     style="background-color: #A5E1E9;">Cachorro</a>
-                <a href="#" class="btn btn-light m-1 rounded fw-bold"
+                <a href="{{ route('shop.produtos', 2) }}" class="btn btn-light m-1 rounded fw-bold"
                     style="background-color: #FFC296;">Gato</a>
-                <a href="#" class="btn btn-light m-1 rounded fw-bold"
+                <a href="{{ route('shop.produtos', 3) }}" class="btn btn-light m-1 rounded fw-bold"
                     style="background-color: #C4BDF3;">Pássaro</a>
-                <a href="#" class="btn btn-light m-1 rounded fw-bold"
+                <a href="{{ route('shop.produtos', 4) }}" class="btn btn-light m-1 rounded fw-bold"
                     style="background-color: #FCE8A5;">Peixe</a>
-                <a href="#" class="btn btn-light m-1 rounded fw-bold"
+                <a href="{{ route('shop.produtos', 5) }}" class="btn btn-light m-1 rounded fw-bold"
                     style="background-color: #D5EDB9;">Outros Pets</a>
-                <a href="#" class="btn btn-light m-1 rounded fw-bold"
+                <a href="{{ route('shop.produtos', 6) }}" class="btn btn-light m-1 rounded fw-bold"
                     style="background-color: #F8CADC;">Serviços</a>
             </div>
         </div>

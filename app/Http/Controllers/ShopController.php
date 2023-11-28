@@ -9,9 +9,32 @@ use Illuminate\View\View;
 
 class ShopController extends Controller
 {
-    public function exibirProdutos(): View {
+    public function exibirProdutos(String|int $categoria): View {
+
+        if($categoria != ''){
+
+            $produtos = DB::table('produto')->where('id_categoria', $categoria)->get();
+            
+        }else{   
+            
+            $produtos = DB::table('produto')->get();
         
-        $produtos = DB::table('produto')->get();
+        }
+
+        return view('shop', ['produto' => $produtos]);
+    }
+
+    public function searchProdutos(Request $request): View {
+
+        if($request->search != ''){
+
+            $produtos = DB::table('produto')->where('titulo', 'LIKE',"%{$request->search}%")->get();
+            
+        }else{   
+            
+            $produtos = DB::table('produto')->get();
+        
+        }
 
         return view('shop', ['produto' => $produtos]);
     }

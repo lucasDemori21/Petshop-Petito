@@ -10,16 +10,20 @@
             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
                 aria-label="Slide 3"></button>
         </div>
+
+
         <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="{{ asset('images/img1.png') }}" class="d-block w-75 mx-auto" alt="anuncio-img">
-            </div>
-            <div class="carousel-item">
-                <img src="{{ asset('images/img2.png') }}" class="d-block w-75 mx-auto" alt="anuncio-img">
-            </div>
-            <div class="carousel-item">
-                <img src="{{ asset('images/img3.png') }}"class="d-block w-75 mx-auto" alt="anuncio-img">
-            </div>
+            <a href="{{ route('shop.produtos', '') }}">
+                <div class="carousel-item active">
+                    <img src="{{ asset('images/img1.png') }}" class="d-block w-75 mx-auto" alt="anuncio-img">
+                </div>
+                <div class="carousel-item">
+                    <img src="{{ asset('images/img2.png') }}" class="d-block w-75 mx-auto" alt="anuncio-img">
+                </div>
+                <div class="carousel-item">
+                    <img src="{{ asset('images/img3.png') }}"class="d-block w-75 mx-auto" alt="anuncio-img">
+                </div>
+            </a>
         </div>
         <button class="carousel-control-prev pr-5" type="button" data-bs-target="#carouselExampleIndicators"
             data-bs-slide="prev">
