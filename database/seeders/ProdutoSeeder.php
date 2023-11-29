@@ -33,8 +33,8 @@ class ProdutoSeeder extends Seeder
                 'descricao' => $faker->paragraph,
                 'qtd_produto' => $faker->numberBetween(1, 100),
                 'valor' => $faker->randomFloat(2, 10, 100),
-                'create_time' => $faker->dateTimeThisYear(),
-                'update_time' => $faker->dateTimeThisYear(),
+                'created_at' => $faker->dateTimeThisYear(),
+                'updated_at' => $faker->dateTimeThisYear(),
                 'img_produto' => $faker->imageUrl(200, 200, 'cats'), // Substitua 'cats' pelo seu tipo de imagem
             ]);
         }

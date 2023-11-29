@@ -12,6 +12,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 </head>
 
 <nav class="navbar navbar-expand-lg p-0">
@@ -48,7 +50,9 @@
                             <a class="nav-link logo-header" href="#"><i class="bi bi-heart"></i></a>
                         </li>
                         <li class="nav-item mx-1">
-                            <a class="nav-link logo-header" href="https://api.whatsapp.com/send?phone=47996356349&text=Ol%C3%A1,%20eu%20gostaria%20de%20fazer%20um%20agendamento." target="_blank" aria-disabled="true"><i
+                            <a class="nav-link logo-header"
+                                href="https://api.whatsapp.com/send?phone=47996356349&text=Ol%C3%A1,%20eu%20gostaria%20de%20fazer%20um%20agendamento."
+                                target="_blank" aria-disabled="true"><i
                                     class="bi bi-whatsapp fill text-success"></i></a>
                         </li>
                     </div>
@@ -61,8 +65,8 @@
                                 <?php $nome_user = explode(' ', Auth::guard('funcionario')->user()->nome_func)[0]; ?>
                             @endif
                             <div class="btn-group dropstart">
-                                <button type="button" class="btn btn-light dropdown-toggle dropdown-toggle-split" style="height: 45px;"
-                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                <button type="button" class="btn btn-light dropdown-toggle dropdown-toggle-split"
+                                    style="height: 45px;" data-bs-toggle="dropdown" aria-expanded="false">
                                     <span class="visually-hidden"></span>
                                 </button>
                                 <ul class="dropdown-menu">
@@ -72,14 +76,13 @@
                                     <li><a class="dropdown-item" href="#">Something else here</a></li>
 
                                     @if (auth('funcionario')->check())
-                                        
                                         <li>
                                             <hr class="dropdown-divider">
                                         </li>
                                         <li><a class="dropdown-item" href="#">Dashboard</a></li>
                                         <li><a class="dropdown-item" href="#">Estoque</a></li>
-                                        <li><a class="dropdown-item" href="{{route('show.cadastrar_produto') }}">Cadastrar anúncio</a></li>
-                                        
+                                        <li><a class="dropdown-item"
+                                                href="{{ route('show.cadastrar_produto') }}">Cadastrar produto</a></li>
                                     @endif
 
                                     <li>
@@ -88,31 +91,32 @@
                                     <li><a class="dropdown-item" href="{{ route('logout') }}">Sair</a></li>
 
                                 </ul>
-                                <button type="button" class="btn btn-light" style=" max-width:200px; height: 45px; white-space: nowrap;">
+                                <button type="button" class="btn btn-light"
+                                    style=" max-width:200px; height: 45px; white-space: nowrap;">
                                     Olá, {{ $nome_user }}
                                 </button>
                             </div>
                         @else
                             <a class="text-dark" href="{{ route('login.show') }}">Entrar <br> Cadastre-se</a>
                         @endif
-                </li>
-            </ul>
+                    </li>
+                </ul>
 
-            <div class="btn-group flex-wrap mt-3 p-0" role="group" aria-label="Basic mixed styles example">
-                <a href="{{ route('shop.produtos', 1) }}" class="btn btn-light m-1 rounded fw-bold"
-                    style="background-color: #A5E1E9;">Cachorro</a>
-                <a href="{{ route('shop.produtos', 2) }}" class="btn btn-light m-1 rounded fw-bold"
-                    style="background-color: #FFC296;">Gato</a>
-                <a href="{{ route('shop.produtos', 3) }}" class="btn btn-light m-1 rounded fw-bold"
-                    style="background-color: #C4BDF3;">Pássaro</a>
-                <a href="{{ route('shop.produtos', 4) }}" class="btn btn-light m-1 rounded fw-bold"
-                    style="background-color: #FCE8A5;">Peixe</a>
-                <a href="{{ route('shop.produtos', 5) }}" class="btn btn-light m-1 rounded fw-bold"
-                    style="background-color: #D5EDB9;">Outros Pets</a>
-                <a href="{{ route('shop.produtos', 6) }}" class="btn btn-light m-1 rounded fw-bold"
-                    style="background-color: #F8CADC;">Serviços</a>
+                <div class="btn-group flex-wrap mt-3 p-0" role="group" aria-label="Basic mixed styles example">
+                    <a href="{{ route('shop.produtos', 1) }}" class="btn btn-light m-1 rounded fw-bold"
+                        style="background-color: #A5E1E9;">Cachorro</a>
+                    <a href="{{ route('shop.produtos', 2) }}" class="btn btn-light m-1 rounded fw-bold"
+                        style="background-color: #FFC296;">Gato</a>
+                    <a href="{{ route('shop.produtos', 3) }}" class="btn btn-light m-1 rounded fw-bold"
+                        style="background-color: #C4BDF3;">Pássaro</a>
+                    <a href="{{ route('shop.produtos', 4) }}" class="btn btn-light m-1 rounded fw-bold"
+                        style="background-color: #FCE8A5;">Peixe</a>
+                    <a href="{{ route('shop.produtos', 5) }}" class="btn btn-light m-1 rounded fw-bold"
+                        style="background-color: #D5EDB9;">Outros Pets</a>
+                    <a href="{{ route('shop.produtos', 6) }}" class="btn btn-light m-1 rounded fw-bold"
+                        style="background-color: #F8CADC;">Serviços</a>
+                </div>
             </div>
         </div>
     </div>
-</div>
 </nav>
