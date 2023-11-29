@@ -65,4 +65,13 @@ class AdminController extends Controller
         return redirect()->back()->with('status_cadastro', 'success');
         }
     }
+
+    public function showUpdate(String|int $id): View{
+        
+        $produto = DB::table('produto')->where('id_produto', $id)->get();
+        $categoria = DB::table('categoria')->get();
+
+        
+        return view('admin.update_produto', ['updateProduto' => $produto], ['categoria' => $categoria]);
+    }
 }

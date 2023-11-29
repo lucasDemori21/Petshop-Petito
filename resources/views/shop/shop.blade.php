@@ -1,60 +1,5 @@
 @include('parts.navbar')
-
-<style>
-    body,
-    html {
-        height: 80%;
-    }
-
-    .nav-categorias {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        width: 20%;
-        margin: auto;
-
-    }
-
-    .container-produtos {
-        width: 80%;
-        display: flex;
-        justify-content: space-around;
-        flex-wrap: wrap;
-        margin: 0 auto;
-    }
-
-    .produtos {
-
-        background-color: aliceblue;
-        margin: 1.5% 1%;
-        box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.3);
-        border-radius: 6px;
-        
-        width: 200px;
-        height: 200px;
-
-    }
-
-    .container-shop {
-        display: flex;
-        flex-direction: row;
-        width: 100%;
-        height: 100%;
-        
-    }
-
-    @media(max-width: 768px) {
-        .container-shop {
-            flex-direction: column;
-        }
-    }
-
-    .bloco {
-        text-align: center;
-    }
-</style>
+<link rel="stylesheet" type="text/css" href="{{ asset('css/shop.css') }}">
 
 <div class="container-shop">
     <div class="nav-categorias">
@@ -70,7 +15,8 @@
     </div>
     <div class="container-produtos">
         @foreach ($produto as $item)
-            <a href="#" class="produtos">
+        
+            <a href="{{ route('show.produto', $item->id_produto) }}" class="produtos">
                 <div class="bloco">
                     <div class="bloco-produto mt-1">
                         <img src="{{ $item->img_produto }}" width='120px' alt="img">

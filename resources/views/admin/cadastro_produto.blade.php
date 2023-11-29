@@ -1,5 +1,5 @@
 @include('parts.navbar')
-
+<link rel="stylesheet" type="text/css" href="{{ asset('css/shop.css') }}">
 <div class="w-50 m-auto">
     <form action="{{ route('cadastro.cadastrar_produto') }}" method="POST" enctype="multipart/form-data">
         @csrf
@@ -63,9 +63,17 @@
 
     </form>
 </div>
-
-<script src="{{}}"></script>
-
+<script>
+    function formatarParaReal(element) {
+    const valorDigitado = element.value.replace(/[^0-9]/g, '');
+    const valorEmCentavos = parseInt(valorDigitado) / 100;
+    const valorFormatado = new Intl.NumberFormat('pt-BR', {
+        style: 'currency',
+        currency: 'BRL',
+    }).format(valorEmCentavos);
+    element.value = valorFormatado;
+}
+</script>
 </body>
 
 </html>
