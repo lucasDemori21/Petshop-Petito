@@ -16,15 +16,30 @@ class AdminController extends Controller
 
     public function cadastrarProduto(Request $request){
 
-        $request->validate([
-            'tituto' => 'string',
-            'descricao' => 'text',
-            'id_categoria' => 'number',
-            'img_produto' => 'image',
-            'valor' => 'float',
-        ]);
+        $fileNames = '';
+        foreach ($request->file('img_produto') as $file) {
 
-        if(Produto::create($request->all())){
+            $hashFile = md5($file->getClientOriginalName().microtime()).'.'.$file->getClientOriginalExtension();
+            $filePath = $file->storeAs('images/produtos/' , $hashFile);
+            $fileNames .= $hashFile . ',';
+            
+        }
+        $fileNames= rtrim($fileNames, ',');
+
+        // $request->validate([
+        //     'tituto' => 'string',
+        //     'descricao' => 'text',
+        //     'id_categoria' => 'number',
+        //     'img_produto' => 'image',
+        //     'valor' => 'float',
+        // ]);
+
+        $data = $request->all();
+        $data['img_produto'] = $fileNames;
+
+        dd($data);
+
+        if(Produto::create($data)){
                
         }
     }

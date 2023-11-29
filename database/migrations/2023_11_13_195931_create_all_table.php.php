@@ -94,8 +94,8 @@ return new class extends Migration
             $table->longText('descricao')->nullable(false);
             $table->integer('qtd_produto');
             $table->decimal('valor', 10, 2)->nullable(false);
-            $table->timestamp('create_time')->nullable(false);
-            $table->timestamp('update_time');
+            $table->timestamp('created_at')->nullable(false);
+            $table->timestamp('updated_at');
             $table->longText('img_produto');
         });
 
@@ -117,8 +117,8 @@ return new class extends Migration
             $table->foreignId('id_animal')->constrained('animal', 'id_animal');
             $table->longText('descricao')->nullable(false);
             $table->dateTime('agendamento')->nullable(false);
-            $table->timestamp('create_time')->nullable(false);
-            $table->timestamp('update_time');
+            $table->timestamp('created_at')->nullable(false);
+            $table->timestamp('updated_at');
             $table->decimal('valor', 10, 2)->nullable(false);
             $table->string('forma_pagamento', 45)->nullable(false);
         });
@@ -141,7 +141,8 @@ return new class extends Migration
             $table->string('numero_casa', 20)->nullable(false);
             $table->string('complemento', 100);
             $table->string('celular', 20)->nullable(false);
-            $table->timestamp('update_time');
+            $table->timestamp('updated_at');
+            $table->timestamp('created_at');
             $table->string('telefone', 15)->nullable(false);
             $table->string('email', 45)->nullable()->unique();
 

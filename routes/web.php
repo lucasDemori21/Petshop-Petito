@@ -33,6 +33,7 @@ use Illuminate\Support\Facades\Route;
 
     Route::middleware(['funcionario'])->group(function () {
         Route::get('admin/cadastrar_produto', [AdminController::class, 'showCadastrarProduto'])->name('show.cadastrar_produto');
+        Route::post('admin/cadastrarProduto', [AdminController::class, 'cadastrarProduto'])->name('cadastro.cadastrar_produto');
     });
     
     
