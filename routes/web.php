@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\PetController;
 use App\Http\Controllers\ShopController;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Route;
@@ -30,7 +31,11 @@ use Illuminate\Support\Facades\Route;
     Route::post('/login/auth', [AuthController::class, 'login'])->name('auth.login');    
     Route::post('/cadastrar/auth', [AuthController::class, 'cadastrar'])->name('auth.cadastrar');
 
+    Route::middleware(['auth'])->group(function () {
+  
+        Route::get('/pets/{id}', [PetController::class, 'exibirPets'])->name('exibir.pet');
 
+    });
 
     Route::middleware(['funcionario'])->group(function () {
         

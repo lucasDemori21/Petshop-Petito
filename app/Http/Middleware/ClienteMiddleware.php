@@ -6,13 +6,13 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class FuncionarioMiddleware
+class ClienteMiddleware
 {
     public function handle($request, Closure $next)
     {
-        if (Auth::guard('funcionario')->check()) {
+        if ((Auth::guard('cliente')->check()) || (Auth::guard('funcionario')->check())) {
             return $next($request);
         }
-        return redirect()->route('index');
+        return redirect()->route('login');
     }
 }

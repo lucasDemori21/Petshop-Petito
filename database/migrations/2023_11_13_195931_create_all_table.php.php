@@ -70,7 +70,7 @@ return new class extends Migration
             $table->decimal('valor', 10, 2)->nullable(false);
         });
 
-        Schema::create('animal', function (Blueprint $table) {
+        Schema::create('pet', function (Blueprint $table) {
             $table->id('id_animal');
             $table->string('nome_pet', 50)->nullable(false);
             $table->date('data_nasc')->nullable(false);
