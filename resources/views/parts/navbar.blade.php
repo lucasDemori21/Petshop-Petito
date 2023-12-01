@@ -113,7 +113,7 @@
                         style="background-color: #FCE8A5;">Peixe</a>
                     <a href="{{ route('shop.produtos', 5) }}" class="btn btn-light m-1 rounded fw-bold"
                         style="background-color: #D5EDB9;">Outros Pets</a>
-                    <a href="{{ route('shop.produtos', 6) }}" class="btn btn-light m-1 rounded fw-bold"
+                    <a href="{{ route('show.servicos') }}" class="btn btn-light m-1 rounded fw-bold"
                         style="background-color: #F8CADC;">Serviços</a>
                 </div>
             </div>

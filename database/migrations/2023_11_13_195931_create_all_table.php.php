@@ -114,7 +114,7 @@ return new class extends Migration
             $table->id('id_agendamento');
             $table->foreignId('id_func')->constrained('funcionario', 'id_func');
             $table->foreignId('id_cliente')->constrained('cliente', 'id_cliente');
-            $table->foreignId('id_animal')->constrained('animal', 'id_animal');
+            $table->foreignId('id_animal')->constrained('pet', 'id_animal');
             $table->longText('descricao')->nullable(false);
             $table->dateTime('agendamento')->nullable(false);
             $table->timestamp('created_at')->nullable(false);

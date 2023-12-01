@@ -10,16 +10,16 @@ use Illuminate\Support\Facades\DB;
 
 class PetController extends Controller
 {
-    public function exibirPets(String|int $id): View{
+    public function exibirPets(): View{
 
-        $user = 'id_cliente';
-        if(Auth::guard('funcionario')->check()){
-            $user = 'id_func';
-        }
+        // $user = 'id_cliente';
+        // if(Auth::guard('funcionario')->check()){
+        //     $user = 'id_func';
+        // }
 
-        $pets = DB::table('pets')->where($user, $id)->get();
+        // $pets = DB::table('pets')->where($user, $id)->get();
 
-        return view('shop.services',['pets' => $pets]);
+        return view('shop.services');
 
     }
 }

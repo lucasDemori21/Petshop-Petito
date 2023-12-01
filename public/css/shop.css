@@ -6,12 +6,11 @@ html {
 .nav-categorias {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
     text-align: center;
     width: 20%;
-    margin: auto;
-
+    margin-top: 2%;
 }
 
 .container-produtos {
@@ -38,7 +37,7 @@ html {
     display: flex;
     flex-direction: row;
     width: 100%;
-    height: 100%;
+    height: auto;
     
 }
 
@@ -50,4 +49,24 @@ html {
 
 .bloco {
     text-align: center;
+}
+
+.img-agenda img{
+    min-width: 50px;
+    width: 50px;
+    margin-right: 3%;
+}
+
+.img-agenda-site img{
+    min-width: 50px;
+    width: 70px;
+    margin-right: 1%;
+}
+
+.img-agenda-site, .img-agenda{
+    background-color: #F3A87D !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20%;
 }

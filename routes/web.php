@@ -31,11 +31,11 @@ use Illuminate\Support\Facades\Route;
     Route::post('/login/auth', [AuthController::class, 'login'])->name('auth.login');    
     Route::post('/cadastrar/auth', [AuthController::class, 'cadastrar'])->name('auth.cadastrar');
 
-    Route::middleware(['auth'])->group(function () {
-  
-        Route::get('/pets/{id}', [PetController::class, 'exibirPets'])->name('exibir.pet');
+    Route::get('/servicos', [PetController::class, 'exibirPets'])->name('show.servicos');
 
-    });
+    // Route::middleware(['auth'])->group(function () {
+  
+    // });
 
     Route::middleware(['funcionario'])->group(function () {
         
