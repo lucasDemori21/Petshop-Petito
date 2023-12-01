@@ -19,6 +19,12 @@ html {
     justify-content: space-around;
     flex-wrap: wrap;
     margin: 0 auto;
+    transition: all 0.4s;
+}
+
+.form-check-input{
+    width: 30px;
+    height: 30px;
 }
 
 .produtos {

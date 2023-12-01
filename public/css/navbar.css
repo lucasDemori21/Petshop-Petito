@@ -1,10 +1,10 @@
-*{
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
 
-body{
+body {
     background-color: #FDF5F5;
     height: 100%;
 }
@@ -15,7 +15,7 @@ body{
     margin: 0;
 }
 
-.logo-header span{
+.logo-header span {
     font-size: 10px;
     top: 88%;
     left: 80%;
@@ -39,58 +39,60 @@ body{
 .btn-warning:hover {
     background-color: rgb(255, 119, 65) !important;
 }
-.logo-home{
+
+.logo-home {
     width: 120px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.logo-home img{
+.logo-home img {
     min-width: 90px;
     width: 100%;
 }
 
- .carousel-indicators {
-      position: absolute;
-      bottom: -30px; 
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 15;
-      width: 100%;
-      margin: 0;
-      padding: 0;
-      text-align: center;
-      list-style: none;
+.carousel-indicators {
+    position: absolute;
+    bottom: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 15;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    list-style: none;
+}
+
+.carousel .carousel-indicators button {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    margin: 0 5px;
+    text-indent: 0;
+    cursor: pointer;
+    border: 1px solid black;
+    background-color: gray;
+    border-radius: 50%;
+    opacity: 0.5;
+}
+
+.carousel .carousel-indicators .active {
+    width: 17px;
+    height: 17px;
+    background-color: #E7671F;
+    border: 1px solid black;
+    opacity: 1;
+}
+
+@media(max-width: 991px) {
+    .nav-mobile {
+        margin-top: 2%;
     }
 
-    .carousel .carousel-indicators button {
-      display: inline-block;
-      width: 15px;
-      height: 15px;
-      margin: 0 5px;
-      text-indent: 0;
-      cursor: pointer;
-      border: 1px solid black;
-      background-color: gray;
-      border-radius: 50%; 
-      opacity: 0.5; 
+    .dropstart {
+        margin-top: 5%;
     }
 
-    .carousel .carousel-indicators .active {
-      width: 17px;
-      height: 17px;
-      background-color: #E7671F;
-      border: 1px solid black;
-      opacity: 1;
-    }
-
-    @media(max-width: 991px){
-        .nav-mobile{
-            margin-top: 2%;
-        }
-        .dropstart{
-            margin-top: 5%;
-        }
-
-    }
+}
