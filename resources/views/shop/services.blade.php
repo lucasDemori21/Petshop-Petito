@@ -19,7 +19,7 @@
             <div class="w-100 text-center d-flex flex-column mt-3">
                 <h4 style="font-family: 'Cotane Beach', sans-serif; font-size: 30px;">Agende agora</h4>
                 <div class="d-flex justify-content-around w-100 my-2">
-                    <a onclick="mostrarPets()" class="btn btn-warning p-1 img-agenda-site"
+                    <a onclick="mostrarTelas(1)" class="btn btn-warning p-1 img-agenda-site"
                         style="font-family: 'Cotane Beach', sans-serif; font-size:20px;">
                         <img src="{{ asset('images/logos/petito.png') }}" alt="Logo Petito">
                         Site
@@ -38,76 +38,16 @@
 
     <div id="escolhaPet" class="d-none w-100 mx-auto">
 
-        @if(!empty($pet))
-            
-        
-        <div class="container-produtos me-5 mt-5 w-100">
-            <div class="border rounded p-3">
-                <h4 style="font-family: 'Cotane Beach', sans-serif; font-size: 30px;">Você não tem nenhum pet cadastrado
-                </h4>
-                <div class="w-100 mx-auto d-flex justify-content-center">
-                    <img src="{{ asset('images/img-sempet.png') }}" class="w-75 rounded" alt="Banner agenda">
-                </div>
-                <div class="w-100 text-center d-flex flex-column mt-3">
-                    <div class="w-50 my-2 mx-auto">
-                        <a href="#" class="btn btn-warning p-1 img-agenda-site w-100"
-                            style="white-space: nowrap;font-family: 'Cotane Beach', sans-serif; font-size:20px;">
-                            Cadastrar Pet
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        @else
-
-        <div class="container-produtos me-5 mt-5 w-100">
-            <div class="border rounded p-3 text-center">
-                <h4 style="font-family: 'Cotane Beach', sans-serif; font-size: 30px;">Escolha o pet</h4>
-
-                <div class="d-flex justify-content-around w-100">
-                    <div class="p-2 mx-3 border d-flex flex-column">
-                        <label class="form-check-label" for="petId1" onclick="toggleActiveClass(1)">
-                            <img src="{{ asset('images/img-sempet.png') }}" class="w-75 rounded mx-auto"
-                                alt="Banner agenda">
-                        </label>
-                        <div class="d-flex mx-auto">
-                            <input class="form-check-input" type="radio" name="selectPet" id="petId1"
-                                value="option1">
-                            <span class="ms-2 mt-1"
-                                style="font-family: 'Cotane Beach', sans-serif; font-size: 20px;">Nome do pet</span>
-                        </div>
-                    </div>
-                    <div class="p-2 mx-3 border d-flex flex-column">
-                        <label class="form-check-label" for="petId2" onclick="toggleActiveClass(2)">
-                            <img src="{{ asset('images/img-sempet.png') }}" class="w-75 rounded mx-auto"
-                                alt="Banner agenda">
-                        </label>
-                        <div class="d-flex mx-auto">
-                            <input class="form-check-input" type="radio" name="selectPet" id="petId2"
-                                value="option2">
-                            <span class="ms-2 mt-1"
-                                style="font-family: 'Cotane Beach', sans-serif; font-size: 20px;">Nome do pet</span>
-                        </div>
-                    </div>
-                </div>
-                <input type="hidden" name="pet" id="pet">
-
-                <div class="w-100 text-center d-flex flex-column mt-3">
-                    <div class="d-flex justify-content-around my-2">
-                        <a href="#" class="btn btn-warning p-1 img-agenda-site"
-                            style="white-space: nowrap; font-family: 'Cotane Beach', sans-serif; font-size:20px;">
-                            Cadastrar Pet
-                        </a>
-                        <a href="#" class="btn btn-warning p-1 img-agenda-site"
-                            style="white-space: nowrap; font-family: 'Cotane Beach', sans-serif; font-size:20px;">
-                            Continuar
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
+        @if(empty($pet)) <!-- Sem pet cadastrado nesse usuario -->
+            @include('parts.servicepage.semPet')
+        @else <!-- Selecionar pet -->
+            @include('parts.servicepage.selecionarPet')
         @endif
+
+    </div>
+
+    <div id="cadastrarPet" class="d-none w-100 mx-auto">
+        
     </div>
 </div>
 </body>
@@ -119,8 +59,17 @@
         document.getElementById('pet').value = id_pet;
     }
 
-    function mostrarPets() {
-        document.getElementById('site').classList.add('d-none')
-        document.getElementById('escolhaPet').classList.remove('d-none')
+    function mostrarTelas(tela) {
+        if(tela == 1){
+            document.getElementById('site').classList.add('d-none');
+            document.getElementById('escolhaPet').classList.remove('d-none');
+        }else if(tela == 2){
+            document.getElementById('escolhaPet').classList.add('d-none');
+            document.getElementById('cadastrarPet').classList.remove('d-none');
+        }else{
+            document.getElementById('escolhaPet').classList.add('d-none');
+            document.getElementById('cadastrarPet').classList.add('d-none');
+            document.getElementById('site').classList.remove('d-none');
+        }
     }
 </script>
