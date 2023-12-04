@@ -11,15 +11,25 @@ use Illuminate\Support\Facades\DB;
 class PetController extends Controller
 {
     public function exibirPets(): View{
+        $id = '';
+        $user = '';
 
-        // $user = 'id_cliente';
-        // if(Auth::guard('funcionario')->check()){
-        //     $user = 'id_func';
-        // }
+        if(Auth::guard('funcionario')->check()){
+            $id = Auth::guard('funcionario')->user()->id_func;
+            $user = '1';
 
-        // $pets = DB::table('pets')->where($user, $id)->get();
+        }else if(Auth::guard('cliente')->check()){
+            $id = Auth::guard('cliente')->user()->id_cliente;
+            $user = '2';
+        }
 
-        return view('shop.services');
+        $pets = DB::table('pets')->where(['tipo_user' => $user, 'id'=> '1'])->get();// configurar migration e ajeitar a query para os pets
+
+        return view('shop.services', ['pets' => $pets]);
+
+    }
+
+    public function cadastrarPet(Request $request){
 
     }
 }

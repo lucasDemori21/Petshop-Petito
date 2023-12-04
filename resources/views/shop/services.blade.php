@@ -47,7 +47,7 @@
     </div>
 
     <div id="cadastrarPet" class="d-none w-100 mx-auto">
-        
+        @include('parts.servicepage.formCadastrarPet')
     </div>
 </div>
 </body>

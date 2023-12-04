@@ -32,7 +32,7 @@
 
         <div class="w-100 text-center d-flex flex-column mt-3">
             <div class="d-flex justify-content-around my-2">
-                <a href="#" onclick="mostrarTelas(2)" class="btn btn-warning p-1 img-agenda-site"
+                <a onclick="mostrarTelas(2)" class="btn btn-warning p-1 img-agenda-site"
                     style="white-space: nowrap; font-family: 'Cotane Beach', sans-serif; font-size:20px;">
                     Cadastrar Pet
                 </a>

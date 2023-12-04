@@ -7,7 +7,7 @@
         </div>
         <div class="w-100 text-center d-flex flex-column mt-3">
             <div class="w-50 my-2 mx-auto">
-                <a href="#" class="btn btn-warning p-1 img-agenda-site w-100"
+                <a onclick="mostrarTelas(2)" class="btn btn-warning p-1 img-agenda-site w-100"
                     style="white-space: nowrap;font-family: 'Cotane Beach', sans-serif; font-size:20px;">
                     Cadastrar Pet
                 </a>
