@@ -71,15 +71,17 @@ return new class extends Migration
         });
 
         Schema::create('pet', function (Blueprint $table) {
-            $table->id('id_animal');
-            $table->string('nome_pet', 50)->nullable(false);
+            $table->id('id_pet');
+            $table->string('nome', 50)->nullable(false);
             $table->date('data_nasc')->nullable(false);
-            $table->string('tipo_animal')->nullable(false)->unique();
-            $table->string('raca_animal');
-            $table->string('cor_pelo', 50)->nullable(false);
-            $table->decimal('peso', 5, 2);
-            $table->timestamp('create_time')->nullable(false);
-            $table->timestamp('update_time');
+            $table->string('tipo_pet')->nullable(false)->unique();
+            $table->tinyInteger('sexo'); // 1 = Macho, 2 = Femea
+            $table->tinyInteger('castrado'); // 1 = Sim, 2 = Não
+            $table->tinyInteger('dono'); // 1 = Cliente, 2 = Funcionario
+            $table->decimal('peso', 5, 3);
+            $table->longText('img_pet');
+            $table->timestamp('created_at')->nullable(false);
+            $table->timestamp('updated_at');
         });
 
         Schema::create('categoria', function (Blueprint $table) {
@@ -159,7 +161,7 @@ return new class extends Migration
         Schema::dropIfExists('cliente');
         Schema::dropIfExists('funcionario');
         Schema::dropIfExists('procedimento');
-        Schema::dropIfExists('animal');
+        Schema::dropIfExists('pet');
         Schema::dropIfExists('categoria');
         Schema::dropIfExists('produto');
         Schema::dropIfExists('venda');

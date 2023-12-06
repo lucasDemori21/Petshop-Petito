@@ -1,12 +1,12 @@
 <div class="w-50 mx-auto">
-    <form action="" method="post" enctype="multipart/form-data">
+    <form action="{{ route('cadastrar.pet') }}" method="post" enctype="multipart/form-data">
         <div class="mb-3">
             <label for="nome" class="form-label">Nome:</label>
             <input type="text" name="nome" class="form-control">
         </div>
         <div class="mb-3">
-            <label for="pet" class="form-label">Pet:</label>
-            <select name="pet" class="form-select">
+            <label for="tipo_pet" class="form-label">Pet:</label>
+            <select name="tipo_pet" class="form-select">
                 <option value="" selected disabled>Selecione</option>
                 <option value="1">Cachorro</option>
                 <option value="2">Gato</option>
@@ -18,13 +18,13 @@
             <label for="sexo" class="form-label">Sexo:</label>
             <select name="sexo" class="form-control">
                 <option value="" selected disabled>Selecione</option>
-                <option value="M">Macho</option>
-                <option value="F">Fêmea</option>
+                <option value="1">Macho</option>
+                <option value="2">Fêmea</option>
             </select>
         </div>
         <div class="mb-3">
-            <label for="idade" class="form-label">Idade aproximada:</label>
-            <input type="date" name="idade" class="form-control">
+            <label for="data_nasc" class="form-label">Idade aproximada:</label>
+            <input type="date" name="data_nasc" class="form-control">
         </div>
         <div class="mb-3">
             <label for="castrado" class="form-label">Castrado(a):</label>
@@ -43,8 +43,8 @@
             <input type="number" name="peso" class="form-control">
         </div>
         <div class="mb-3">
-            <label for="foto" class="form-label">Foto:</label>
-            <input type="file" class="form-control" name="foto" accept="image/*">
+            <label for="img_pet" class="form-label">Foto:</label>
+            <input type="file" class="form-control" name="img_pet" accept="image/*">
         </div>
 
         <button type="submit" class="btn btn-warning">Cadastrar</button>

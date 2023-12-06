@@ -6,6 +6,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Faker\Factory as Faker;
 
 class DatabaseSeeder extends Seeder
 {
@@ -96,5 +97,86 @@ class DatabaseSeeder extends Seeder
             'salario' => 6000.00,
         ]);
 
+        $fakerF = Faker::create();
+        
+        foreach (range(1, 10) as $index) {
+            
+            $cpf = $fakerF->randomNumber(9) . '000'; // Adiciona zeros para completar 11 dígitos
+            $cpf = substr($cpf, 0, 3) . '.' . substr($cpf, 3, 3) . '.' . substr($cpf, 6, 3) . '-' . substr($cpf, 9, 2);
+
+
+            DB::table('funcionario')->insert([
+                'nome_func' => $fakerF->name,
+                'email' => $fakerF->unique()->safeEmail,
+                'password' => Hash::make('12345678'),
+                'created_at' => now(),
+                'updated_at' => now(),
+                'cpf' => $cpf,
+                'data_nasc' => $fakerF->date,
+                'status' => $fakerF->randomElement([0, 1]),
+                'estado' => $fakerF->stateAbbr,
+                'cidade' => $fakerF->city,
+                'bairro' => $fakerF->word,
+                'rua' => $fakerF->streetName,
+                'cep' => str_replace('-', '', $fakerF->postcode),
+                'numero_casa' => $fakerF->buildingNumber,
+                'complemento' => $fakerF->sentence,
+                'celular' => $fakerF->phoneNumber,
+                'funcao' => $fakerF->jobTitle, // Assuming jobTitle is appropriate for 'funcao'
+                'salario' => $fakerF->randomFloat(2, 1000, 10000), // Adjust the range for salary as needed
+            ]);
+        }
+
+        $fakerC = Faker::create();
+
+        foreach (range(1, 10) as $index) {
+            
+            $cpf = $fakerC->randomNumber(9) . '000'; // Adiciona zeros para completar 11 dígitos
+            $cpf = substr($cpf, 0, 3) . '.' . substr($cpf, 3, 3) . '.' . substr($cpf, 6, 3) . '-' . substr($cpf, 9, 2);
+
+
+            DB::table('cliente')->insert([
+                'nome_cliente' => $fakerC->name,
+                'email' => $fakerC->unique()->safeEmail,
+                'password' => Hash::make('1234'),
+                'created_at' => now(),
+                'updated_at' => now(),
+                'cpf' => $cpf,
+                'data_nasc' => $fakerC->date,
+                'status' => $fakerC->randomElement([0, 1]),
+                'estado' => $fakerC->stateAbbr,
+                'cidade' => $fakerC->city,
+                'bairro' => $fakerC->word,
+                'rua' => $fakerC->streetName,
+                'cep' => str_replace('-', '', $fakerC->postcode),
+                'numero_casa' => $fakerC->buildingNumber,
+                'complemento' => $fakerC->sentence,
+                'celular' => $fakerC->phoneNumber,
+            ]);
+        }
+
+        $faker2 = Faker::create();
+
+        foreach (range(1, 10) as $index) {
+            DB::table('categoria')->insert([
+                'nome_categoria' => $faker2->word,
+            ]);
+        }
+
+
+        $faker = Faker::create();
+
+        foreach (range(1, 50) as $index) {
+            DB::table('produto')->insert([
+                'id_categoria' => $faker->numberBetween(1, 10), // Ajuste conforme suas categorias
+                'titulo' => $faker->words(3, true),
+                'descricao' => $faker->paragraph,
+                'qtd_produto' => $faker->numberBetween(1, 100),
+                'valor' => $faker->randomFloat(2, 10, 100),
+                'created_at' => $faker->dateTimeThisYear(),
+                'updated_at' => $faker->dateTimeThisYear(),
+                'img_produto' => $faker->imageUrl(200, 200, 'cats'), // Substitua 'cats' pelo seu tipo de imagem
+            ]);
+        }
     }
 }
