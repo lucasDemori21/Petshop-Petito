@@ -35,10 +35,10 @@
         </div>
     </div>
 
-
     <div id="escolhaPet" class="d-none w-100 mx-auto">
+        
+        @if(empty($pets)) <!-- Sem pet cadastrado nesse usuario -->
 
-        @if(empty($pet)) <!-- Sem pet cadastrado nesse usuario -->
             @include('parts.servicepage.semPet')
         @else <!-- Selecionar pet -->
             @include('parts.servicepage.selecionarPet')

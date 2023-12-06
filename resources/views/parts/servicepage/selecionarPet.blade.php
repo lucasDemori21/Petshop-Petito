@@ -1,32 +1,27 @@
+
 <div class="container-produtos me-5 mt-5 w-100">
     <div class="border rounded p-3 text-center">
         <h4 style="font-family: 'Cotane Beach', sans-serif; font-size: 30px;">Escolha o pet</h4>
 
         <div class="d-flex justify-content-around w-100">
+            
+            @foreach($pets as $pet)
             <div class="p-2 mx-3 border d-flex flex-column">
-                <label class="form-check-label" for="petId1" onclick="toggleActiveClass(1)">
-                    <img src="{{ asset('images/img-sempet.png') }}" class="w-75 rounded mx-auto"
-                        alt="Banner agenda">
+                
+                <label class="form-check-label" for="petId{{$pet->id_pet}}" onclick="toggleActiveClass({{$pet->id_pet}})">
+                    {{-- <img src="{{ asset('app/images/pets' . $pet->img_pet) }}" class="w-75 rounded mx-auto" alt="Descrição da imagem"> --}}
+                    <img src="{{ asset('storage/' . $pet->img_pet) }}" alt="Imagem do {{ $pet->nome }}">
+
+
                 </label>
                 <div class="d-flex mx-auto">
-                    <input class="form-check-input" type="radio" name="selectPet" id="petId1"
-                        value="option1">
-                    <span class="ms-2 mt-1"
-                        style="font-family: 'Cotane Beach', sans-serif; font-size: 20px;">Nome do pet</span>
-                </div>
-            </div>
-            <div class="p-2 mx-3 border d-flex flex-column">
-                <label class="form-check-label" for="petId2" onclick="toggleActiveClass(2)">
-                    <img src="{{ asset('images/img-sempet.png') }}" class="w-75 rounded mx-auto"
-                        alt="Banner agenda">
-                </label>
-                <div class="d-flex mx-auto">
-                    <input class="form-check-input" type="radio" name="selectPet" id="petId2"
+                    <input class="form-check-input" type="radio" name="selectPet" id="petId{{$pet->id_pet}}"
                         value="option2">
                     <span class="ms-2 mt-1"
-                        style="font-family: 'Cotane Beach', sans-serif; font-size: 20px;">Nome do pet</span>
+                        style="font-family: 'Cotane Beach', sans-serif; font-size: 20px;">{{$pet->nome}}</span>
                 </div>
             </div>
+            @endforeach
         </div>
         <input type="hidden" name="pet" id="pet">
 

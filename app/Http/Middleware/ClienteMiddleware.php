@@ -13,6 +13,6 @@ class ClienteMiddleware
         if ((Auth::guard('cliente')->check()) || (Auth::guard('funcionario')->check())) {
             return $next($request);
         }
-        return redirect()->route('login');
+        return redirect()->route('login.show');
     }
 }

@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
+      
         Schema::create('cliente', function (Blueprint $table) {
             
             $table->id('id_cliente');
             $table->string('nome_cliente', 100)->nullable(false);
             $table->string('email', 45)->unique()->nullable(false);
             $table->string('password', 255)->nullable(false);
-            $table->timestamp('created_at')->nullable(false);
             $table->string('cpf', 14)->nullable(false)->unique();
             $table->date('data_nasc')->nullable(false);
             $table->tinyInteger('status')->nullable(false);
@@ -29,7 +29,7 @@ return new class extends Migration
             $table->string('numero_casa', 20)->nullable(false);
             $table->string('complemento', 100);
             $table->string('celular', 20)->nullable(false);
-            $table->timestamp('updated_at');
+            $table->timestamps();
             $table->rememberToken();
 
 
@@ -41,7 +41,6 @@ return new class extends Migration
             $table->string('nome_func', 100)->nullable(false);
             $table->string('email', 45)->unique()->nullable(false);
             $table->string('password', 255)->nullable(false);
-            $table->timestamp('created_at')->nullable(false);
             $table->string('cpf', 14)->nullable(false)->unique();
             $table->date('data_nasc')->nullable(false);
             $table->tinyInteger('status')->nullable(false);
@@ -53,7 +52,7 @@ return new class extends Migration
             $table->string('numero_casa', 20)->nullable(false);
             $table->string('complemento', 100);
             $table->string('celular', 20)->nullable(false);
-            $table->timestamp('updated_at');
+            $table->timestamps();
             $table->string('funcao', 45)->nullable(false);
             $table->decimal('salario', 10, 2)->nullable();
             $table->rememberToken();
@@ -65,23 +64,22 @@ return new class extends Migration
             $table->id('id_procedimento');
             $table->string('titulo', 100)->nullable(false)->unique();
             $table->longText('descricao')->nullable(false);
-            $table->timestamp('create_time')->nullable(false);
-            $table->timestamp('update_time');
+            $table->timestamps();
             $table->decimal('valor', 10, 2)->nullable(false);
         });
 
-        Schema::create('pet', function (Blueprint $table) {
+        Schema::create('pets', function (Blueprint $table) {
             $table->id('id_pet');
-            $table->string('nome', 50)->nullable(false);
-            $table->date('data_nasc')->nullable(false);
-            $table->string('tipo_pet')->nullable(false)->unique();
-            $table->tinyInteger('sexo'); // 1 = Macho, 2 = Femea
-            $table->tinyInteger('castrado'); // 1 = Sim, 2 = Não
-            $table->tinyInteger('dono'); // 1 = Cliente, 2 = Funcionario
-            $table->decimal('peso', 5, 3);
-            $table->longText('img_pet');
-            $table->timestamp('created_at')->nullable(false);
-            $table->timestamp('updated_at');
+            $table->integer('usn_cod');
+            $table->string('nome', 50);
+            $table->date('data_nasc');
+            $table->string('tipo_pet');
+            $table->tinyInteger('sexo')->nullable(); // 1 = Macho, 2 = Fêmea
+            $table->tinyInteger('castrado')->nullable(); // 1 = Sim, 2 = Não
+            $table->tinyInteger('dono')->nullable(); // 1 = Cliente, 2 = Funcionário
+            $table->decimal('peso', 8, 3)->nullable();
+            $table->longText('img_pet')->nullable();
+            $table->timestamps(); // Adiciona automaticamente created_at e updated_at
         });
 
         Schema::create('categoria', function (Blueprint $table) {
@@ -96,8 +94,7 @@ return new class extends Migration
             $table->longText('descricao')->nullable(false);
             $table->integer('qtd_produto');
             $table->decimal('valor', 10, 2)->nullable(false);
-            $table->timestamp('created_at')->nullable(false);
-            $table->timestamp('updated_at');
+            $table->timestamps();
             $table->longText('img_produto');
         });
 
@@ -116,11 +113,10 @@ return new class extends Migration
             $table->id('id_agendamento');
             $table->foreignId('id_func')->constrained('funcionario', 'id_func');
             $table->foreignId('id_cliente')->constrained('cliente', 'id_cliente');
-            $table->foreignId('id_animal')->constrained('pet', 'id_animal');
+            $table->foreignId('id_pet')->constrained('pets', 'id_pet');
             $table->longText('descricao')->nullable(false);
             $table->dateTime('agendamento')->nullable(false);
-            $table->timestamp('created_at')->nullable(false);
-            $table->timestamp('updated_at');
+            $table->timestamps();
             $table->decimal('valor', 10, 2)->nullable(false);
             $table->string('forma_pagamento', 45)->nullable(false);
         });
@@ -143,13 +139,11 @@ return new class extends Migration
             $table->string('numero_casa', 20)->nullable(false);
             $table->string('complemento', 100);
             $table->string('celular', 20)->nullable(false);
-            $table->timestamp('updated_at');
-            $table->timestamp('created_at');
+            $table->timestamps();
             $table->string('telefone', 15)->nullable(false);
             $table->string('email', 45)->nullable()->unique();
 
         });
-
     }
 
     /**
@@ -157,7 +151,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-
+    
         Schema::dropIfExists('cliente');
         Schema::dropIfExists('funcionario');
         Schema::dropIfExists('procedimento');
@@ -166,6 +160,6 @@ return new class extends Migration
         Schema::dropIfExists('produto');
         Schema::dropIfExists('venda');
         Schema::dropIfExists('dados_empresa');
-
+        
     }
 };

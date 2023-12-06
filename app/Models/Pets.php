@@ -10,7 +10,7 @@ class Pets extends Model
 {
     use HasFactory,Notifiable;
 
-    protected $table = 'pet';
+    protected $table = 'pets';
     protected $primaryKey = 'id_pet';
 
    /**
@@ -19,11 +19,14 @@ class Pets extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'id_categoria',
-        'titulo',
-        'descricao',
-        'qtd_produto',
-        'valor',
-        'img_produto',
+        'usn_cod',
+        'nome',
+        'data_nasc',
+        'tipo_pet',
+        'sexo',
+        'castrado',
+        'dono',
+        'peso',
+        'img_pet',
     ];
 }
