@@ -14,6 +14,7 @@ class PetController extends Controller
     {
         $id = '';
         $user = '';
+        
 
         if (Auth::guard('funcionario')->check()) {
             $id = Auth::guard('funcionario')->user()->id_func;
@@ -23,7 +24,7 @@ class PetController extends Controller
             $user = '2';
         }
 
-        $pets = DB::table('pets')->where(['dono' => $user, 'usn_cod' => '1'])->get(); // configurar migration e ajeitar a query para os pets
+        $pets = DB::table('pets')->where(['dono' => $user, 'usn_cod' => $id])->get(); // configurar migration e ajeitar a query para os pets
 
         return view('shop.services', ['pets' => $pets]);
     }
@@ -52,14 +53,15 @@ class PetController extends Controller
             'img_pet.image' => 'O arquivo deve ser uma imagem.',
             'img_pet.mimes' => 'A imagem deve ser do tipo: jpeg, png, jpg ou gif.',
         ]);
-        
-        $data = $request->all();
 
-        if ($request->hasFile('image')) {
-            $imagePath = $request->file('image')->store('pets', 'public');
-            $data['image'] = $imagePath;
-        }
-       
+        $file = $request->file('img_pet');
+
+        $hashFile = md5($file->getClientOriginalName() . microtime()) . '.' . $file->getClientOriginalExtension();
+        $file->move(public_path('images/pets/'), $hashFile);
+        $fileNames = $hashFile;
+
+        $data = $request->all();
+        $data['img_pet'] = $fileNames;
         $data['peso'] = number_format($data['peso'], 3, '.', '');
 
         if (Auth::guard('funcionario')->check()) {

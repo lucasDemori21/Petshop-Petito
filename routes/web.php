@@ -29,34 +29,24 @@ Route::get('/shop/{categoria}', [ShopController::class, 'exibirProdutos'])->name
 Route::get('/shop', [ShopController::class, 'searchProdutos'])->name('shop.search');
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login.show');
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+
 Route::post('/login/auth', [AuthController::class, 'login'])->name('auth.login');
 Route::post('/cadastrar/auth', [AuthController::class, 'cadastrar'])->name('auth.cadastrar');
 
-
-
 Route::middleware(['cliente'])->group(function () {
-
     Route::get('/servicos', [PetController::class, 'exibirPets'])->name('show.servicos');
+
     Route::post('/servicos/cadastrar-pet', [PetController::class, 'cadastrarPets'])->name('cadastrar.pet');
 });
 
 Route::middleware(['funcionario'])->group(function () {
-
-    Route::post('admin/cadastrarProduto', [AdminController::class, 'cadastrarProduto'])->name('cadastro.cadastrar_produto');
-    Route::post('admin/update/produto/{id}', [AdminController::class, 'updateProduto'])->name('admin.update');
     Route::get('admin/update/{id}', [AdminController::class, 'showUpdate'])->name('show.update');
     Route::get('admin/cadastrar_produto', [AdminController::class, 'showCadastrarProduto'])->name('show.cadastrar_produto');
+   
+    Route::post('admin/cadastrarProduto', [AdminController::class, 'cadastrarProduto'])->name('cadastro.cadastrar_produto');
+    Route::post('admin/update/produto/{id}', [AdminController::class, 'updateProduto'])->name('admin.update');
 });
 
 
-Route::get('images/pets/{filename}', function ($filename) {
-    $path = storage_path('app/images/pets/' . $filename);
-
-    if (!Storage::exists($path)) {
-        abort(404);
-    }
-
-    return response()->file($path);
-})->where('filename', '.*');
 
 // });

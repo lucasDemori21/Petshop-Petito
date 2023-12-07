@@ -76,3 +76,7 @@ html {
     align-items: center;
     width: 20%;
 }
+
+.btn-warning{
+    background-color: #F3A87D !important;
+}
