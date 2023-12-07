@@ -43,10 +43,27 @@
             <label for="peso" class="form-label">Peso:</label>
             <input type="number" name="peso" class="form-control">
         </div>
-        <div class="mb-3">
-            <label for="img_pet" class="form-label">Foto:</label>
-            <input type="file" class="form-control" name="img_pet" accept="image/*">
+        <div class="mb-3 d-flex flex-column">
+    <label for="img_pet" class="form-label w-100">Foto do seu pet:</label>
+    <div class="small-12 large-4 columns mx-auto">
+        <div class="containers">
+            <div class="imageWrapper">
+                <img class="image w-100 h-100 object-fit-cover rounded" src="{{ asset('images/placeholder.jpg') }}">
+            </div>
+            <button type="button" class="file-upload">
+                <input type="file" class="file-input" name="img_pet" accept="image/*">
+                <i class="bi bi-camera-fill" style="color: #FFF;"></i>
+            </button>
         </div>
+    </div>
+</div>
+
+
+
+       
+
+
+
 
         <button type="submit" class="btn btn-warning">Cadastrar</button>
         @if ($errors->any())
@@ -73,3 +90,4 @@
 
     </form>
 </div>
+

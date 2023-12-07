@@ -3,7 +3,7 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('css/shop.css') }}">
 
 <div class="container-shop">
-    <div class="nav-categorias">
+    <div class="nav-categorias mx-auto">
         <span class="title" style="font-family: 'Cotane Beach', sans-serif; font-size: 25px;">Categoria</span>
         <a class="nav-link my-1" style="font-size: 18px;" href="#">Banho</a>
         <a class="nav-link my-1" style="font-size: 18px;" href="#">Tosa</a>
@@ -47,7 +47,7 @@
 
     </div>
 
-    <div id="cadastrarPet" class="d-none w-100 mx-auto">
+    <div id="cadastrarPet" class="d-none w-100 mx-auto mb-5">
         @include('parts.servicepage.formCadastrarPet')
     </div>
 </div>
@@ -73,4 +73,18 @@
             document.getElementById('site').classList.remove('d-none');
         }
     }
+
+    $('.file-input').change(function(){
+    var curElement = $(this).parent().parent().find('.image');
+    console.log(curElement);
+    var reader = new FileReader();
+
+    reader.onload = function (e) {
+        // get loaded data and render thumbnail.
+        curElement.attr('src', e.target.result);
+    };
+
+    // read the image file as a data URL.
+    reader.readAsDataURL(this.files[0]);
+});
 </script>

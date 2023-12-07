@@ -80,3 +80,72 @@ html {
 .btn-warning{
     background-color: #F3A87D !important;
 }
+
+  
+  .containers{
+    height:200px;
+    position:relative;
+    text-align: center;
+    width: 200px;
+    margin: auto;
+    .imageWrapper{
+      border: 3px solid #888;
+      padding: 8%;
+      background-color: #efefef;
+      border-radius:50%;
+      height: 12rem;
+      width: 12rem;
+      overflow:hidden;
+      position:relative;
+      top:50%;
+      left:50%;
+      transform:translate(-50%,-50%);
+      img{
+        height:105%;
+        width:initial;
+        max-height:100%;
+        max-width: initial;
+        
+      
+      }
+    }
+  }
+  
+  
+  
+  .file-upload {
+    
+    overflow: hidden;
+    border-radius: 50%;
+    text-align:center;
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    float: inline-end;
+  
+    width: 2.35rem;
+    font-size:1.5em;
+   
+    background: #000;
+    border: 2px solid #888;
+    z-index: 1; /* Adicionado z-index para sobrepor a imagem */
+    display:inline;
+    -ms-transition: all 0.2s ease;
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+  }
+
+  .file-upload:hover{
+    background:#999;
+  }
+
+  .file-upload input.file-input {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    opacity: 0;
+    filter: alpha(opacity=0);
+  }
