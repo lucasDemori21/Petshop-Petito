@@ -74,7 +74,6 @@ html {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 20%;
 }
 
 .btn-warning{
@@ -148,4 +147,17 @@ html {
     font-size: 20px;
     opacity: 0;
     filter: alpha(opacity=0);
+  }
+
+  #preview-container {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 20px;
+  }
+
+  .preview-image {
+    width: 100px;
+    height: 100px;
+    margin: 5px;
+    object-fit: cover;
   }

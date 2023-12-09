@@ -137,16 +137,7 @@ class AuthController extends Controller
     public function login(Request $request)
     {
 
-        $request->validate(
-            [
-                'email' => 'required|email',
-                'password' => 'required|min:4'
-            ], [
-                'email.required' => 'Campo email é obrigatório.',
-                'email.email' => 'Email não é válido.',
-                'password.required' => 'password é obrigatória.',
-                'password.min' => 'password precisa ser maior que :min caracteres.']
-        );
+        
 
         $credentials = $request->only('email', 'password');
 
