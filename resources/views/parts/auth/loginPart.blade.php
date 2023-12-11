@@ -47,18 +47,18 @@
 
     <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content">
+          <div class="modal-content" style="background-color: #FDF5F5 !important;">
             <div class="modal-header">
-              <h1 class="modal-title fs-5" id="exampleModalToggleLabel">Modal 1</h1>
+              <h1 class="modal-title fs-5 d-flex justify-content-center" id="exampleModalToggleLabel">Esqueci minha senha</h1>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
               <form action="{{ route('forgot.password') }}" method="POST">
                 @csrf
                 <label for="remember_email" c>Digite seu e-mail:</label>
-                <input type="text" class="form-control" name="remember_email" id="remember_email">
-                <div class="modal-footer">
-                  <button class="btn btn-primary" type="submit">Enviar email</button>
+                <input type="text" style="background-color: rgba(217, 217, 217, 0.4) !important" class="form-control" name="remember_email" placeholder="petito@example.com">
+                <div class="d-flex justify-content-center mt-3">
+                  <button class="btn btn-light fw-bold" style="background-color: #F3A87D;" type="submit">Enviar email</button>
                 </div>
               </form>
             </div>
