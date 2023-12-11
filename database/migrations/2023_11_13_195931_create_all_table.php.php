@@ -144,6 +144,14 @@ return new class extends Migration
             $table->string('email', 45)->nullable()->unique();
 
         });
+
+        Schema::create('password_resets', function (Blueprint $table){
+
+            $table->string('email');
+            $table->string('token', 40);
+            $table->timestamps();
+
+        });
     }
 
     /**

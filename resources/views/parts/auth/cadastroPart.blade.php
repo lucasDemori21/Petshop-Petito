@@ -147,7 +147,7 @@
     @if ($errors->has('error-cadastro'))
         {{ $errors->first('error-cadastro') }}
     @endif
-    @if (session('success'))
-        {!! session('success') !!}
-    @endif
 </div>
+@if (session('success'))
+    {!! session('success') !!}
+@endif
