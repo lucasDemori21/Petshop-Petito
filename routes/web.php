@@ -25,7 +25,7 @@ Route::get('/', function () {
 })->name('index');
 
 Route::get('show/produto/{id}', [ShopController::class, 'showProduto'])->name('show.produto');
-Route::get('/shop/{categoria}', [ShopController::class, 'exibirProdutos'])->name('shop.produtos');
+Route::get('/shop/categoria/{categoria}', [ShopController::class, 'exibirProdutos'])->name('shop.produtos');
 Route::get('/shop', [ShopController::class, 'searchProdutos'])->name('shop.search');
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login.show');
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
