@@ -12,11 +12,12 @@ use Illuminate\Support\Facades\Hash;
 class AuthController extends Controller
 {
 
-    public function index(): View{
+    public function index(): View
+    {
         return view('index');
     }
 
-    public function showLogin():View
+    public function showLogin(): View
     {
         return view('auth.login');
     }
@@ -26,10 +27,10 @@ class AuthController extends Controller
         Auth::guard('cliente')->logout();
         Auth::guard('funcionario')->logout();
         return redirect()->route('login.show');
-
     }
 
-    public function cadastrar(Request $request){
+    public function cadastrar(Request $request)
+    {
         $request->validate(
             [
                 'nome' => 'required',
@@ -43,7 +44,8 @@ class AuthController extends Controller
                 'estado' => 'required',
                 'cidade' => 'required',
                 'numero' => 'required'
-            ], [
+            ],
+            [
                 'nome.required' => 'O campo "Nome Completo" precisa ser preenchido!',
 
                 'email.required' => 'O campo "E-mail" precisa ser preenchido!',
@@ -70,36 +72,36 @@ class AuthController extends Controller
 
             ]
         );
-            
-            // dd($request->nome);
-            // dd($request);
+
+        // dd($request->nome);
+        // dd($request);
 
 
-            $clienteData = [
-                'nome_cliente' => $request->nome,
-                'email' => $request->email,
-                'password' => Hash::make($request->password),
-                'created_at' => now(),
-                'updated_at' => now(),
-                'cpf' => $request->cpf,
-                'data_nasc' => $request->data,
-                'status' => '1',
-                'estado' => $request->estado,
-                'cidade' => $request->cidade,
-                'bairro' => $request->bairro,
-                'rua' => $request->rua,
-                'cep' => str_replace('-', '', $request->cep),
-                'numero_casa' => $request->numero,
-                'complemento' => $request->complemento,
-                'celular' => $request->telefone,
-            ];
+        $clienteData = [
+            'nome_cliente' => $request->nome,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'created_at' => now(),
+            'updated_at' => now(),
+            'cpf' => $request->cpf,
+            'data_nasc' => $request->data,
+            'status' => '1',
+            'estado' => $request->estado,
+            'cidade' => $request->cidade,
+            'bairro' => $request->bairro,
+            'rua' => $request->rua,
+            'cep' => str_replace('-', '', $request->cep),
+            'numero_casa' => $request->numero,
+            'complemento' => $request->complemento,
+            'celular' => $request->telefone,
+        ];
 
-            // dd($clienteData);
-            
-            $cliente = Cliente::create($clienteData);
-        
+        // dd($clienteData);
 
-        if ($cliente){
+        $cliente = Cliente::create($clienteData);
+
+
+        if ($cliente) {
             $script = "<script>
                            Swal.fire({
                                title: 'Sucesso!',
@@ -113,9 +115,9 @@ class AuthController extends Controller
                                 document.getElementById('email-cadastro').focus();
                            }, 2000);
                        </script>";
-                       
+
             return back()->with('success', $script);
-        }else{
+        } else {
             $errors = $cliente->getErrors();
             $script = "<script>
                            Swal.fire({
@@ -128,24 +130,20 @@ class AuthController extends Controller
 
             return back()->withInput()->withErrors($errors)->with('error-cadastro', $script);
         }
-
- 
-
-
     }
 
     public function login(Request $request)
     {
 
-        
+
 
         $credentials = $request->only('email', 'password');
 
-        
+
         $cliente = Cliente::where('email', $request->email)->first();
         $funcionario = Funcionario::where('email', $request->email)->first();
 
-        if((!$cliente) && (!$funcionario)){
+        if ((!$cliente) && (!$funcionario)) {
             return back()->withErrors(['error-email-login' => 'Email não cadastrado!'])->withInput();
         }
 
@@ -153,14 +151,43 @@ class AuthController extends Controller
         if (Auth::guard('cliente')->attempt($credentials)) {
 
             $request->session()->regenerate();
-            return redirect()->route('index');
+
+            $scriptSuccess = "<script>
+                                Swal.fire({
+                                    title: 'Sucesso!',
+                                    text: 'Login realizado com sucesso!',
+                                    icon: 'success',
+                                    showConfirmButton: false,
+                                    timer: 2000
+                                });
+
+                                setTimeout(() => {
+                                        document.getElementById('email-cadastro').focus();
+                                }, 2000);
+                            </script>";
+
+            return redirect()->route('index')->with(['login' => $scriptSuccess]);
         }
 
         if (Auth::guard('funcionario')->attempt($credentials)) {
-           
+
             $request->session()->regenerate();
-            return redirect()->route('index');
-            
+
+            $scriptSuccess = "<script>
+                                Swal.fire({
+                                    title: 'Sucesso!',
+                                    text: 'Login realizado com sucesso!',
+                                    icon: 'success',
+                                    showConfirmButton: false,
+                                    timer: 2000
+                                });
+
+                                setTimeout(() => {
+                                    document.getElementById('email-cadastro').focus();
+                                }, 2000);
+                            </script>";
+
+            return redirect()->route('index')->with(['login' => $scriptSuccess]);
         }
 
         return back()->withErrors(['error-login' => "Senha incorreta!"])->withInput();

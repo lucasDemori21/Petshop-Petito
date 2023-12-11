@@ -38,6 +38,10 @@
     </div>
 </div>
 
+@if(session('login'))
+    {!! session('login') !!}
+@endif
+
 </body>
 
 </html>
