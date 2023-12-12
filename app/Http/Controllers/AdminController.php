@@ -47,7 +47,8 @@ class AdminController extends Controller
 
         foreach ($request->file('img_produto') as $file) {
             $hashFile = md5($file->getClientOriginalName() . microtime()) . '.' . $file->getClientOriginalExtension();
-            $file->storeAs('images/produtos/', $hashFile);
+            $file->storeAs('public/images/produtos/', $hashFile);
+            
             $fileNames .= $hashFile . ',';
         }
 
@@ -67,16 +68,18 @@ class AdminController extends Controller
         }
     }
 
-    public function showUpdate(String|int $id): View{
-        
+    public function showUpdate(String|int $id): View
+    {
+
         $produto = DB::table('produto')->where('id_produto', $id)->get();
         $categoria = DB::table('categoria')->get();
 
-        
+
         return view('admin.update_produto', ['updateProduto' => $produto], ['categoria' => $categoria]);
     }
 
-    public function updateProduto(String|int $id, Request $request){
+    public function updateProduto(String|int $id, Request $request)
+    {
         // dd($request->all());
         $request->validate([
             'titulo' => 'required|max:100',
@@ -100,11 +103,13 @@ class AdminController extends Controller
         ]);
 
         $deleteOldImages = explode(',', $request->imgs);
-        
+
         foreach ($deleteOldImages as $deleteImg) {
-            $filePath = 'imgs-produto/' . $deleteImg;
-    
+            // O caminho do arquivo antigo é construído com base no diretório e no nome do arquivo
+            $filePath = 'public/images/produtos/' . $deleteImg;
+
             if (Storage::exists($filePath)) {
+                // Exclui a imagem antiga se ela existir
                 Storage::delete($filePath);
             }
         }
@@ -112,15 +117,15 @@ class AdminController extends Controller
         $fileNames = '';
         foreach ($request->file('img_produto') as $file) {
             $hashFile = md5($file->getClientOriginalName() . microtime()) . '.' . $file->getClientOriginalExtension();
-            $file->storeAs('images/produtos/', $hashFile);
+            $file->storeAs('public/images/produtos/', $hashFile);
             $fileNames .= $hashFile . ',';
         }
         $fileNames = rtrim($fileNames, ',');
 
-        $data = $request->only('titulo','descricao','valor','qtd_produto','','');
+        $data = $request->only('titulo', 'descricao', 'valor', 'qtd_produto', '', '');
         $data['img_produto'] = $fileNames;
 
-        if(DB::table('produto')->where('id_produto', $id)->update($data)){
+        if (DB::table('produto')->where('id_produto', $id)->update($data)) {
             return redirect()->back()->with('status_cadastro', 'success');
         }
     }

@@ -13,7 +13,7 @@
 
 
         <div class="carousel-inner">
-            <a href="{{ route('shop.produtos', '') }}">
+            <a href="{{ route('shop.search', '') }}">
                 <div class="carousel-item active">
                     <img src="{{ asset('images/img1.png') }}" class="d-block w-75 mx-auto" alt="anuncio-img">
                 </div>

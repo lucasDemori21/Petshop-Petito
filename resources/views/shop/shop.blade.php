@@ -15,11 +15,15 @@
     </div>
     <div class="container-produtos">
         @foreach ($produto as $item)
-        
             <a href="{{ route('show.produto', $item->id_produto) }}" class="produtos">
                 <div class="bloco">
                     <div class="bloco-produto mt-1">
-                        <img src="{{ $item->img_produto }}" width='120px' alt="img">
+                        <?php $imgs = explode(',', $item->img_produto); ?>
+
+                            @foreach ($imgs as $img)
+                                <img src="{{ asset('storage/images/produtos/' . $img) }}" class="img-fluid mt-4" width="200px" alt="IMAGEM TESTE">
+                            @endforeach
+
                     </div>
                     <div class="bloco-produto d-flex flex-column mt-2">
                         <span>{{ $item->titulo }}</span>

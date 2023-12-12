@@ -18,7 +18,7 @@
        
         @foreach ($imgs as $img)
 
-            <img src="{{ $img }}" class="img-fluid mt-4" width="200px" alt="IMAGEM TESTE">
+            <img src="{{ asset('storage/images/produtos/' . $img) }}" class="img-fluid mt-4" width="200px" alt="IMAGEM TESTE">
        
         @endforeach
          

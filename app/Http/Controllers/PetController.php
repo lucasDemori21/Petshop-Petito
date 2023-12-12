@@ -57,7 +57,7 @@ class PetController extends Controller
         $file = $request->file('img_pet');
 
         $hashFile = md5($file->getClientOriginalName() . microtime()) . '.' . $file->getClientOriginalExtension();
-        $file->move(public_path('images/pets/'), $hashFile);
+        $file->storeAs('public/images/pets/', $hashFile);
         $fileNames = $hashFile;
 
         $data = $request->all();

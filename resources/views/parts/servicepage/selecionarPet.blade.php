@@ -9,7 +9,7 @@
                 <div class="p-2 mx-3 border d-flex flex-column rounded">
                     <label class="form-check-label" for="petId{{ $pet->id_pet }}"
                         onclick="toggleActiveClass({{ $pet->id_pet }})">
-                        <img src="/images/pets/{{ $pet->img_pet }}" width="250px" class="rounded" alt="Imagem do Pet">
+                        <img src="{{ asset('storage/images/pets/' . $pet->img_pet) }}" width="250px" class="rounded" alt="Imagem do Pet">
                     </label>
                     <div class="d-flex mx-auto">
                         <input class="form-check-input" type="radio" name="selectPet" id="petId{{ $pet->id_pet }}"

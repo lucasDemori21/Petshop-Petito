@@ -38,7 +38,7 @@ use Illuminate\Support\Facades\Storage;
             <input type="hidden" name="imgs" value="{{$produto->img_produto}}">
 
             @foreach ($imgs as $img)
-                <img src="{{ $img }}" class="img-fluid mt-4" width="200px" alt="IMAGEM TESTE">
+                <img src="{{ asset('storage/images/produtos/' . $img) }}" class="img-fluid mt-4" width="200px" alt="IMAGEM TESTE">
             @endforeach
 
             <button type="submit" class="btn btn-success mt-4 w-25">Editar anuncio</button>
