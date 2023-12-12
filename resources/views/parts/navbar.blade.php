@@ -70,10 +70,10 @@
                             @endif
                             <div class="btn-group dropstart">
                                 <button type="button" class="btn btn-light dropdown-toggle dropdown-toggle-split"
-                                    style="height: 45px;" data-bs-toggle="dropdown" aria-expanded="false">
+                                    style="height: 45px; background-color: #FDF5F5;" data-bs-toggle="dropdown" aria-expanded="false">
                                     <span class="visually-hidden"></span>
                                 </button>
-                                <ul class="dropdown-menu">
+                                <ul class="dropdown-menu" style="background-color: #FDF5F5;">
 
                                     <li><a class="dropdown-item" href="#">Action</a></li>
                                     <li><a class="dropdown-item" href="#">Another action</a></li>
@@ -96,7 +96,7 @@
 
                                 </ul>
                                 <button type="button" class="btn btn-light"
-                                    style=" max-width:200px; height: 45px; white-space: nowrap;">
+                                    style=" max-width:200px; height: 45px; white-space: nowrap; background-color: #FDF5F5;">
                                     Olá, {{ $nome_user }}
                                 </button>
                             </div>
