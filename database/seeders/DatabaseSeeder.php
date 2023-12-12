@@ -35,25 +35,6 @@ class DatabaseSeeder extends Seeder
             'updated_at' => now(),
         ]);
 
-        DB::table('cliente')->insert([
-            'nome_cliente' => 'Cliente 2',
-            'email' => 'cliente2@example.com',
-            'password' => Hash::make('1234'),
-            'created_at' => now(),
-            'cpf' => '987.654.321-09',
-            'data_nasc' => '1985-05-15',
-            'status' => 1,
-            'estado' => 'RJ',
-            'cidade' => 'Rio de Janeiro',
-            'bairro' => 'Copacabana',
-            'rua' => 'Avenida B',
-            'cep' => '22345-678',
-            'numero_casa' => '456',
-            'complemento' => 'Casa 789',
-            'celular' => '(21) 98765-4321',
-            'updated_at' => now(),
-        ]);
-
         // Criar dois funcionários
         DB::table('funcionario')->insert([
             'nome_func' => 'Funcionário 1',
@@ -76,107 +57,98 @@ class DatabaseSeeder extends Seeder
             'salario' => 7000.00,
         ]);
 
-        DB::table('funcionario')->insert([
-            'nome_func' => 'Funcionário 2',
-            'email' => 'funcionario2@example.com',
-            'password' => Hash::make('1234'),
-            'created_at' => now(),
-            'cpf' => '555.666.777-88',
-            'data_nasc' => '1975-12-05',
-            'status' => 1,
-            'estado' => 'RS',
-            'cidade' => 'Porto Alegre',
-            'bairro' => 'Vila Nova',
-            'rua' => 'Rua Y',
-            'cep' => '90876-543',
-            'numero_casa' => '101',
-            'complemento' => 'Andar 2',
-            'celular' => '(51) 98765-4321',
-            'updated_at' => now(),
-            'funcao' => 'Analista de TI',
-            'salario' => 6000.00,
-        ]);
-
         $fakerF = Faker::create();
         
-        foreach (range(1, 10) as $index) {
+        // foreach (range(1, 10) as $index) {
             
-            $cpf = $fakerF->randomNumber(9) . '000'; // Adiciona zeros para completar 11 dígitos
-            $cpf = substr($cpf, 0, 3) . '.' . substr($cpf, 3, 3) . '.' . substr($cpf, 6, 3) . '-' . substr($cpf, 9, 2);
+        //     $cpf = $fakerF->randomNumber(9) . '000'; // Adiciona zeros para completar 11 dígitos
+        //     $cpf = substr($cpf, 0, 3) . '.' . substr($cpf, 3, 3) . '.' . substr($cpf, 6, 3) . '-' . substr($cpf, 9, 2);
 
 
-            DB::table('funcionario')->insert([
-                'nome_func' => $fakerF->name,
-                'email' => $fakerF->unique()->safeEmail,
-                'password' => Hash::make('12345678'),
-                'created_at' => now(),
-                'updated_at' => now(),
-                'cpf' => $cpf,
-                'data_nasc' => $fakerF->date,
-                'status' => $fakerF->randomElement([0, 1]),
-                'estado' => $fakerF->stateAbbr,
-                'cidade' => $fakerF->city,
-                'bairro' => $fakerF->word,
-                'rua' => $fakerF->streetName,
-                'cep' => str_replace('-', '', $fakerF->postcode),
-                'numero_casa' => $fakerF->buildingNumber,
-                'complemento' => $fakerF->sentence,
-                'celular' => $fakerF->phoneNumber,
-                'funcao' => $fakerF->jobTitle, // Assuming jobTitle is appropriate for 'funcao'
-                'salario' => $fakerF->randomFloat(2, 1000, 10000), // Adjust the range for salary as needed
-            ]);
-        }
+        //     DB::table('funcionario')->insert([
+        //         'nome_func' => $fakerF->name,
+        //         'email' => $fakerF->unique()->safeEmail,
+        //         'password' => Hash::make('12345678'),
+        //         'created_at' => now(),
+        //         'updated_at' => now(),
+        //         'cpf' => $cpf,
+        //         'data_nasc' => $fakerF->date,
+        //         'status' => $fakerF->randomElement([0, 1]),
+        //         'estado' => $fakerF->stateAbbr,
+        //         'cidade' => $fakerF->city,
+        //         'bairro' => $fakerF->word,
+        //         'rua' => $fakerF->streetName,
+        //         'cep' => str_replace('-', '', $fakerF->postcode),
+        //         'numero_casa' => $fakerF->buildingNumber,
+        //         'complemento' => $fakerF->sentence,
+        //         'celular' => $fakerF->phoneNumber,
+        //         'funcao' => $fakerF->jobTitle, // Assuming jobTitle is appropriate for 'funcao'
+        //         'salario' => $fakerF->randomFloat(2, 1000, 10000), // Adjust the range for salary as needed
+        //     ]);
+        // }
 
-        $fakerC = Faker::create();
+        // $fakerC = Faker::create();
 
-        foreach (range(1, 10) as $index) {
+        // foreach (range(1, 10) as $index) {
             
-            $cpf = $fakerC->randomNumber(9) . '000'; // Adiciona zeros para completar 11 dígitos
-            $cpf = substr($cpf, 0, 3) . '.' . substr($cpf, 3, 3) . '.' . substr($cpf, 6, 3) . '-' . substr($cpf, 9, 2);
+        //     $cpf = $fakerC->randomNumber(9) . '000'; // Adiciona zeros para completar 11 dígitos
+        //     $cpf = substr($cpf, 0, 3) . '.' . substr($cpf, 3, 3) . '.' . substr($cpf, 6, 3) . '-' . substr($cpf, 9, 2);
 
 
-            DB::table('cliente')->insert([
-                'nome_cliente' => $fakerC->name,
-                'email' => $fakerC->unique()->safeEmail,
-                'password' => Hash::make('1234'),
-                'created_at' => now(),
-                'updated_at' => now(),
-                'cpf' => $cpf,
-                'data_nasc' => $fakerC->date,
-                'status' => $fakerC->randomElement([0, 1]),
-                'estado' => $fakerC->stateAbbr,
-                'cidade' => $fakerC->city,
-                'bairro' => $fakerC->word,
-                'rua' => $fakerC->streetName,
-                'cep' => str_replace('-', '', $fakerC->postcode),
-                'numero_casa' => $fakerC->buildingNumber,
-                'complemento' => $fakerC->sentence,
-                'celular' => $fakerC->phoneNumber,
-            ]);
-        }
+        //     DB::table('cliente')->insert([
+        //         'nome_cliente' => $fakerC->name,
+        //         'email' => $fakerC->unique()->safeEmail,
+        //         'password' => Hash::make('1234'),
+        //         'created_at' => now(),
+        //         'updated_at' => now(),
+        //         'cpf' => $cpf,
+        //         'data_nasc' => $fakerC->date,
+        //         'status' => $fakerC->randomElement([0, 1]),
+        //         'estado' => $fakerC->stateAbbr,
+        //         'cidade' => $fakerC->city,
+        //         'bairro' => $fakerC->word,
+        //         'rua' => $fakerC->streetName,
+        //         'cep' => str_replace('-', '', $fakerC->postcode),
+        //         'numero_casa' => $fakerC->buildingNumber,
+        //         'complemento' => $fakerC->sentence,
+        //         'celular' => $fakerC->phoneNumber,
+        //     ]);
+        // }
 
-        $faker2 = Faker::create();
-
-        foreach (range(1, 10) as $index) {
+        $categorias = [
+            'Ração',
+            'Acessórios',
+            'Brinquedos',
+            'Higiene',
+            'Medicamentos',
+            'Camas e Casinhas',
+            'Coleiras e Guias',
+            'Petiscos',
+            'Grooming',
+            'Transporte',
+        ];
+        
+        // Inserir as categorias na tabela 'categoria'
+        foreach ($categorias as $categoria) {
             DB::table('categoria')->insert([
-                'nome_categoria' => $faker2->word,
+                'nome_categoria' => $categoria,
             ]);
         }
 
 
-        $faker = Faker::create();
+        // $faker = Faker::create();
 
-        foreach (range(1, 50) as $index) {
-            DB::table('produto')->insert([
-                'id_categoria' => $faker->numberBetween(1, 10), // Ajuste conforme suas categorias
-                'titulo' => $faker->words(3, true),
-                'descricao' => $faker->paragraph,
-                'qtd_produto' => $faker->numberBetween(1, 100),
-                'valor' => $faker->randomFloat(2, 10, 100),
-                'created_at' => $faker->dateTimeThisYear(),
-                'updated_at' => $faker->dateTimeThisYear(),
-                'img_produto' => $faker->imageUrl(200, 200, 'cats'), // Substitua 'cats' pelo seu tipo de imagem
-            ]);
-        }
+        // foreach (range(1, 50) as $index) {
+        //     DB::table('produto')->insert([
+        //         'id_categoria' => $faker->numberBetween(1, 10), // Ajuste conforme suas categorias
+        //         'titulo' => $faker->words(3, true),
+        //         'descricao' => $faker->paragraph,
+        //         'qtd_produto' => $faker->numberBetween(1, 100),
+        //         'valor' => $faker->randomFloat(2, 10, 100),
+        //         'created_at' => $faker->dateTimeThisYear(),
+        //         'updated_at' => $faker->dateTimeThisYear(),
+        //         'img_produto' => $faker->imageUrl(200, 200, 'cats'), // Substitua 'cats' pelo seu tipo de imagem
+        //     ]);
+        // }
     }
 }

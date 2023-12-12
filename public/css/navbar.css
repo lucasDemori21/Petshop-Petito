@@ -25,6 +25,7 @@ body {
     border-radius: 50px;
     border: 2px black solid;
     height: 45px;
+    width: 90%;
 }
 
 .input-search:focus {

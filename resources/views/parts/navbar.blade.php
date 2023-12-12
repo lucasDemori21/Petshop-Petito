@@ -39,7 +39,7 @@
                             aria-label="Search">
                         <button class="btn btn-warning btn-search" type="submit"><i class="bi bi-search"></i></button>
                     </form>
-                    <div class="d-flex justify-content-center mx-auto flex-wrap nav-mobile">
+                    <div class="d-flex justify-content-center mx-auto nav-mobile">
 
                         <li class="nav-item mx-1">
                             <a class="nav-link logo-header position-relative" aria-current="page" href="#"><i
