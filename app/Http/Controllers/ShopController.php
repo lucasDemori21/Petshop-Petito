@@ -42,4 +42,9 @@ class ShopController extends Controller
         return view('shop.produto', ['dados' => $produto]);
 
     }
+
+    public function addCarrinho(Request $request){
+
+        return response()->json(['id' => 10]);
+    }
 }

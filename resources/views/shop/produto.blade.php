@@ -1,132 +1,66 @@
 @include('parts.navbar')
 
-{{-- <div class="d-flex mx-auto flex-column">
+<script>
+    async function addCar() {
+        try {
+            const resposta = await axios.post('{{ route('add.carrinho') }}', {id: {{ $dados[0]->id_produto }} });
 
-    
-    
-    @if (auth('funcionario')->check())
-    <a href="{{route('show.update', $produto->id_produto)}}" class="btn btn-warning w-25">Editar anuncio</a>
-    @endif
-
-    <span class="mt-4">{{ $produto->titulo }}</span>
-        <span class="mt-4">{{ $produto->descricao }}</span>
-        <span class="mt-4">{{ $produto->qtd_produto }}</span>
-        <span class="mt-4">{{ $produto->valor }}</span>
-        
-        
-       
-        @foreach ($imgs as $img)
-
-            <img src="{{ asset('storage/images/produtos/' . $img) }}" class="img-fluid mt-4" width="200px" alt="IMAGEM TESTE">
-       
-        @endforeach
-        
-        @endforeach
-    </div> --}}
-
-<style>
-    @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap');
-
-
-    .card-wrapper {
-        max-width: 1100px;
-        margin: 0 auto;
-    }
-
-    img {
-        width: 100%;
-        display: block;
-    }
-
-    .img-display {
-        overflow: hidden;
-    }
-
-    .img-showcase {
-        display: flex;
-        width: 100%;
-        transition: all 0.5s ease;
-    }
-
-    .img-showcase img {
-        min-width: 100%;
-    }
-
-    .img-select {
-        display: flex;
-    }
-
-    .img-item {
-        margin: 0.3rem;
-    }
-
-    .img-item:nth-child(1),
-    .img-item:nth-child(2),
-    .img-item:nth-child(3) {
-        margin-right: 0;
-    }
-
-    .img-item:hover {
-        opacity: 0.8;
-    }
-
-    @media (min-width: 992px) {
-        .card {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            grid-gap: 1.5rem;
-        }
-
-        .card-wrapper {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .product-imgs {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
+            document.getElementById('qtdCar').innerHTML = resposta.data.id
+            console.log(resposta.data);
+        } catch (error) {
+            console.log('Erro na requisição: ' + error);
         }
     }
-</style>
+</script>
 
 @foreach ($dados as $produto)
     <?php
     $imgs = explode(',', $produto->img_produto);
     $i = 1;
     ?>
-    <div class = "card-wrapper">
-        <div class = "card">
-            <div class = "product-imgs">
-                <div class = "img-display">
+    <div class="card-wrapper">
+        <div class="card">
+            <div class="product-imgs">
+                <div class="img-display">
                     <div class = "img-showcase">
                         @foreach ($imgs as $img)
-                            <img src="{{ asset('storage/images/produtos/' . $img) }}" alt="IMAGEM TESTE">
+                            <img src="{{ asset('storage/images/produtos/' . $img) }}" class="d-block w-100"
+                                alt="IMAGEM TESTE">
                         @endforeach
                     </div>
                 </div>
-                <div class = "img-select">
+                <div class="img-select">
                     @foreach ($imgs as $img)
                         <div class = "img-item">
                             <a data-id ="{{ $i }}">
-                                <img src="{{ asset('storage/images/produtos/' . $img) }}" alt="IMAGEM TESTE">
+                                <img src="{{ asset('storage/images/produtos/' . $img) }}" class="d-block w-100"
+                                    alt="IMAGEM TESTE">
                             </a>
                         </div>
                         <?php $i++; ?>
                     @endforeach
                 </div>
             </div>
-            <div class = "product-content">
+            <div class="product-content">
                 @if (auth('funcionario')->check())
-                <a href="{{route('show.update', $produto->id_produto)}}" class="btn btn-warning w-25">Editar anuncio</a>
+                    <div class="w-100 d-flex justify-content-end">
+                        <a href="{{ route('show.update', $produto->id_produto) }}" class="btn btn-warning w-25">Editar anuncio</a>
+                    </div>
                 @endif
+                <div>
+                    <span class="fs-5 fw-bold">{{ $produto->titulo }}</span>
+                </div>
+                <div class="d-flex flex-column">
+                    <label class="form-label fw-bold">Descrição</label>
+                    <p>{{ $produto->descricao }}</p>
+                </div>
             
-                <span class="mt-4">{{ $produto->titulo }}</span>
-                    <span class="mt-4">{{ $produto->descricao }}</span>
-                    <span class="mt-4">{{ $produto->qtd_produto }}</span>
-                    <span class="mt-4">{{ $produto->valor }}</span>
+                <span>R$ {{ str_replace('.', ',', $produto->valor) }}</span>
 
+                <div class="btns-group">
+                    <button type="button" onclick="addCar()" class="btn btn-warning">Adicionar ao carrinho</button>
+                    <a href="#" class="btn btn-warning">Comprar</a>
+                </div>
             </div>
         </div>
     </div>
@@ -155,6 +89,7 @@
     }
 
     window.addEventListener('resize', slideImage);
+
 </script>
 </body>
 

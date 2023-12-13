@@ -21,7 +21,7 @@
                         <?php $imgs = explode(',', $item->img_produto); ?>
 
 
-                        <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+                        <div id="carrouselProduct{{$item->id_produto}}" class="carousel slide" data-bs-ride="carousel">
                             <div class="carousel-inner">
                                 @foreach ($imgs as $img)
                                     <div class="carousel-item active p-1" data-bs-interval="5000">
@@ -30,12 +30,12 @@
                                 @endforeach
                             </div>
                             <button class="carousel-control-prev" type="button"
-                                data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+                                data-bs-target="#carrouselProduct{{$item->id_produto}}" data-bs-slide="prev">
                                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                 <span class="visually-hidden">Previous</span>
                             </button>
                             <button class="carousel-control-next" type="button"
-                                data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+                                data-bs-target="#carrouselProduct{{$item->id_produto}}" data-bs-slide="next">
                                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                 <span class="visually-hidden">Next</span>
                             </button>
