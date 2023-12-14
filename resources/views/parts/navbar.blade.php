@@ -45,11 +45,8 @@
                         <li class="nav-item mx-1">
                             <a class="nav-link logo-header position-relative" aria-current="page" href="#"><i
                                     class="bi bi-bag-heart"></i>
-                                <span class="position-absolute translate-middle badge rounded-pill bg-danger">
-
+                                <span id="qtdCarButton" class="d-none position-absolute translate-middle badge rounded-pill bg-danger">
                                     <span id="qtdCar"></span>
-                                    
-                                    <span class="visually-hidden">unread messages</span>
                                 </span>
                             </a>
                         </li>
@@ -132,16 +129,20 @@
     async function qtdCar() {
         try{
 
-            resposta = axios.get({{ route('qtd.carrinho') }});
-
-            document.getElementById('qtdCar').innerHTML = resposta.data.qtd;
-
+            const resposta = await axios.get('{{ route('qtd.carrinho') }}');
+            
+            if(resposta.data.qtd != 0){
+                document.getElementById('qtdCar').innerHTML = resposta.data.qtd;
+                document.getElementById('qtdCarButton').classList.remove('d-none');    
+            }
+                
         } catch (error) {
 
             console.log('Erro na requisição: ' + error)
             
         }
 
-
     }
+
+    window.onload = qtdCar();
 </script>

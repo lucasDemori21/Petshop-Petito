@@ -67,7 +67,7 @@ class ShopController extends Controller
     public function qtdCarrinho(){
 
         $data = [];
-
+        
         if (Auth::guard('funcionario')->check()) {
             $data['usn_cod'] = Auth::guard('funcionario')->user()->id_func;
             $data['dono'] = '1';
@@ -75,7 +75,7 @@ class ShopController extends Controller
             $data['usn_cod'] = Auth::guard('cliente')->user()->id_cliente;
             $data['dono'] = '2';
         }
-
+        
         $qtd = DB::table('carrinho')->where(['dono' => $data['dono'], 'usn_cod' => $data['usn_cod']])->get()->count();
 
         return response()->json(['qtd' => $qtd]);

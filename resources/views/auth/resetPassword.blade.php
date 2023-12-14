@@ -30,11 +30,11 @@
                 <input type="email" class="form-control" name="email" readonly value="lucas.demori2001@gmail.com">
             </div>
             <div class="mb-3">
-                <label for="password" class="form-label">Senha:</label>
+                <label for="password" class="form-label">Nova senha:</label>
                 <input type="password" class="form-control" name="password" placeholder="********">
             </div>
             <div class="mb-3">
-                <label for="password_confirmation" class="form-label">Confirme sua
+                <label for="password_confirmation" class="form-label">Confirme nova
                     senha:</label>
                 <input type="password" class="form-control" name="password_confirmation" placeholder="********">
             </div>
