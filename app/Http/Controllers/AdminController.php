@@ -13,8 +13,6 @@ class AdminController extends Controller
 {
     public function showCadastrarProduto(): View
     {
-
-
         $categorias = DB::table('categoria')->get();
 
         return view('admin.cadastro_produto', ['categoria' => $categorias]);
@@ -105,11 +103,9 @@ class AdminController extends Controller
         $deleteOldImages = explode(',', $request->imgs);
 
         foreach ($deleteOldImages as $deleteImg) {
-            // O caminho do arquivo antigo é construído com base no diretório e no nome do arquivo
             $filePath = 'public/images/produtos/' . $deleteImg;
 
             if (Storage::exists($filePath)) {
-                // Exclui a imagem antiga se ela existir
                 Storage::delete($filePath);
             }
         }

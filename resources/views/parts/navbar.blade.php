@@ -132,9 +132,9 @@
     async function qtdCar() {
         try{
 
-            // resposta = axios.get({{route('qtd.carrinho')}});
+            resposta = axios.get({{ route('qtd.carrinho') }});
 
-            // document.getElementById('qtdCar').innerHTML = resposta.data.qtd;
+            document.getElementById('qtdCar').innerHTML = resposta.data.qtd;
 
         } catch (error) {
 

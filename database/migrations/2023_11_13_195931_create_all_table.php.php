@@ -98,6 +98,13 @@ return new class extends Migration
             $table->longText('img_produto');
         });
 
+        Schema::create('carrinho', function (Blueprint $table) {
+            $table->id('id_carrinho');
+            $table->integer('usn_cod')->nullable(false);
+            $table->integer('dono')->nullable(false);
+            $table->foreignId('id_produto')->constrained('produto', 'id_produto');
+        });
+
         Schema::create('venda', function (Blueprint $table) {
             $table->id('id_venda');
             $table->foreignId('id_cliente')->constrained('cliente', 'id_cliente');
@@ -168,6 +175,7 @@ return new class extends Migration
         Schema::dropIfExists('produto');
         Schema::dropIfExists('venda');
         Schema::dropIfExists('dados_empresa');
+        Schema::dropIfExists('carrinho');
         
     }
 };

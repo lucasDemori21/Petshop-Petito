@@ -24,7 +24,7 @@ class PetController extends Controller
             $user = '2';
         }
 
-        $pets = DB::table('pets')->where(['dono' => $user, 'usn_cod' => $id])->get(); // configurar migration e ajeitar a query para os pets
+        $pets = DB::table('pets')->where(['dono' => $user, 'usn_cod' => $id])->get();
 
         return view('shop.services', ['pets' => $pets]);
     }

@@ -27,6 +27,7 @@ Route::middleware(['cliente'])->group(function () {
     Route::get('/servicos', [PetController::class, 'exibirPets'])->name('show.servicos');
     Route::post('/servicos/cadastrar-pet', [PetController::class, 'cadastrarPets'])->name('cadastrar.pet');
     Route::post('/add/carrinho', [ShopController::class, 'addCarrinho'])->name('add.carrinho');
+    Route::get('/qtd/carrinho', [ShopController::class, 'qtdCarrinho'])->name('qtd.carrinho');
 });
 
 

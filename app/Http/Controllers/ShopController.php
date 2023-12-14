@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 
@@ -44,7 +45,39 @@ class ShopController extends Controller
     }
 
     public function addCarrinho(Request $request){
+        
+        $data = $request->all();
 
-        return response()->json(['id' => 10]);
+        if (Auth::guard('funcionario')->check()) {
+            $data['usn_cod'] = Auth::guard('funcionario')->user()->id_func;
+            $data['dono'] = '1';
+        } else if (Auth::guard('cliente')->check()) {
+            $data['usn_cod'] = Auth::guard('cliente')->user()->id_cliente;
+            $data['dono'] = '2';
+        }
+
+        
+        // dd($data);
+        DB::table('carrinho')->create($data);
+
+        $qtd = DB::table('carrinho')->where(['dono' => $data['dono'], 'usn_cod' => $data['usn_cod']])->get()->count();
+
+        return response()->json(['qtd' => $qtd, 'cadastro' => 'concluido']);
+    }
+    public function qtdCarrinho(){
+
+        $data = [];
+
+        if (Auth::guard('funcionario')->check()) {
+            $data['usn_cod'] = Auth::guard('funcionario')->user()->id_func;
+            $data['dono'] = '1';
+        } else if (Auth::guard('cliente')->check()) {
+            $data['usn_cod'] = Auth::guard('cliente')->user()->id_cliente;
+            $data['dono'] = '2';
+        }
+
+        $qtd = DB::table('carrinho')->where(['dono' => $data['dono'], 'usn_cod' => $data['usn_cod']])->get()->count();
+
+        return response()->json(['qtd' => $qtd]);
     }
 }
