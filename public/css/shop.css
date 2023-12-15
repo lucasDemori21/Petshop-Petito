@@ -17,7 +17,7 @@ html {
 .container-produtos {
   width: 80%;
   display: flex;
-  justify-content: space-around;
+  justify-content: start;
   flex-wrap: wrap;
   margin: 0 auto;
   transition: all 0.4s;
@@ -218,5 +218,13 @@ html {
     .img-item:hover {
         opacity: 0.8;
     }
+
+
+  .paginate{
+    display: flex;
+    justify-content: center;
+    bottom: 2%;
+    position: absolute;
+  }
 
     

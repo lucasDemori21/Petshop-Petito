@@ -56,6 +56,9 @@
                 </div>
             </a>
         @endforeach
+        <div class="paginate">
+            {{$produto->links()}}
+        </div>
     </div>
 </div>
 

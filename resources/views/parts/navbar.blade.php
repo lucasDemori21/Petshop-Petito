@@ -131,7 +131,8 @@
 
             const resposta = await axios.get('{{ route('qtd.carrinho') }}');
             
-            if(resposta.data.qtd != 0){
+            if(resposta.data.qtd != 0 && resposta.data.qtd != undefined){
+
                 document.getElementById('qtdCar').innerHTML = resposta.data.qtd;
                 document.getElementById('qtdCarButton').classList.remove('d-none');    
             }

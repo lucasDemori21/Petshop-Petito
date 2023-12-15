@@ -14,11 +14,11 @@ class ShopController extends Controller
 
         if($categoria != ''){
 
-            $produtos = DB::table('produto')->where('id_categoria', $categoria)->get();
+            $produtos = DB::table('produto')->where('id_categoria', $categoria)->paginate(25);
             
         }else{   
             
-            $produtos = DB::table('produto')->get();
+            $produtos = DB::table('produto')->paginate(25);
         
         }
         return view('shop.shop', ['produto' => $produtos]);
@@ -28,11 +28,11 @@ class ShopController extends Controller
 
         if($request->search != ''){
 
-            $produtos = DB::table('produto')->where('titulo', 'LIKE',"%{$request->search}%")->get();
+            $produtos = DB::table('produto')->where('titulo', 'LIKE',"%{$request->search}%")->paginate(25);
             
         }else{   
             
-            $produtos = DB::table('produto')->get();
+            $produtos = DB::table('produto')->paginate(25);
         
         }
         return view('shop.shop', ['produto' => $produtos]);
