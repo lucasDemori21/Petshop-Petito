@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Carrinho;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -58,7 +59,7 @@ class ShopController extends Controller
 
         
         // dd($data);
-        DB::table('carrinho')->create($data);
+        Carrinho::create($data);
 
         $qtd = DB::table('carrinho')->where(['dono' => $data['dono'], 'usn_cod' => $data['usn_cod']])->get()->count();
 

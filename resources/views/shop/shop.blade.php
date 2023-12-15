@@ -18,24 +18,29 @@
             <a href="{{ route('show.produto', $item->id_produto) }}" class="produtos">
                 <div class="bloco">
                     <div class="bloco-produto mt-1">
-                        <?php $imgs = explode(',', $item->img_produto); ?>
+                        <?php
+                        $imgs = explode(',', $item->img_produto);
+                        $i = 0;
+                        ?>
 
-
-                        <div id="carrouselProduct{{$item->id_produto}}" class="carousel slide" data-bs-ride="carousel">
+                        <div id="carrouselProduct{{ $item->id_produto }}" class="carousel slide"
+                            data-bs-ride="carousel">
                             <div class="carousel-inner">
                                 @foreach ($imgs as $img)
-                                    <div class="carousel-item active p-1" data-bs-interval="5000">
-                                        <img src="{{ asset('storage/images/produtos/' . $img) }}" class="d-block w-100" alt="IMAGEM TESTE">
+                                    <div class="carousel-item {{ $i === 0 ? 'active' : '' }} p-1" style="height: 170px;"
+                                        data-bs-interval="5000">
+                                        <img src="{{ asset('storage/images/produtos/' . $img) }}" style="width: 150px;" class="d-block mx-auto" alt="IMAGEM TESTE">
                                     </div>
+                                    <?php $i++; ?>
                                 @endforeach
                             </div>
                             <button class="carousel-control-prev" type="button"
-                                data-bs-target="#carrouselProduct{{$item->id_produto}}" data-bs-slide="prev">
+                                data-bs-target="#carrouselProduct{{ $item->id_produto }}" data-bs-slide="prev">
                                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                 <span class="visually-hidden">Previous</span>
                             </button>
                             <button class="carousel-control-next" type="button"
-                                data-bs-target="#carrouselProduct{{$item->id_produto}}" data-bs-slide="next">
+                                data-bs-target="#carrouselProduct{{ $item->id_produto }}" data-bs-slide="next">
                                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                 <span class="visually-hidden">Next</span>
                             </button>

@@ -3,10 +3,10 @@
 <script>
     async function addCar() {
         try {
-            const resposta = await axios.post('{{ route('add.carrinho') }}', {id: {{ $dados[0]->id_produto }} });
+            const resposta = await axios.post('{{ route('add.carrinho') }}', {id_produto: {{ $dados[0]->id_produto }} });
 
             document.getElementById('qtdCar').innerHTML = resposta.data.id
-            console.log(resposta.data);
+            // console.log(resposta.data);
         } catch (error) {
             console.log('Erro na requisição: ' + error);
         }

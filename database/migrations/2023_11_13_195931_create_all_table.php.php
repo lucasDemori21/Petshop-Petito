@@ -103,6 +103,7 @@ return new class extends Migration
             $table->integer('usn_cod')->nullable(false);
             $table->integer('dono')->nullable(false);
             $table->foreignId('id_produto')->constrained('produto', 'id_produto');
+            $table->timestamps();
         });
 
         Schema::create('venda', function (Blueprint $table) {
