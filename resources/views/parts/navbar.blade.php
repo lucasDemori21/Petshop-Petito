@@ -43,7 +43,7 @@
                     <div class="d-flex justify-content-center mx-auto nav-mobile">
 
                         <li class="nav-item mx-1">
-                            <a class="nav-link logo-header position-relative" aria-current="page" href="#"><i
+                            <a class="nav-link logo-header position-relative" aria-current="page" href="{{ route('show.carrinho') }}"><i
                                     class="bi bi-bag-heart"></i>
                                 <span id="qtdCarButton" class="d-none position-absolute translate-middle badge rounded-pill bg-danger">
                                     <span id="qtdCar"></span>

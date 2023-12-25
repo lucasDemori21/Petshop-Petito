@@ -5,7 +5,8 @@
         try {
             const resposta = await axios.post('{{ route('add.carrinho') }}', {id_produto: {{ $dados[0]->id_produto }} });
 
-            document.getElementById('qtdCar').innerHTML = resposta.data.id
+            
+            document.getElementById('qtdCar').innerHTML = resposta.data.qtd
             // console.log(resposta.data);
         } catch (error) {
             console.log('Erro na requisição: ' + error);
@@ -44,7 +45,7 @@
             <div class="product-content">
                 @if (auth('funcionario')->check())
                     <div class="w-100 d-flex justify-content-end">
-                        <a href="{{ route('show.update', $produto->id_produto) }}" class="btn btn-warning w-25">Editar anuncio</a>
+                        <a href="{{ route('show.update', $produto->id_produto) }}" class="btn btn-light"><i class="bi bi-pen-fill"></i></a>
                     </div>
                 @endif
                 <div>

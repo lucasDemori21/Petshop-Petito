@@ -6,7 +6,9 @@ use Illuminate\Support\Facades\Storage;
 {{-- <img src="{{ asset('storage/imgs-produto/' . $imagem) }}" width="500px" alt="asdsad"> --}}
 
 <div class="d-flex mx-auto flex-column">
-    <a href="{{ url()->previous() }}" class="btn btn-warning w-25">Editar anuncio</a>
+    <div class="d-flex w-100 d-flex w-100 justify-content-end justify-content-end">
+        <a href="{{ url()->previous() }}" class="btn btn-danger me-5"><i class="bi bi-arrow-return-left"></i></a>
+    </div>
 
 
     @foreach ($updateProduto as $produto)

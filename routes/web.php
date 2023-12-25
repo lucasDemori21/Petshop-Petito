@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\PetController;
 use App\Http\Controllers\ShopController;
+use App\Http\Controllers\CheckoutController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -28,6 +29,7 @@ Route::middleware(['cliente'])->group(function () {
     Route::post('/servicos/cadastrar-pet', [PetController::class, 'cadastrarPets'])->name('cadastrar.pet');
     Route::post('/add/carrinho', [ShopController::class, 'addCarrinho'])->name('add.carrinho');
     Route::get('/qtd/carrinho', [ShopController::class, 'qtdCarrinho'])->name('qtd.carrinho');
+    Route::get('/carrinho', [CheckoutController::class, 'exibirCarrinho'])->name('show.carrinho');
 });
 
 
