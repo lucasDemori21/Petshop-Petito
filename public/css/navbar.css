@@ -127,7 +127,8 @@ body {
 }
 
 .card{
-    padding: 1%
+    padding: 1%;
+    box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.3);
 }
 
 .img-display {
@@ -167,6 +168,8 @@ body {
     flex-direction: column;
     justify-content: space-around;
     height: auto;
+    background-color: #FDF5F5;
+    font-family: 'Crete Round', serif;
 }
 
 .btns-group{

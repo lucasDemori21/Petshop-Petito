@@ -1,4 +1,5 @@
 @include('parts.navbar')
+<link rel="stylesheet" type="text/css" href="{{ asset('css/shop.css') }}">
 
 <script>
     async function addCar() {
@@ -60,7 +61,7 @@
 
                 <div class="btns-group">
                     <button type="button" onclick="addCar()" class="btn btn-warning">Adicionar ao carrinho</button>
-                    <a href="#" class="btn btn-warning">Comprar</a>
+                    <a href="{{ route('show.carrinho') }}" class="btn btn-warning">Comprar</a>
                 </div>
             </div>
         </div>
