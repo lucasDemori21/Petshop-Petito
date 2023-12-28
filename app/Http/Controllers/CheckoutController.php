@@ -33,9 +33,29 @@ class CheckoutController extends Controller
     }
 
     public function exibirCheckout(Request $request): View {
-
-        
-
+        $data = $request->all();
+       
+        $produtosQuantidades = [];
+    
+        // Itera sobre cada par chave-valor nos dados da requisição
+        foreach ($data as $key => $qtd) {
+            // Verifica se a chave começa com "qtd-"
+            if (strpos($key, 'qtd-') === 0) {
+                // Extrai o número após o traço para obter o ID do produto
+                $idProduto = substr($key, 4);
+                
+                // Adiciona as informações ao array $produtosQuantidades
+                $produtosQuantidades[] = [
+                    'idProduto' => $idProduto,
+                    'quantidade' => $qtd,
+                ];
+            }
+        }
+    
+        // Exibe o array combinado de ID do produto e quantidade
+        dd($produtosQuantidades);
+    
+        // Retorna a view (não alterei este trecho)
         return view('shop.checkout.checkout', ['checkout' => $request]);
     }
 }
