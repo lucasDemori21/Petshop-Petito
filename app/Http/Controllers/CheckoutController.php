@@ -47,7 +47,7 @@ class CheckoutController extends Controller
                 // Adiciona as informações ao array $produtosQuantidades
                 $produtosQuantidades[] = [
                     'idProduto' => $idProduto,
-                    'quantidade' => $qtd,
+                    'quantidade' => $qtd, 
                 ];
             }
         }
