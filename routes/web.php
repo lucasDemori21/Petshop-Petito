@@ -23,15 +23,14 @@ Route::post('/cadastrar/auth', [AuthController::class, 'cadastrar'])->name('auth
 Route::post('/forgot-password', [AuthController::class , 'sendEmailResetPassword'])->name('forgot.password');
 Route::post('update-password', [AuthController::class, 'updatePassword'])->name('update.password');
 
-
 Route::middleware(['cliente'])->group(function () {
-    Route::get('/servicos', [PetController::class, 'exibirPets'])->name('show.servicos');
+    Route::post('/checkout', [CheckoutController::class, 'exibirCheckout'])->name('show.checkout');
     Route::post('/servicos/cadastrar-pet', [PetController::class, 'cadastrarPets'])->name('cadastrar.pet');
     Route::post('/add/carrinho', [ShopController::class, 'addCarrinho'])->name('add.carrinho');
+    Route::get('/servicos', [PetController::class, 'exibirPets'])->name('show.servicos');
     Route::get('/qtd/carrinho', [ShopController::class, 'qtdCarrinho'])->name('qtd.carrinho');
     Route::get('/carrinho', [CheckoutController::class, 'exibirCarrinho'])->name('show.carrinho');
 });
-
 
 Route::middleware(['funcionario'])->group(function () {
     Route::get('admin/update/{id}', [AdminController::class, 'showUpdate'])->name('show.update');

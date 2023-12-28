@@ -31,4 +31,11 @@ class CheckoutController extends Controller
 
         return view('shop.checkout.carrinho', ['produtos' => $produtos]);
     }
+
+    public function exibirCheckout(Request $request): View {
+
+        
+
+        return view('shop.checkout.checkout', ['checkout' => $request]);
+    }
 }

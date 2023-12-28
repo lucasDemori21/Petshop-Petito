@@ -2,15 +2,27 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('css/shop.css') }}">
 
 <script>
-    async function addCar() {
+    async function addCar(action) {
         try {
-            const resposta = await axios.post('{{ route('add.carrinho') }}', {id_produto: {{ $dados[0]->id_produto }} });
+            const resposta = await axios.post('{{ route('add.carrinho') }}', {
+                id_produto: {{ $dados[0]->id_produto }}
+            });
 
-            
-            document.getElementById('qtdCar').innerHTML = resposta.data.qtd
+            if (resposta.data.cadastro == "concluido") {
+                location.reload();
+            } else if (resposta.data.cadastro == "2") {
+                Swal.fire({
+                    icon: "error",
+                    title: "Este item já foi adicionado no carrinho"
+                });
+            }
             // console.log(resposta.data);
         } catch (error) {
             console.log('Erro na requisição: ' + error);
+        }
+
+        if (!action) {
+            window.location.href = "{{ route('show.carrinho') }}"
         }
     }
 </script>
@@ -45,23 +57,26 @@
             </div>
             <div class="product-content">
                 @if (auth('funcionario')->check())
-                    <div class="w-100 d-flex justify-content-end">
-                        <a href="{{ route('show.update', $produto->id_produto) }}" class="btn btn-light"><i class="bi bi-pen-fill"></i></a>
+                    <div class="position-absolute" style="top: 15px; right: 15px;">
+                        <a href="{{ route('show.update', $produto->id_produto) }}" class="btn btn-light"><i
+                                class="bi bi-pen-fill"></i></a>
                     </div>
                 @endif
-                <div>
+                <div class="text-center mt-3">
                     <span class="fs-5 fw-bold">{{ $produto->titulo }}</span>
                 </div>
-                <div class="d-flex flex-column">
-                    <label class="form-label fw-bold">Descrição</label>
+                <div class="d-flex flex-column ms-3">
+                    <label class="form-label fw-bold">Descrição: </label>
                     <p>{{ $produto->descricao }}</p>
                 </div>
-            
-                <span>R$ {{ str_replace('.', ',', $produto->valor) }}</span>
+
+                <span class="text-center fs-3">Valor: R$ {{ str_replace('.', ',', $produto->valor) }}<p class="fs-5">
+                        Ou em até 12x sem juros</p></span>
+
 
                 <div class="btns-group">
-                    <button type="button" onclick="addCar()" class="btn btn-warning">Adicionar ao carrinho</button>
-                    <a href="{{ route('show.carrinho') }}" class="btn btn-warning">Comprar</a>
+                    <button type="button" onclick="addCar(true)" class="btn btn-warning">Adicionar ao carrinho</button>
+                    <button type="button" onclick="addCar(false)" class="btn btn-warning">Comprar</button>
                 </div>
             </div>
         </div>
@@ -91,7 +106,6 @@
     }
 
     window.addEventListener('resize', slideImage);
-
 </script>
 </body>
 

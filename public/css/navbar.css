@@ -166,7 +166,7 @@ body {
 .product-content{
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-evenly;
     height: auto;
     background-color: #FDF5F5;
     font-family: 'Crete Round', serif;

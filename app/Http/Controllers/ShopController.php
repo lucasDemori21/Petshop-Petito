@@ -10,43 +10,42 @@ use Illuminate\View\View;
 
 class ShopController extends Controller
 {
-    public function exibirProdutos(String|int $categoria): View {
+    public function exibirProdutos(String|int $categoria): View
+    {
 
-        if($categoria != ''){
+        if ($categoria != '') {
 
             $produtos = DB::table('produto')->where('id_categoria', $categoria)->paginate(25);
-            
-        }else{   
-            
+        } else {
+
             $produtos = DB::table('produto')->paginate(25);
-        
         }
         return view('shop.shop', ['produto' => $produtos]);
     }
 
-    public function searchProdutos(Request $request): View {
+    public function searchProdutos(Request $request): View
+    {
 
-        if($request->search != ''){
+        if ($request->search != '') {
 
-            $produtos = DB::table('produto')->where('titulo', 'LIKE',"%{$request->search}%")->paginate(25);
-            
-        }else{   
-            
+            $produtos = DB::table('produto')->where('titulo', 'LIKE', "%{$request->search}%")->paginate(25);
+        } else {
+
             $produtos = DB::table('produto')->paginate(25);
-        
         }
         return view('shop.shop', ['produto' => $produtos]);
     }
 
-    public function showProduto(String|int $id): View{
+    public function showProduto(String|int $id): View
+    {
 
         $produto = DB::table('produto')->where('id_produto', $id)->get();
         return view('shop.produto', ['dados' => $produto]);
-
     }
 
-    public function addCarrinho(Request $request){
-        
+    public function addCarrinho(Request $request)
+    {
+
         $data = $request->all();
 
         if (Auth::guard('funcionario')->check()) {
@@ -57,18 +56,27 @@ class ShopController extends Controller
             $data['dono'] = '2';
         }
 
-        
+
         // dd($data);
-        Carrinho::create($data);
+        $produto = Carrinho::where(['dono' => $data['dono'], 'usn_cod' => $data['usn_cod'], 'id_produto' => $data['id_produto']])->get()->count();
 
-        $qtd = DB::table('carrinho')->where(['dono' => $data['dono'], 'usn_cod' => $data['usn_cod']])->get()->count();
+        if ($produto > 0) {
 
-        return response()->json(['qtd' => $qtd, 'cadastro' => 'concluido']);
+            return response()->json(['cadastro' => '2']);
+        
+        }else{
+
+            Carrinho::create($data);
+            $qtd = DB::table('carrinho')->where(['dono' => $data['dono'], 'usn_cod' => $data['usn_cod']])->get()->count();
+            return response()->json(['qtd' => $qtd, 'cadastro' => 'concluido']);
+
+        }
     }
-    public function qtdCarrinho(){
+    public function qtdCarrinho()
+    {
 
         $data = [];
-        
+
         if (Auth::guard('funcionario')->check()) {
             $data['usn_cod'] = Auth::guard('funcionario')->user()->id_func;
             $data['dono'] = '1';
@@ -76,7 +84,7 @@ class ShopController extends Controller
             $data['usn_cod'] = Auth::guard('cliente')->user()->id_cliente;
             $data['dono'] = '2';
         }
-        
+
         $qtd = DB::table('carrinho')->where(['dono' => $data['dono'], 'usn_cod' => $data['usn_cod']])->get()->count();
 
         return response()->json(['qtd' => $qtd]);
