@@ -12,7 +12,7 @@
                 location.reload();
             } else if (resposta.data.cadastro == "2") {
                 Swal.fire({
-                    icon: "error",
+                    icon: "warning",
                     title: "Este item já foi adicionado no carrinho"
                 });
             }
