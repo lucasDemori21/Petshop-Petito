@@ -30,6 +30,7 @@ Route::middleware(['cliente'])->group(function () {
     Route::get('/servicos', [PetController::class, 'exibirPets'])->name('show.servicos');
     Route::get('/qtd/carrinho', [ShopController::class, 'qtdCarrinho'])->name('qtd.carrinho');
     Route::get('/carrinho', [CheckoutController::class, 'exibirCarrinho'])->name('show.carrinho');
+    Route::get('/remover-do-carrinho/{id}', [ShopController::class, 'destroyCar'])->name('remover.carrinho');
 });
 
 Route::middleware(['funcionario'])->group(function () {

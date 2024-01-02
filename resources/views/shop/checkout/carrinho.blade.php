@@ -21,23 +21,22 @@
         </div>
     @endforeach
     
-    <div class="w-100 d-flex justify-content-end p-5">
-        <div class="d-flex justify-content-end flex-column p-5 border border-dark"
-            style="background-color: antiquewhite">
+    <div class="w-100 d-flex justify-content-end p-3">
+        <div class="d-flex justify-content-end flex-column shadow p-4 bg-body-tertiary rounded" style="background-color: transparent">
             <div class="title">
                 <h3>Resumo do pedido:</h3>
             </div>
-            <div>
+            <div class="my-1">
                 Quantidade: <span id="qtdTotal">0 un</span>
                 
             </div>
-            <div class="text-center">
+            <div class="my-1">
                 Valor total: <span id="valorTotal" >R$ 0.00</span>
                 <input type="hidden" name="valorTotal" id="reqValorTotal">
             </div>
-            <div class="d-flex flex-row">
+            <div class="d-flex flex-row mt-2">
                 <a class="btn btn-primary mx-1" href="{{ route('shop.search') }}">Continuar comprando</a>
-                <button type="submit" class="btn btn-primary mx-1">Finalizar</button>
+                <button type="submit" class="btn btn-success mx-1">Finalizar</button>
             </div>
         </div>
     </div>
@@ -75,12 +74,10 @@
                     }).then(async (result) => {
                         if (result.isConfirmed) {
                             try {
-                                const removeItemCar = await axios.post(
-                                    '/remover-do-carrinho', {
-                                        id: idProduto
-                                    });
+                              
+                                const removeItemCar = await axios.get(`/remover-do-carrinho/${idProduto}`);
 
-                                if (removeItemCar.data.status == 'removido') {
+                                if (removeItemCar.data.status == '1') {
                                     Swal.fire({
                                         title: "Item excluido do carrinho",
                                         icon: "success"
@@ -115,8 +112,7 @@
             valorTotalElement.textContent = `R$ ${valorTotal.toFixed(2)}`;
             valorTotalElementReq.value = `${valorTotal.toFixed(2)}`;
 
-            quantidadeTotalInput.value = qtdTotal;
-            valorTotalInput.value = valorTotal.toFixed(2);
+            
         }
 
         produtos.forEach(produto => {
