@@ -32,7 +32,8 @@
                 
             </div>
             <div class="text-center">
-                Valor total: <span id="valorTotal">R$ 0.00</span>
+                Valor total: <span id="valorTotal" >R$ 0.00</span>
+                <input type="hidden" name="valorTotal" id="reqValorTotal">
             </div>
             <div class="d-flex flex-row">
                 <a class="btn btn-primary mx-1" href="{{ route('shop.search') }}">Continuar comprando</a>
@@ -48,6 +49,7 @@
         const qtdTotalElement = document.getElementById('qtdTotal');
         const valorTotalElement = document.getElementById('valorTotal');
         const valorTotalInput = document.getElementById('valorTotalInput');
+        const valorTotalElementReq = document.getElementById('reqValorTotal');
 
         function calcularTotal() {
             let qtdTotal = 0;
@@ -111,6 +113,7 @@
 
             qtdTotalElement.textContent = `${qtdTotal} un`;
             valorTotalElement.textContent = `R$ ${valorTotal.toFixed(2)}`;
+            valorTotalElementReq.value = `${valorTotal.toFixed(2)}`;
 
             quantidadeTotalInput.value = qtdTotal;
             valorTotalInput.value = valorTotal.toFixed(2);

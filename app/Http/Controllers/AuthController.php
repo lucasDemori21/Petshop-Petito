@@ -165,10 +165,6 @@ class AuthController extends Controller
                                     showConfirmButton: false,
                                     timer: 2000
                                 });
-
-                                setTimeout(() => {
-                                        document.getElementById('email-cadastro').focus();
-                                }, 2000);
                             </script>";
 
             return redirect()->route('index')->with(['login' => $scriptSuccess]);

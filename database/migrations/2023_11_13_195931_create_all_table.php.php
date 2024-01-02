@@ -109,12 +109,19 @@ return new class extends Migration
         Schema::create('venda', function (Blueprint $table) {
             $table->id('id_venda');
             $table->foreignId('id_cliente')->constrained('cliente', 'id_cliente');
-            $table->foreignId('id_produto')->constrained('produto', 'id_produto');
             $table->date('date_compra')->nullable(false);
-            $table->integer('qtd_produto');
-            $table->decimal('valor', 10, 2)->nullable(false);
+            $table->decimal('valor_total', 10, 2)->nullable(false);
             $table->string('forma_pagamento', 45)->nullable(false);
-            $table->timestamp('horario_venda')->nullable(false);
+            $table->timestamps();
+        });
+
+        Schema::create('item_venda', function (Blueprint $table) {
+            $table->id('id_item_venda');
+            $table->foreignId('id_venda')->constrained('venda', 'id_venda');
+            $table->foreignId('id_produto')->constrained('produto', 'id_produto');
+            $table->integer('qtd_produto');
+            $table->decimal('valor_unitario', 10, 2)->nullable(false);
+            $table->timestamps();
         });
 
         Schema::create('agendamento', function (Blueprint $table) {
