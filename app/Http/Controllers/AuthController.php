@@ -43,7 +43,8 @@ class AuthController extends Controller
                 'cpf' => 'required',
                 'data' => 'required|date|before:' . now()->subYears(18)->format('Y-m-d'),
                 'telefone' => 'required',
-                'password' => 'required|min:4',
+                'password' => 'required|min:4|confirmed',
+                'password_confirmation' => 'required|min:4',
                 'telefone' => 'required',
                 'bairro' => 'required',
                 'estado' => 'required',
@@ -64,6 +65,8 @@ class AuthController extends Controller
 
                 'password.required' => 'O campo "Senha" precisa ser preenchido!',
                 'password.min' => 'O campo "Senha" precisa ter no minimo min: caracteres!',
+                'password.confirmed' => 'As senhas precisam ser idênticas.',
+                'password_confirmation.required' => 'O campo "Confirmar senha" é obrigatório.',
 
                 'telefone.required' => 'O campo "Telefone" precisa ser preenchido!',
 
@@ -248,7 +251,7 @@ class AuthController extends Controller
         $token = $request->token;
         $data = PasswordReset::where('token', $token)->get();
 
-        if(count($data) == 0){
+        if (count($data) == 0) {
             return redirect()->route('index');
             // dd($token);
         }
@@ -258,9 +261,9 @@ class AuthController extends Controller
 
     public function updatePassword(Request $request)
     {
-        
+
         // dd($request);
-        
+
         $request->validate([
             'password' => 'required|confirmed|min:4',
             'password_confirmation' => 'required|min:4'
@@ -281,7 +284,7 @@ class AuthController extends Controller
         if ($user->update(['password' => Hash::make($request->password)])) {
 
             PasswordReset::where('email', $request->email)->delete();
-            
+
             $script = "<script>
                             Swal.fire({
                                 title: 'Sucesso!',

@@ -12,8 +12,8 @@
 
         <div class="input-form">
             <label for="cpf">CPF:</label>
-            <input type="text" class="form-control" id='cpf' name="cpf" placeholder="000.000.000-00"
-                value="{{ old('cpf') }}">
+            <input type="text" class="form-control" id='cpf' name="cpf" maxlength="14"
+                placeholder="000.000.000-00" value="{{ old('cpf') }}">
         </div>
 
         <div class="input-form">
@@ -46,7 +46,7 @@
 
                     <div class="input-form col-md-6">
                         <label for="telefone">Telefone/Celular:</label>
-                        <input type="text" class="form-control" id='telefone' name="telefone"
+                        <input type="text" class="form-control" maxlength="15" id='telefone' name="telefone"
                             placeholder="(99) 99999-9999" value="{{ old('telefone') }}">
                     </div>
 
@@ -128,9 +128,32 @@
 
                     <div class="input-form col-md-12">
                         <label for="senha">Senha:</label>
-                        <input type="password" class="form-control" name="password" id="senha"
-                            autocomplete="off">
+                        <div class="input-group">
+                            <input type="password" class="form-control" name="password" id="password"
+                                autocomplete="off">
+                            <div class="input-group-append">
+                                <span class="input-group-text" id="showPasswordToggle"
+                                    onclick="togglePasswordVisibility('password')">
+                                    <i class="bi bi-eye-slash"></i>
+                                </span>
+                            </div>
+                        </div>
                     </div>
+
+                    <div class="input-form col-md-12">
+                        <label for="senha">Confirme sua senha:</label>
+                        <div class="input-group">
+                            <input type="password" class="form-control" name="password_confirmation"
+                                id="PasswordConfirm" autocomplete="off">
+                            <div class="input-group-append">
+                                <span class="input-group-text" id="showPasswordConfirmToggle"
+                                    onclick="togglePasswordVisibility('PasswordConfirm')">
+                                    <i class="bi bi-eye-slash"></i>                                
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="d-flex justify-content-center my-3">
                         <button class="btn btn-light fw-bold" style="background-color: #F3A87D;"
                             type="submit">Cadastrar</button>
@@ -151,3 +174,4 @@
 @if (session('success'))
     {!! session('success') !!}
 @endif
+

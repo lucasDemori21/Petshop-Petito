@@ -15,8 +15,15 @@
         @endif
 
         <div class="input-form">
-            <label for="senha">Senha:</label>
+          <label for="senha">Senha:</label>
+          <div class="input-group">
             <input type="password" class="form-control" name="password" id="senhaLogin" placeholder="********" autocomplete="off">
+            <div class="input-group-append">
+              <span class="input-group-text" id="showSenhaLoginToggle" onclick="togglePasswordVisibility('senhaLogin')">
+                <i class="bi bi-eye-slash"></i> 
+              </span>
+            </div>
+          </div>
         </div>
 
 
