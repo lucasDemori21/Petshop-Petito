@@ -1,31 +1,7 @@
 @include('parts.navbar')
 <link rel="stylesheet" type="text/css" href="{{ asset('css/shop.css') }}">
 
-<script>
-    async function addCar(action) {
-        try {
-            const resposta = await axios.post('{{ route('add.carrinho') }}', {
-                id_produto: {{ $dados[0]->id_produto }}
-            });
-
-            if (resposta.data.cadastro == "concluido") {
-                location.reload();
-            } else if (resposta.data.cadastro == "2") {
-                Swal.fire({
-                    icon: "warning",
-                    title: "Este item já foi adicionado no carrinho"
-                });
-            }
-            // console.log(resposta.data);
-        } catch (error) {
-            console.log('Erro na requisição: ' + error);
-        }
-
-        if (!action) {
-            window.location.href = "{{ route('show.carrinho') }}"
-        }
-    }
-</script>
+<script src="/js/produto.js"></script>
 
 @foreach ($dados as $produto)
     <?php
@@ -73,10 +49,10 @@
                 <span class="text-center fs-3">Valor: R$ {{ str_replace('.', ',', $produto->valor) }}<p class="fs-5">
                         Ou em até 12x sem juros</p></span>
 
-
+                
                 <div class="btns-group">
-                    <button type="button" onclick="addCar(true)" class="btn btn-warning">Adicionar ao carrinho</button>
-                    <button type="button" onclick="addCar(false)" class="btn btn-warning">Comprar</button>
+                    <button type="button" onclick="addCar(true, {{$produto->id_produto}})" class="btn btn-warning">Adicionar ao carrinho</button>
+                    <button type="button" onclick="addCar(false, {{$produto->id_produto})" class="btn btn-warning">Comprar</button>
                 </div>
             </div>
         </div>
@@ -84,29 +60,7 @@
 
     </div>
 @endforeach
-
-
-<script>
-    const imgs = document.querySelectorAll('.img-select a');
-    const imgBtns = [...imgs];
-    let imgId = 1;
-
-    imgBtns.forEach((imgItem) => {
-        imgItem.addEventListener('click', (event) => {
-            event.preventDefault();
-            imgId = imgItem.dataset.id;
-            slideImage();
-        });
-    });
-
-    function slideImage() {
-        const displayWidth = document.querySelector('.img-showcase img:first-child').clientWidth;
-
-        document.querySelector('.img-showcase').style.transform = `translateX(${- (imgId - 1) * displayWidth}px)`;
-    }
-
-    window.addEventListener('resize', slideImage);
-</script>
+<script src="/js/productDatail.js"></script>
 </body>
 
 </html>

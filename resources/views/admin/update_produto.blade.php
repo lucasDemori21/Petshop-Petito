@@ -1,9 +1,4 @@
 @include('parts.navbar')
-<?php
-use Illuminate\Support\Facades\Storage;
-?>
-
-{{-- <img src="{{ asset('storage/imgs-produto/' . $imagem) }}" width="500px" alt="asdsad"> --}}
 
 <div class="d-flex mx-auto flex-column">
     <div class="d-flex w-100 d-flex w-100 justify-content-end justify-content-end">
