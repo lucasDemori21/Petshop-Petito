@@ -56,8 +56,6 @@ class ShopController extends Controller
             $data['dono'] = '2';
         }
 
-
-        // dd($data);
         $produto = Carrinho::where(['dono' => $data['dono'], 'usn_cod' => $data['usn_cod'], 'id_produto' => $data['id_produto']])->get()->count();
 
         if ($produto > 0) {

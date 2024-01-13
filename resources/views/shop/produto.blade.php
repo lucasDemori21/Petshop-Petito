@@ -52,7 +52,7 @@
                 
                 <div class="btns-group">
                     <button type="button" onclick="addCar(true, {{$produto->id_produto}})" class="btn btn-warning">Adicionar ao carrinho</button>
-                    <button type="button" onclick="addCar(false, {{$produto->id_produto})" class="btn btn-warning">Comprar</button>
+                    <button type="button" onclick="addCar(false, {{$produto->id_produto}})" class="btn btn-warning">Comprar</button>
                 </div>
             </div>
         </div>

@@ -9,6 +9,7 @@ body {
     height: 100%;
 }
 
+
 .logo-header {
     font-size: 25px;
     padding: 0;
@@ -94,6 +95,10 @@ body {
 
     .dropstart {
         margin-top: 5%;
+    }
+
+    .container-car{
+        width: 75% !important;
     }
 
     

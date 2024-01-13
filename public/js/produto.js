@@ -1,4 +1,5 @@
 async function addCar(action, id) {
+    var redirect = false;
     try {
         const resposta = await axios.post('/add/carrinho', {
             id_produto: id
@@ -11,13 +12,26 @@ async function addCar(action, id) {
                 icon: "warning",
                 title: "Este item já foi adicionado no carrinho"
             });
+            redirect = true;
+        } else {
+            Swal.fire({
+                icon: "warning",
+                title: "Você precisa estar logado para adicionar items ao carrinho."
+            });
+            redirect = true;
+            setTimeout(() => {
+                window.location.href = "/login"
+            }, 3000);
         }
-        // console.log(resposta.data);
+
     } catch (error) {
         console.log('Erro na requisição: ' + error);
     }
 
     if (!action) {
-        window.location.href = "{{ route('show.carrinho') }}"
+        if(!redirect){
+            window.location.href = "/carrinho"
+        }
     }
+
 }
