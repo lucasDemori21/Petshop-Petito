@@ -33,7 +33,6 @@ async function deletar(id) {
                     'warning'
                 )
             }
-
         }
     })
 }

@@ -57,13 +57,10 @@
                     });
                 </script>
             @endif
-          
         </form>
     @endforeach
 
 </div>
-
-<script src="/js/updateProduct.js"></script>
-
 </body>
+<script src="/js/updateProduct.js"></script>
 
