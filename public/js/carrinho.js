@@ -29,7 +29,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 }).then(async (result) => {
                     if (result.isConfirmed) {
                         try {
-                          
                             const removeItemCar = await axios.get(`/remover-do-carrinho/${idProduto}`);
 
                             if (removeItemCar.data.status == '1') {

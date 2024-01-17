@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Carrinho;
 use App\Models\Produto;
+use App\Models\ItemVenda;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -13,6 +14,15 @@ use Illuminate\Support\Facades\Storage;
 
 class AdminController extends Controller
 {
+    public function index(): View
+    {
+        $produtos = Produto::get();
+
+        // $produtos = DB::table('produto')->get();
+
+        return view('admin.estoque.estoque', ['produtos' => $produtos]);
+    }
+
     public function showCadastrarProduto(): View
     {
         $categorias = DB::table('categoria')->get();
@@ -48,7 +58,7 @@ class AdminController extends Controller
         foreach ($request->file('img_produto') as $file) {
             $hashFile = md5($file->getClientOriginalName() . microtime()) . '.' . $file->getClientOriginalExtension();
             $file->storeAs('public/images/produtos/', $hashFile);
-            
+
             $fileNames .= $hashFile . ',';
         }
 
@@ -125,6 +135,27 @@ class AdminController extends Controller
 
         if (DB::table('produto')->where('id_produto', $id)->update($data)) {
             return redirect()->back()->with('status_cadastro', 'success');
+        }
+    }
+
+    public function destroyProduto(String|int $id)
+    {
+        $produto = Produto::where('id_produto', $id)->get();
+
+        $deleteOldImages = explode(',', $produto[0]->img_produto);
+
+        foreach ($deleteOldImages as $deleteImg) {
+            $filePath = 'public/images/produtos/' . $deleteImg;
+
+            if (Storage::exists($filePath)) {
+                Storage::delete($filePath);
+            }
+        }
+
+        ItemVenda::where('id_produto', $id)->delete();
+
+        if (Produto::where('id_produto', $id)->delete()) {
+            return 'success';
         }
     }
 }
