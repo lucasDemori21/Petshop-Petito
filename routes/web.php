@@ -37,8 +37,9 @@ Route::middleware(['funcionario'])->group(function () {
     Route::get('admin/update/{id}', [AdminController::class, 'showUpdate'])->name('show.update');
     Route::get('admin/estoque', [AdminController::class, 'index'])->name('show.estoque');
     Route::get('admin/cadastrar_produto', [AdminController::class, 'showCadastrarProduto'])->name('show.cadastrar_produto');
+    Route::get('admin/produto/delete/{id}', [AdminController::class, 'destroyProduto'])->name('admin.produto.destroy');
+    Route::get('admin/dashboard', [AdminController::class, 'showDash'])->name('admin.dashboard');
     Route::post('admin/cadastrarProduto', [AdminController::class, 'cadastrarProduto'])->name('cadastro.cadastrar_produto');
     Route::post('admin/update/produto/{id}', [AdminController::class, 'updateProduto'])->name('admin.update');
-    Route::get('admin/produto/delete/{id}', [AdminController::class, 'destroyProduto'])->name('admin.produto.destroy');
     
 });

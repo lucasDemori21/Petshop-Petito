@@ -158,4 +158,8 @@ class AdminController extends Controller
             return 'success';
         }
     }
+
+    public function showDash(): View{
+        return view('admin.dashboard');
+    }
 }

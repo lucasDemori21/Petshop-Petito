@@ -1,13 +1,5 @@
 @include('parts.navbar')
 
-<style>
-    .container-table {
-        width: 90%;
-        margin: auto;
-    }
-</style>
-
-
 <div class="container-table">
 
     <table id="table-container" class="display" style="width:100%">

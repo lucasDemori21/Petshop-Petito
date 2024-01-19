@@ -184,3 +184,8 @@ body {
     flex-direction: row;
     flex-wrap: wrap;
 }
+
+.container-table {
+    width: 90%;
+    margin: auto;
+}
