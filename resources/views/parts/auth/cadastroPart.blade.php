@@ -148,7 +148,7 @@
                             <div class="input-group-append">
                                 <span class="input-group-text" id="showPasswordConfirmToggle"
                                     onclick="togglePasswordVisibility('PasswordConfirm')">
-                                    <i class="bi bi-eye-slash"></i>                                
+                                    <i class="bi bi-eye-slash"></i>
                                 </span>
                             </div>
                         </div>
@@ -174,4 +174,3 @@
 @if (session('success'))
     {!! session('success') !!}
 @endif
-

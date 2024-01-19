@@ -8,12 +8,12 @@ use Illuminate\Notifications\Notifiable;
 
 class Pets extends Model
 {
-    use HasFactory,Notifiable;
+    use HasFactory, Notifiable;
 
     protected $table = 'pets';
     protected $primaryKey = 'id_pet';
 
-   /**
+    /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>

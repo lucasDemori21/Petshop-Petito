@@ -58,7 +58,8 @@ html {
   .container-shop {
     flex-direction: column;
   }
-  .nav-categorias{
+
+  .nav-categorias {
     width: 100%;
   }
 }
@@ -178,53 +179,51 @@ html {
 
 
 
-    .card-wrapper {
-        max-width: 1100px;
-        margin: 0 auto;
-    }
+.card-wrapper {
+  max-width: 1100px;
+  margin: 0 auto;
+}
 
-    .card{
-        padding: 1%
-    }
+.card {
+  padding: 1%
+}
 
-    .img-display {
-        overflow: hidden;
-    }
+.img-display {
+  overflow: hidden;
+}
 
-    .img-showcase {
-        display: flex;
-        width: 100%;
-        transition: all 0.5s ease;
-    }
+.img-showcase {
+  display: flex;
+  width: 100%;
+  transition: all 0.5s ease;
+}
 
-    .img-showcase img {
-        min-width: 100%;
-    }
+.img-showcase img {
+  min-width: 100%;
+}
 
-    .img-select {
-        display: flex;
-    }
+.img-select {
+  display: flex;
+}
 
-    .img-item {
-        margin: 0.3rem;
-    }
+.img-item {
+  margin: 0.3rem;
+}
 
-    .img-item:nth-child(1),
-    .img-item:nth-child(2),
-    .img-item:nth-child(3) {
-        margin-right: 0;
-    }
+.img-item:nth-child(1),
+.img-item:nth-child(2),
+.img-item:nth-child(3) {
+  margin-right: 0;
+}
 
-    .img-item:hover {
-        opacity: 0.8;
-    }
+.img-item:hover {
+  opacity: 0.8;
+}
 
 
-  .paginate{
-    display: flex;
-    justify-content: center;
-    bottom: 2%;
-    position: absolute;
-  }
-
-    
+.paginate {
+  display: flex;
+  justify-content: center;
+  bottom: 2%;
+  position: absolute;
+}

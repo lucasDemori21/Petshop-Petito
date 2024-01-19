@@ -20,7 +20,7 @@ Route::get('/reset-password', [AuthController::class, 'showResetPassword'])->nam
 
 Route::post('/login/auth', [AuthController::class, 'login'])->name('auth.login');
 Route::post('/cadastrar/auth', [AuthController::class, 'cadastrar'])->name('auth.cadastrar');
-Route::post('/forgot-password', [AuthController::class , 'sendEmailResetPassword'])->name('forgot.password');
+Route::post('/forgot-password', [AuthController::class, 'sendEmailResetPassword'])->name('forgot.password');
 Route::post('update-password', [AuthController::class, 'updatePassword'])->name('update.password');
 
 Route::middleware(['cliente'])->group(function () {
@@ -41,5 +41,4 @@ Route::middleware(['funcionario'])->group(function () {
     Route::get('admin/dashboard', [AdminController::class, 'showDash'])->name('admin.dashboard');
     Route::post('admin/cadastrarProduto', [AdminController::class, 'cadastrarProduto'])->name('cadastro.cadastrar_produto');
     Route::post('admin/update/produto/{id}', [AdminController::class, 'updateProduto'])->name('admin.update');
-    
 });

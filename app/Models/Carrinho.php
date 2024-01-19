@@ -13,7 +13,7 @@ class Carrinho extends Model
     protected $table = 'carrinho';
     protected $primaryKey = 'id_carrinho';
 
-   /**
+    /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>

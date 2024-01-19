@@ -38,7 +38,7 @@
     </div>
 </div>
 
-@if(session('login'))
+@if (session('login'))
     {!! session('login') !!}
 @endif
 

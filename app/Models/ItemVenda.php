@@ -13,7 +13,7 @@ class ItemVenda extends Model
     protected $table = 'item_venda';
     protected $primaryKey = 'id_item_venda';
 
-   /**
+    /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>

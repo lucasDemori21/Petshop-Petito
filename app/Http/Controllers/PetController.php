@@ -14,7 +14,7 @@ class PetController extends Controller
     {
         $id = '';
         $user = '';
-        
+
 
         if (Auth::guard('funcionario')->check()) {
             $id = Auth::guard('funcionario')->user()->id_func;
@@ -73,7 +73,7 @@ class PetController extends Controller
         }
 
         Pets::create($data);
-        
+
         return redirect()->route('show.servicos')->with('status_cadastro', 'success');
     }
 }

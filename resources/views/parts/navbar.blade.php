@@ -46,9 +46,10 @@
                     <div class="d-flex justify-content-center mx-auto nav-mobile">
 
                         <li class="nav-item mx-1">
-                            <a class="nav-link logo-header position-relative" aria-current="page" href="{{ route('show.carrinho') }}"><i
-                                    class="bi bi-bag-heart"></i>
-                                <span id="qtdCarButton" class="d-none position-absolute translate-middle badge rounded-pill bg-danger">
+                            <a class="nav-link logo-header position-relative" aria-current="page"
+                                href="{{ route('show.carrinho') }}"><i class="bi bi-bag-heart"></i>
+                                <span id="qtdCarButton"
+                                    class="d-none position-absolute translate-middle badge rounded-pill bg-danger">
                                     <span id="qtdCar"></span>
                                 </span>
                             </a>
@@ -73,7 +74,8 @@
                             @endif
                             <div class="btn-group dropstart">
                                 <button type="button" class="btn btn-light dropdown-toggle dropdown-toggle-split"
-                                    style="height: 45px; background-color: #FDF5F5;" data-bs-toggle="dropdown" aria-expanded="false">
+                                    style="height: 45px; background-color: #FDF5F5;" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
                                     <span class="visually-hidden"></span>
                                 </button>
                                 <ul class="dropdown-menu" style="background-color: #FDF5F5;">
@@ -86,7 +88,8 @@
                                         <li>
                                             <hr class="dropdown-divider">
                                         </li>
-                                        <li><a class="dropdown-item" href="{{ route('admin.dashboard') }}">Dashboard</a></li>
+                                        <li><a class="dropdown-item" href="{{ route('admin.dashboard') }}">Dashboard</a>
+                                        </li>
                                         <li><a class="dropdown-item" href="{{ route('show.estoque') }}">Estoque</a></li>
                                         <li><a class="dropdown-item"
                                                 href="{{ route('show.cadastrar_produto') }}">Cadastrar produto</a></li>

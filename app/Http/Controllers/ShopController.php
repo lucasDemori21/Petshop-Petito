@@ -61,13 +61,11 @@ class ShopController extends Controller
         if ($produto > 0) {
 
             return response()->json(['cadastro' => '2']);
-        
-        }else{
+        } else {
 
             Carrinho::create($data);
             $qtd = DB::table('carrinho')->where(['dono' => $data['dono'], 'usn_cod' => $data['usn_cod']])->get()->count();
             return response()->json(['qtd' => $qtd, 'cadastro' => 'concluido']);
-
         }
     }
     public function qtdCarrinho()
@@ -88,7 +86,8 @@ class ShopController extends Controller
         return response()->json(['qtd' => $qtd]);
     }
 
-    public function destroyCar(String|int $id) {
+    public function destroyCar(String|int $id)
+    {
 
         if (Auth::guard('funcionario')->check()) {
             $data['usn_cod'] = Auth::guard('funcionario')->user()->id_func;
@@ -97,10 +96,9 @@ class ShopController extends Controller
             $data['usn_cod'] = Auth::guard('cliente')->user()->id_cliente;
             $data['dono'] = '2';
         }
-    
+
         Carrinho::where(['id_produto' => $id, 'usn_cod' => $data['usn_cod'], 'dono' => $data['dono']])->delete();
 
         return response()->json(['status' => 1]);
-
     }
 }

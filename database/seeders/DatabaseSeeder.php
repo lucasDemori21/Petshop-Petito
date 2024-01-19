@@ -58,9 +58,9 @@ class DatabaseSeeder extends Seeder
         ]);
 
         $fakerF = Faker::create();
-        
+
         // foreach (range(1, 10) as $index) {
-            
+
         //     $cpf = $fakerF->randomNumber(9) . '000'; // Adiciona zeros para completar 11 dígitos
         //     $cpf = substr($cpf, 0, 3) . '.' . substr($cpf, 3, 3) . '.' . substr($cpf, 6, 3) . '-' . substr($cpf, 9, 2);
 
@@ -90,7 +90,7 @@ class DatabaseSeeder extends Seeder
         // $fakerC = Faker::create();
 
         // foreach (range(1, 10) as $index) {
-            
+
         //     $cpf = $fakerC->randomNumber(9) . '000'; // Adiciona zeros para completar 11 dígitos
         //     $cpf = substr($cpf, 0, 3) . '.' . substr($cpf, 3, 3) . '.' . substr($cpf, 6, 3) . '-' . substr($cpf, 9, 2);
 
@@ -127,7 +127,7 @@ class DatabaseSeeder extends Seeder
             'Grooming',
             'Transporte',
         ];
-        
+
         // Inserir as categorias na tabela 'categoria'
         foreach ($categorias as $categoria) {
             DB::table('categoria')->insert([

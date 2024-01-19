@@ -114,7 +114,7 @@ class CheckoutController extends Controller
                 Carrinho::where(['dono' => 1, 'usn_cod' => $data['id']])->delete();
             } else if (Auth::guard('cliente')->check()) {
                 Carrinho::where(['dono' => 2, 'usn_cod' => $data['id']])->delete();
-            } 
+            }
 
             $data = [
                 'email' => $data['email'],

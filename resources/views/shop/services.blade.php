@@ -36,10 +36,12 @@
     </div>
 
     <div id="escolhaPet" class="d-none w-100 mx-auto">
-        @if(count($pets) == 0) <!-- Sem pet cadastrado nesse usuario -->
+        @if (count($pets) == 0)
+            <!-- Sem pet cadastrado nesse usuario -->
 
             @include('parts.servicepage.semPet')
-        @else <!-- Selecionar pet -->
+        @else
+            <!-- Selecionar pet -->
             @include('parts.servicepage.selecionarPet')
         @endif
 
@@ -52,5 +54,5 @@
 
 <script src="/js/services.js"></script>
 </body>
-</html>
 
+</html>

@@ -29,7 +29,7 @@ async function addCar(action, id) {
     }
 
     if (!action) {
-        if(!redirect){
+        if (!redirect) {
             window.location.href = "/carrinho"
         }
     }

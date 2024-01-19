@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const produtos = document.querySelectorAll('.produto');
     const qtdTotalElement = document.getElementById('qtdTotal');
     const valorTotalElement = document.getElementById('valorTotal');
@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', function() {
         valorTotalElement.textContent = `R$ ${valorTotal.toFixed(2)}`;
         valorTotalElementReq.value = `${valorTotal.toFixed(2)}`;
 
-        
+
     }
 
     produtos.forEach(produto => {

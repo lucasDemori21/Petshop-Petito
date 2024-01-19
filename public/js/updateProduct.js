@@ -12,15 +12,15 @@ async function deletar(id) {
             try {
                 const result = await axios.get(`/admin/produto/delete/${id}`);
                 console.log(result);
-                
+
                 if (result.data == 'success') {
-                    
+
                     Swal.fire(
                         'Excluido!',
                         'Produto excluido com sucesso.',
                         'success'
                     )
-                    
+
                     setTimeout(() => {
                         window.location.href = '/shop';
                     }, 2500);

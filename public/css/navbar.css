@@ -97,11 +97,11 @@ body {
         margin-top: 5%;
     }
 
-    .container-car{
+    .container-car {
         width: 75% !important;
     }
 
-    
+
 }
 
 @media(min-width: 991px) {
@@ -131,7 +131,7 @@ body {
     margin: 0 auto;
 }
 
-.card{
+.card {
     padding: 1%;
     box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.3);
 }
@@ -168,7 +168,7 @@ body {
     opacity: 0.8;
 }
 
-.product-content{
+.product-content {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -177,7 +177,7 @@ body {
     font-family: 'Crete Round', serif;
 }
 
-.btns-group{
+.btns-group {
     width: 100%;
     display: flex;
     justify-content: space-around;

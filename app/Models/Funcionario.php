@@ -13,7 +13,7 @@ class Funcionario extends Authenticatable
     protected $table = 'funcionario';
     protected $primaryKey = 'id_func';
 
-   /**
+    /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
@@ -57,5 +57,4 @@ class Funcionario extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
-
 }

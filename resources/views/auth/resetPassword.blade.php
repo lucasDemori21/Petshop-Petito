@@ -21,7 +21,7 @@
             <img src="{{ asset('images/logos/logo-petito.png') }}" alt="logo-petito">
         </a>
     </div>
-    
+
     <div class="container-reset">
         <form action="{{ route('update.password') }}" method="POST">
             @csrf
@@ -39,10 +39,10 @@
                 <input type="password" class="form-control" name="password_confirmation" placeholder="********">
             </div>
             @if ($errors->any())
-                    @foreach ($errors->all() as $error)
-                        <span class="text-danger">{{ $error }}</span><br>
-                    @endforeach
-                @endif
+                @foreach ($errors->all() as $error)
+                    <span class="text-danger">{{ $error }}</span><br>
+                @endforeach
+            @endif
             <div class="w-100 d-flex justify-content-center">
                 <button type="submit" class="btn btn-warning">Atualizar senha</button>
             </div>

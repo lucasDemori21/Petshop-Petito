@@ -27,8 +27,6 @@
     </table>
 </div>
 
-</div>
-
 <script>
     new DataTable('#table-container');
 </script>

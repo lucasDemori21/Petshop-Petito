@@ -67,38 +67,38 @@
 </div>
 <script>
     function formatarParaReal(element) {
-    const valorDigitado = element.value.replace(/[^0-9]/g, '');
-    const valorEmCentavos = parseInt(valorDigitado) / 100;
-    const valorFormatado = new Intl.NumberFormat('pt-BR', {
-        style: 'currency',
-        currency: 'BRL',
-    }).format(valorEmCentavos);
-    element.value = valorFormatado;
-}
-
-document.getElementById('img_produto').addEventListener('change', handleFileSelect);
-
-function handleFileSelect(event) {
-  const previewContainer = document.getElementById('preview-container');
-  previewContainer.innerHTML = ''; // Limpa a exibição anterior
-
-  const files = event.target.files;
-
-  for (const file of files) {
-    if (file.type.startsWith('image/')) {
-      const reader = new FileReader();
-
-      reader.onload = function (e) {
-        const imgElement = document.createElement('img');
-        imgElement.src = e.target.result;
-        imgElement.classList.add('preview-image');
-        previewContainer.appendChild(imgElement);
-      };
-
-      reader.readAsDataURL(file);
+        const valorDigitado = element.value.replace(/[^0-9]/g, '');
+        const valorEmCentavos = parseInt(valorDigitado) / 100;
+        const valorFormatado = new Intl.NumberFormat('pt-BR', {
+            style: 'currency',
+            currency: 'BRL',
+        }).format(valorEmCentavos);
+        element.value = valorFormatado;
     }
-  }
-}
+
+    document.getElementById('img_produto').addEventListener('change', handleFileSelect);
+
+    function handleFileSelect(event) {
+        const previewContainer = document.getElementById('preview-container');
+        previewContainer.innerHTML = ''; // Limpa a exibição anterior
+
+        const files = event.target.files;
+
+        for (const file of files) {
+            if (file.type.startsWith('image/')) {
+                const reader = new FileReader();
+
+                reader.onload = function(e) {
+                    const imgElement = document.createElement('img');
+                    imgElement.src = e.target.result;
+                    imgElement.classList.add('preview-image');
+                    previewContainer.appendChild(imgElement);
+                };
+
+                reader.readAsDataURL(file);
+            }
+        }
+    }
 </script>
 </body>
 

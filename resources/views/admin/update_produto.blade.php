@@ -1,5 +1,5 @@
 @include('parts.navbar')
-    
+
 
 <div class="d-flex mx-auto flex-column">
     <div class="d-flex w-100 d-flex w-100 justify-content-end justify-content-end">
@@ -41,7 +41,8 @@
             @endforeach
 
             <button type="submit" class="btn btn-success mt-4 w-25">Editar Produto</button>
-            <button type="button" class="btn btn-danger mt-4 w-25" onclick="deletar({{$produto->id_produto}})">Excluir Produto</button>
+            <button type="button" class="btn btn-danger mt-4 w-25"
+                onclick="deletar({{ $produto->id_produto }})">Excluir Produto</button>
 
             @if ($errors->any())
                 @foreach ($errors->all() as $error)
@@ -63,4 +64,3 @@
 </div>
 </body>
 <script src="/js/updateProduct.js"></script>
-

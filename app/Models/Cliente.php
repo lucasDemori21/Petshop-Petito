@@ -13,7 +13,7 @@ class Cliente extends Authenticatable
     protected $table = 'cliente';
     protected $primaryKey = 'id_cliente';
 
-   /**
+    /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
@@ -56,4 +56,3 @@ class Cliente extends Authenticatable
         'password' => 'hashed',
     ];
 }
-

@@ -8,21 +8,23 @@
             style="background-color: beige" data-valor="{{ $produto->valor }}">
             <div class="h5 py-2 text-dark flex-row">
                 <div class="d-flex flex-row flex-wrap">
-                <span><img width="70%" style="min-width: 150px; max-width: 250px;" src="storage/images/produtos/{{ explode(',', $produto->img_produto)[0] }}"
-                        alt="Imagem produto"></span>
-                <span class="mx-2">
-                    {{ $produto->titulo }}
-                </span>
+                    <span><img width="70%" style="min-width: 150px; max-width: 250px;"
+                            src="storage/images/produtos/{{ explode(',', $produto->img_produto)[0] }}"
+                            alt="Imagem produto"></span>
+                    <span class="mx-2">
+                        {{ $produto->titulo }}
+                    </span>
 
-                <span class="id-produto d-none">{{ $produto->id_produto }}</span>
-                <span class="valor-produto mx-5">{{ $produto->valor }}</span>
+                    <span class="id-produto d-none">{{ $produto->id_produto }}</span>
+                    <span class="valor-produto mx-5">{{ $produto->valor }}</span>
 
                     <label for="qtd">Quantidade: </label>
                     <input type="number" class="text-center quantidade" style="width: 50px;"
-                    name="qtd-{{ $produto->id_produto }}" id="qtd" value="1"
-                    max="{{ $produto->qtd_produto }}" data-qtd-estoque="{{ $produto->qtd_produto }}">
+                        name="qtd-{{ $produto->id_produto }}" id="qtd" value="1"
+                        max="{{ $produto->qtd_produto }}" data-qtd-estoque="{{ $produto->qtd_produto }}">
                 </div>
-                <span class="d-flex justify-content-end" style="font-size: 15px;">Tem {{ $produto->qtd_produto }} un em estoque</span>
+                <span class="d-flex justify-content-end" style="font-size: 15px;">Tem {{ $produto->qtd_produto }} un em
+                    estoque</span>
 
             </div>
         </div>

@@ -29,7 +29,8 @@
                                 @foreach ($imgs as $img)
                                     <div class="carousel-item {{ $i === 0 ? 'active' : '' }} p-1" style="height: 170px;"
                                         data-bs-interval="5000">
-                                        <img src="{{ asset('storage/images/produtos/' . $img) }}" style="width: 150px;" class="d-block mx-auto" alt="IMAGEM TESTE">
+                                        <img src="{{ asset('storage/images/produtos/' . $img) }}" style="width: 150px;"
+                                            class="d-block mx-auto" alt="IMAGEM TESTE">
                                     </div>
                                     <?php $i++; ?>
                                 @endforeach
@@ -57,10 +58,11 @@
             </a>
         @endforeach
         <div class="paginate">
-            {{$produto->links()}}
+            {{ $produto->links() }}
         </div>
     </div>
 </div>
 
 </body>
+
 </html>

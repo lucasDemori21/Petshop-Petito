@@ -1,3 +1,3 @@
 @include('parts.navbar')
 
-{{dd($checkout)}}
+{{ dd($checkout) }}

@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-      
+
         Schema::create('cliente', function (Blueprint $table) {
-            
+
             $table->id('id_cliente');
             $table->string('nome_cliente', 100)->nullable(false);
             $table->string('email', 45)->unique()->nullable(false);
@@ -31,12 +31,10 @@ return new class extends Migration
             $table->string('celular', 20)->nullable(false);
             $table->timestamps();
             $table->rememberToken();
-
-
         });
 
         Schema::create('funcionario', function (Blueprint $table) {
-            
+
             $table->id('id_func');
             $table->string('nome_func', 100)->nullable(false);
             $table->string('email', 45)->unique()->nullable(false);
@@ -56,8 +54,6 @@ return new class extends Migration
             $table->string('funcao', 45)->nullable(false);
             $table->decimal('salario', 10, 2)->nullable();
             $table->rememberToken();
-
-
         });
 
         Schema::create('procedimento', function (Blueprint $table) {
@@ -86,7 +82,7 @@ return new class extends Migration
             $table->id('id_categoria');
             $table->string('nome_categoria')->nullable(false)->unique();
         });
-        
+
         Schema::create('produto', function (Blueprint $table) {
             $table->id('id_produto');
             $table->foreignId('id_categoria')->constrained('categoria', 'id_categoria');
@@ -137,7 +133,7 @@ return new class extends Migration
         });
 
         Schema::create('dados_empresa', function (Blueprint $table) {
-            
+
             $table->id('id_dados');
             $table->string('razao_social')->nullable(false);
             $table->string('razao_empresa')->nullable(false);
@@ -157,15 +153,13 @@ return new class extends Migration
             $table->timestamps();
             $table->string('telefone', 15)->nullable(false);
             $table->string('email', 45)->nullable()->unique();
-
         });
 
-        Schema::create('password_resets', function (Blueprint $table){
+        Schema::create('password_resets', function (Blueprint $table) {
 
             $table->string('email');
             $table->string('token', 40);
             $table->timestamps();
-
         });
     }
 
@@ -174,7 +168,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-    
+
         Schema::dropIfExists('cliente');
         Schema::dropIfExists('funcionario');
         Schema::dropIfExists('procedimento');
@@ -184,6 +178,5 @@ return new class extends Migration
         Schema::dropIfExists('venda');
         Schema::dropIfExists('dados_empresa');
         Schema::dropIfExists('carrinho');
-        
     }
 };
