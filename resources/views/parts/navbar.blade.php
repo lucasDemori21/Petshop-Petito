@@ -24,7 +24,6 @@
     <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
 </head>
 
-
 <nav class="navbar navbar-expand-lg p-0">
     <div class="container-fluid">
         <a class="logo-home" href="{{ route('index') }}">
