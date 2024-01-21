@@ -76,4 +76,10 @@ class PetController extends Controller
 
         return redirect()->route('show.servicos')->with('status_cadastro', 'success');
     }
+
+    public function showAgendamento(String|int $id){
+        $pet = Pets::where('id_pet', $id)->get();
+        
+        return view('shop.agendamento', ['pet' => $pet]);
+    }
 }

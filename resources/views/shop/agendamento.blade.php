@@ -1,5 +1,7 @@
+@include('parts.navbar')
+<link rel="stylesheet" type="text/css" href="{{ asset('css/shop.css') }}">
 <div class="w-50 mx-auto">
-    <form action="{{ route('cadastrar.pet') }}" method="post" enctype="multipart/form-data">
+    <form action="" method="post" enctype="multipart/form-data">
         @csrf
         <div class="mb-3">
             <label for="nome" class="form-label">Nome:</label>
@@ -60,27 +62,6 @@
         </div>
 
         <button type="submit" class="btn btn-warning">Cadastrar</button>
-        @if ($errors->any())
-            <script>
-                document.getElementById('site').classList.add('d-none');
-                document.getElementById('escolhaPet').classList.add('d-none');
-                document.getElementById('cadastrarPet').classList.remove('d-none');
-            </script>
-            <br>
-            @foreach ($errors->all() as $error)
-                <span class="text-danger">{{ $error }}<br></span>
-            @endforeach
-        @endif
-
-        @if (session('status_cadastro') == 'success')
-            <script>
-                Swal.fire({
-                    title: "Sucesso!",
-                    text: "Pet cadastrado!",
-                    icon: "success"
-                });
-            </script>
-        @endif
 
     </form>
 </div>

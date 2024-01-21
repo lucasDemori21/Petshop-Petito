@@ -21,6 +21,7 @@ $('.file-input').change(function () {
     console.log(curElement);
     var reader = new FileReader();
 
+    
     reader.onload = function (e) {
         // get loaded data and render thumbnail.
         curElement.attr('src', e.target.result);
@@ -29,3 +30,8 @@ $('.file-input').change(function () {
     // read the image file as a data URL.
     reader.readAsDataURL(this.files[0]);
 });
+
+function agendamento(){
+    const id_pet = document.getElementById('pet').value;
+    window.location.href = 'agendamento/pet/' + id_pet;
+}
