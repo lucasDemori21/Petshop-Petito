@@ -32,6 +32,8 @@ Route::middleware(['cliente'])->group(function () {
     Route::get('/carrinho', [CheckoutController::class, 'exibirCarrinho'])->name('show.carrinho');
     Route::get('/remover-do-carrinho/{id}', [ShopController::class, 'destroyCar'])->name('remover.carrinho');
     Route::get('/agendamento/pet/{id}', [PetController::class, 'showAgendamento'])->name('agendamento.pet');
+    Route::post('/agendar/pet/{id}', [PetController::class, 'agendar'])->name('agendar.pet');
+
 
 });
 

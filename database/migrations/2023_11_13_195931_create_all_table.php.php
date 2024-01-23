@@ -125,6 +125,7 @@ return new class extends Migration
             $table->foreignId('id_func')->constrained('funcionario', 'id_func');
             $table->foreignId('id_cliente')->constrained('cliente', 'id_cliente');
             $table->foreignId('id_pet')->constrained('pets', 'id_pet');
+            $table->string('dono')->nullable(false);
             $table->longText('descricao')->nullable(false);
             $table->dateTime('agendamento')->nullable(false);
             $table->timestamps();

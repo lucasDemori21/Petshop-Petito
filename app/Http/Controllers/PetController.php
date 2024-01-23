@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pets;
+use App\Models\Agendamento;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -81,5 +82,36 @@ class PetController extends Controller
         $pet = Pets::where('id_pet', $id)->get();
         
         return view('shop.agendamento', ['pet' => $pet]);
+    }
+
+    public function agendar(String|int $id, Request $request){
+        $request->validate([
+            'procedimento' =>'required',
+            'horario' =>'required',
+            'obs' =>'required',
+        ], [
+            'horario.required' => 'O campo horário é obrigatório',
+            'procedimento.required' => 'O campo procedimento é obrigatório',
+        ]);
+
+        $data = $request->all();
+
+        if (Auth::guard('funcionario')->check()) {
+            $data['usn_cod'] = Auth::guard('funcionario')->user()->id_func;
+            $data['dono'] = '1';
+        } else if (Auth::guard('cliente')->check()) {
+            $data['usn_cod'] = Auth::guard('cliente')->user()->id_cliente;
+            $data['dono'] = '2';
+        }
+        $data['id_pet'] = $id;
+        $data['procedimento'] = $request->procedimento;
+        $data['horario'] = $request->horario;
+        $data['obs'] = $request->obs;
+        
+        if(Agendamento::insert($data)){   
+            return redirect()->route('show.servicos')->with('status_agendamento', 'Agendamento realizado com sucesso');
+        }else{
+            return redirect()->back()->withErrors('errors', 'Falha ao realizar o agendamento');
+        }
     }
 }
