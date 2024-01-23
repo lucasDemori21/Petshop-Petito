@@ -17,7 +17,6 @@ Route::get('/shop', [ShopController::class, 'searchProdutos'])->name('shop.searc
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login.show');
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/reset-password', [AuthController::class, 'showResetPassword'])->name('show.resetpassword');
-
 Route::post('/login/auth', [AuthController::class, 'login'])->name('auth.login');
 Route::post('/cadastrar/auth', [AuthController::class, 'cadastrar'])->name('auth.cadastrar');
 Route::post('/forgot-password', [AuthController::class, 'sendEmailResetPassword'])->name('forgot.password');
@@ -33,8 +32,6 @@ Route::middleware(['cliente'])->group(function () {
     Route::get('/remover-do-carrinho/{id}', [ShopController::class, 'destroyCar'])->name('remover.carrinho');
     Route::get('/agendamento/pet/{id}', [PetController::class, 'showAgendamento'])->name('agendamento.pet');
     Route::post('/agendar/pet/{id}', [PetController::class, 'agendar'])->name('agendar.pet');
-
-
 });
 
 Route::middleware(['funcionario'])->group(function () {

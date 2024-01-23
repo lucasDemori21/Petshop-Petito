@@ -109,7 +109,7 @@ class PetController extends Controller
         $data['obs'] = $request->obs;
         
         if(Agendamento::insert($data)){   
-            return redirect()->route('show.servicos')->with('status_agendamento', 'Agendamento realizado com sucesso');
+            return redirect()->back()->with('status_agendamento', 'Agendamento realizado com sucesso');
         }else{
             return redirect()->back()->withErrors('errors', 'Falha ao realizar o agendamento');
         }

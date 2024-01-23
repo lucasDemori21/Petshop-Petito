@@ -37,7 +37,7 @@
                 </select>
             </div>
             <div class="mb-3">
-                <label for="castrado" class="form-label">Castrado(a):</label>
+                <label for="castrado" class="form-label">Observações:</label>
                 <textarea name="obs" class="form-control" id="obs" cols="30" rows="10"></textarea>
             </div>
 
