@@ -135,4 +135,21 @@ class PetController extends Controller
             return redirect()->back()->withErrors('errors', 'Falha ao realizar o agendamento');
         }
     }
+
+    public function exibirPet(){
+        $id = '';
+        $user = '';
+
+        if (Auth::guard('funcionario')->check()) {
+            $id = Auth::guard('funcionario')->user()->id_func;
+            $user = '1';
+        } else if (Auth::guard('cliente')->check()) {
+            $id = Auth::guard('cliente')->user()->id_cliente;
+            $user = '2';
+        }
+
+        $pet = Pets::where(['dono' => $user, 'usn_cod' => $id])->get();
+
+        return view('conta.pets', ['pet' => $pet]);
+    }
 }

@@ -49,12 +49,14 @@ class CheckoutController extends Controller
             $data['nome'] = Auth::guard('funcionario')->user()->nome_func;
             $data['cpf'] = Auth::guard('funcionario')->user()->cpf;
             $data['id'] = Auth::guard('funcionario')->user()->id_func;
+            $data['dono'] = 2;
         } else if (Auth::guard('cliente')->check()) {
 
             $data['email'] = Auth::guard('cliente')->user()->email;
             $data['nome'] = Auth::guard('cliente')->user()->nome_cliente;
             $data['cpf'] = Auth::guard('cliente')->user()->cpf;
             $data['id'] = Auth::guard('cliente')->user()->id_cliente;
+            $data['dono'] = 1;
         } else {
 
             $script = "<script>
@@ -72,7 +74,10 @@ class CheckoutController extends Controller
 
         $venda = Venda::create([
             'date_compra' => now(),
-            'id_cliente' => $data['id'],
+            'usn_cod' => $data['id'],
+            'dono' => $data['dono'],
+            'created_at' => now(),
+            'updated_at' => now(),
             'valor_total' => 0,
             'forma_pagamento' => 'Cartão',
         ]);

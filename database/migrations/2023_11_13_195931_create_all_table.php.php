@@ -109,7 +109,8 @@ return new class extends Migration
 
         Schema::create('venda', function (Blueprint $table) {
             $table->id('id_venda');
-            $table->foreignId('id_cliente')->constrained('cliente', 'id_cliente');
+            $table->integer('usn_cod');
+            $table->integer('dono', 45)->nullable(false);
             $table->date('date_compra')->nullable(false);
             $table->decimal('valor_total', 10, 2)->nullable(false);
             $table->string('forma_pagamento', 45)->nullable(false);

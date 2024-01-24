@@ -14,6 +14,7 @@ Route::get('/', function () {
 Route::get('show/produto/{id}', [ShopController::class, 'showProduto'])->name('show.produto');
 Route::get('/shop/categoria/{categoria}', [ShopController::class, 'exibirProdutos'])->name('shop.produtos');
 Route::get('/shop', [ShopController::class, 'searchProdutos'])->name('shop.search');
+
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login.show');
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/reset-password', [AuthController::class, 'showResetPassword'])->name('show.resetpassword');
@@ -24,14 +25,18 @@ Route::post('update-password', [AuthController::class, 'updatePassword'])->name(
 
 Route::middleware(['cliente'])->group(function () {
     Route::post('/checkout', [CheckoutController::class, 'exibirCheckout'])->name('show.checkout');
-    Route::post('/servicos/cadastrar-pet', [PetController::class, 'cadastrarPets'])->name('cadastrar.pet');
-    Route::post('/add/carrinho', [ShopController::class, 'addCarrinho'])->name('add.carrinho');
-    Route::get('/servicos', [PetController::class, 'exibirPets'])->name('show.servicos');
-    Route::get('/qtd/carrinho', [ShopController::class, 'qtdCarrinho'])->name('qtd.carrinho');
     Route::get('/carrinho', [CheckoutController::class, 'exibirCarrinho'])->name('show.carrinho');
+
+    Route::post('/add/carrinho', [ShopController::class, 'addCarrinho'])->name('add.carrinho');
+    Route::get('/qtd/carrinho', [ShopController::class, 'qtdCarrinho'])->name('qtd.carrinho');
     Route::get('/remover-do-carrinho/{id}', [ShopController::class, 'destroyCar'])->name('remover.carrinho');
-    Route::get('/agendamento/pet/{id}', [PetController::class, 'showAgendamento'])->name('agendamento.pet');
+    Route::get('/exibir/compras', [ShopController::class, 'exibirCompras'])->name('exibir.compras');
+
+    Route::post('/servicos/cadastrar-pet', [PetController::class, 'cadastrarPets'])->name('cadastrar.pet');
     Route::post('/agendar/pet/{id}', [PetController::class, 'agendar'])->name('agendar.pet');
+    Route::get('/servicos', [PetController::class, 'exibirPets'])->name('show.servicos');
+    Route::get('/agendamento/pet/{id}', [PetController::class, 'showAgendamento'])->name('agendamento.pet');
+    Route::get('/exibir/pets', [PetController::class, 'exibirPet'])->name('exibir.pets');
 });
 
 Route::middleware(['funcionario'])->group(function () {

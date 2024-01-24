@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Carrinho;
+use App\Models\Venda;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -100,5 +101,21 @@ class ShopController extends Controller
         Carrinho::where(['id_produto' => $id, 'usn_cod' => $data['usn_cod'], 'dono' => $data['dono']])->delete();
 
         return response()->json(['status' => 1]);
+    }
+
+    public function exibirCompras(){
+        $data = [];
+
+        if (Auth::guard('funcionario')->check()) {
+            $data['usn_cod'] = Auth::guard('funcionario')->user()->id_func;
+            $data['dono'] = '1';
+        } else if (Auth::guard('cliente')->check()) {
+            $data['usn_cod'] = Auth::guard('cliente')->user()->id_cliente;
+            $data['dono'] = '2';
+        }
+
+        $compras = Venda::where(['dono' => $data['dono'], 'usn_cod' => $data['usn_cod']])->paginate(25);
+        return view('conta.compras', ['compra' => $compras]);
+    
     }
 }
