@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\Pets;
 use App\Models\Agendamento;
+use App\Models\Funcionario;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Validation\Rule;
 
 class PetController extends Controller
 {
@@ -80,22 +82,36 @@ class PetController extends Controller
 
     public function showAgendamento(String|int $id){
         $pet = Pets::where('id_pet', $id)->get();
+        $func = Funcionario::all();
         
-        return view('shop.agendamento', ['pet' => $pet]);
+        return view('shop.agendamento', ['pet' => $pet, 'func' => $func]);
     }
 
     public function agendar(String|int $id, Request $request){
+
         $request->validate([
-            'procedimento' =>'required',
-            'horario' =>'required',
-            'obs' =>'required',
+            'procedimento' => 'required',
+            'horario' => 'required',
+            'data' => [
+                'required',
+                'date',
+                'after_or_equal:' . now()->toDateString(),
+                'before_or_equal:' . now()->addYear()->toDateString(),
+            ],
+            'descricao' => 'required',
+            'id_func' => 'required',
         ], [
             'horario.required' => 'O campo horário é obrigatório',
             'procedimento.required' => 'O campo procedimento é obrigatório',
+            'descricao.required' => 'O campo procedimento é obrigatório',
+            'id_func.required' => 'O campo procedimento é obrigatório',
+            'data.required' => 'O campo data é obrigatório',
+            'data.after_or_equal' => 'A data não pode ser anterior a hoje',
+            'data.before_or_equal' => 'A data não pode ser mais de 1 ano para frente',
         ]);
-
-        $data = $request->all();
-
+        
+        $data = $request->only(['descricao', 'id_func']);
+        
         if (Auth::guard('funcionario')->check()) {
             $data['usn_cod'] = Auth::guard('funcionario')->user()->id_func;
             $data['dono'] = '1';
@@ -103,10 +119,15 @@ class PetController extends Controller
             $data['usn_cod'] = Auth::guard('cliente')->user()->id_cliente;
             $data['dono'] = '2';
         }
+
+        $procedimento = DB::table('procedimento')->where('id_procedimento', $request->procedimento)->first();
+        $data['id_procedimento'] = $procedimento->id_procedimento;
         $data['id_pet'] = $id;
-        $data['procedimento'] = $request->procedimento;
-        $data['horario'] = $request->horario;
-        $data['obs'] = $request->obs;
+        $data['data'] = $request->data . ' ' . $request->horario;
+        $data['valor'] = $procedimento->valor;
+        $data['created_at'] = now();
+        $data['updated_at'] = now();
+        $data['forma_pagamento'] = 'Crédito(Fixo)';
         
         if(Agendamento::insert($data)){   
             return redirect()->back()->with('status_agendamento', 'Agendamento realizado com sucesso');

@@ -83,6 +83,11 @@ return new class extends Migration
             $table->string('nome_categoria')->nullable(false)->unique();
         });
 
+        Schema::create('horarios', function (Blueprint $table) {
+            $table->id('id_horario');
+            $table->string('horario')->nullable(false)->unique();
+        });
+
         Schema::create('produto', function (Blueprint $table) {
             $table->id('id_produto');
             $table->foreignId('id_categoria')->constrained('categoria', 'id_categoria');
@@ -122,15 +127,16 @@ return new class extends Migration
 
         Schema::create('agendamento', function (Blueprint $table) {
             $table->id('id_agendamento');
-            $table->foreignId('id_func')->constrained('funcionario', 'id_func');
-            $table->foreignId('id_cliente')->constrained('cliente', 'id_cliente');
             $table->foreignId('id_pet')->constrained('pets', 'id_pet');
+            $table->foreignId('id_func')->constrained('funcionario', 'id_func');
+            $table->foreignId('id_procedimento')->constrained('procedimento', 'id_procedimento');
+            $table->integer('usn_cod')->nullable(false);
             $table->string('dono')->nullable(false);
             $table->longText('descricao')->nullable(false);
-            $table->dateTime('agendamento')->nullable(false);
+            $table->dateTime('data')->nullable(false);
             $table->timestamps();
-            $table->decimal('valor', 10, 2)->nullable(false);
-            $table->string('forma_pagamento', 45)->nullable(false);
+            $table->decimal('valor', 10, 2);
+            $table->string('forma_pagamento', 45);
         });
 
         Schema::create('dados_empresa', function (Blueprint $table) {

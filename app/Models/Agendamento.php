@@ -19,12 +19,14 @@ class Agendamento extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'id_func',
-        'nome_cliente',
-        'dono',
         'id_pet',
+        'id_func',
+        'id_procedimento',
+        'usn_cod',
+        'dono',
         'descricao',
-        'agendamento',
+        'data',
         'valor',
+        'forma_pagamento',
     ];
 }
