@@ -1,5 +1,5 @@
 @include('parts.navbar')
 
-@foreach ($compras as $venda)
-    <li>{{$venda}}</li>    
+@foreach ($compra as $venda)
+    <li>{{$venda}}</li>2    
 @endforeach

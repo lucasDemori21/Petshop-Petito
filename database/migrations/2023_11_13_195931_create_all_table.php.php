@@ -110,12 +110,13 @@ return new class extends Migration
         Schema::create('venda', function (Blueprint $table) {
             $table->id('id_venda');
             $table->integer('usn_cod');
-            $table->integer('dono', 45)->nullable(false);
+            $table->integer('dono')->nullable(false);
             $table->date('date_compra')->nullable(false);
             $table->decimal('valor_total', 10, 2)->nullable(false);
             $table->string('forma_pagamento', 45)->nullable(false);
             $table->timestamps();
         });
+        
 
         Schema::create('item_venda', function (Blueprint $table) {
             $table->id('id_item_venda');
