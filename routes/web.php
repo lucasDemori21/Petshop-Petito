@@ -30,21 +30,24 @@ Route::middleware(['cliente'])->group(function () {
     Route::post('/add/carrinho', [ShopController::class, 'addCarrinho'])->name('add.carrinho');
     Route::get('/qtd/carrinho', [ShopController::class, 'qtdCarrinho'])->name('qtd.carrinho');
     Route::get('/remover-do-carrinho/{id}', [ShopController::class, 'destroyCar'])->name('remover.carrinho');
-    Route::get('/exibir/compras', [ShopController::class, 'exibirCompras'])->name('exibir.compras');
+    Route::get('/exibir/compras', [ShopController::class, 'exibirCompras'])->name('show.compras');
 
     Route::post('/servicos/cadastrar-pet', [PetController::class, 'cadastrarPets'])->name('cadastrar.pet');
     Route::post('/agendar/pet/{id}', [PetController::class, 'agendar'])->name('agendar.pet');
     Route::get('/servicos', [PetController::class, 'exibirPets'])->name('show.servicos');
     Route::get('/agendamento/pet/{id}', [PetController::class, 'showAgendamento'])->name('agendamento.pet');
-    Route::get('/exibir/pets', [PetController::class, 'exibirPet'])->name('exibir.pets');
+    Route::get('/exibir/pets', [PetController::class, 'exibirPet'])->name('show.pets'); 
+    Route::get('/exibir/agendamento', [PetController::class, 'exibirAgendamento'])->name('show.agendas'); 
+    Route::get('/update/pet/{id}', [PetController::class, 'updatePet'])->name('update.pet'); 
+
 });
 
 Route::middleware(['funcionario'])->group(function () {
-    Route::get('admin/update/{id}', [AdminController::class, 'showUpdate'])->name('show.update');
     Route::get('admin/estoque', [AdminController::class, 'index'])->name('show.estoque');
-    Route::get('admin/cadastrar_produto', [AdminController::class, 'showCadastrarProduto'])->name('show.cadastrar_produto');
-    Route::get('admin/produto/delete/{id}', [AdminController::class, 'destroyProduto'])->name('admin.produto.destroy');
     Route::get('admin/dashboard', [AdminController::class, 'showDash'])->name('admin.dashboard');
+    Route::get('admin/update/{id}', [AdminController::class, 'showUpdate'])->name('show.update');
+    Route::get('admin/cadastrar_produto', [AdminController::class, 'showCadastrarProduto'])->name('show.cadastrar_produto');
     Route::post('admin/cadastrarProduto', [AdminController::class, 'cadastrarProduto'])->name('cadastro.cadastrar_produto');
+    Route::get('admin/produto/delete/{id}', [AdminController::class, 'destroyProduto'])->name('admin.produto.destroy');
     Route::post('admin/update/produto/{id}', [AdminController::class, 'updateProduto'])->name('admin.update');
 });

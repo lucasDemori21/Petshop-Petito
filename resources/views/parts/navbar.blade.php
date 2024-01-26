@@ -80,10 +80,9 @@
                                 </button>
                                 <ul class="dropdown-menu" style="background-color: #FDF5F5;">
 
-                                    <li><a class="dropdown-item" href="{{ route('exibir.pets') }}">Meus pets</a></li>
-                                    <li><a class="dropdown-item" href="{{ route('exibir.compras') }}">Minhas compras</a></li>
-                                    <li><a class="dropdown-item" href="#">Meus agendamentos</a></li>
-                                    
+                                    <li><a class="dropdown-item" href="{{ route('show.pets') }}">Meus pets</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('show.compras') }}">Minhas compras</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('show.agendas') }}">Meus agendamentos</a></li>
 
                                     @if (auth('funcionario')->check())
                                         <li><hr class="dropdown-divider"></li>

@@ -66,6 +66,7 @@ class PetController extends Controller
         $data = $request->all();
         $data['img_pet'] = $fileNames;
         $data['peso'] = number_format($data['peso'], 3, '.', '');
+        $data['raca'] = $request->raca;
 
         if (Auth::guard('funcionario')->check()) {
             $data['usn_cod'] = Auth::guard('funcionario')->user()->id_func;
@@ -115,9 +116,11 @@ class PetController extends Controller
         if (Auth::guard('funcionario')->check()) {
             $data['usn_cod'] = Auth::guard('funcionario')->user()->id_func;
             $data['dono'] = '1';
+            $data['nomeDono'] = Auth::guard('funcionario')->user()->nome_func;
         } else if (Auth::guard('cliente')->check()) {
             $data['usn_cod'] = Auth::guard('cliente')->user()->id_cliente;
             $data['dono'] = '2';
+            $data['nomeDono'] = Auth::guard('cliente')->user()->nome_cliente;
         }
 
         $procedimento = DB::table('procedimento')->where('id_procedimento', $request->procedimento)->first();
@@ -151,5 +154,37 @@ class PetController extends Controller
         $pet = Pets::where(['dono' => $user, 'usn_cod' => $id])->get();
 
         return view('conta.pets', ['pet' => $pet]);
+    }
+
+    public function exibirAgendamento(): View{
+        $id = '';
+        $user = '';
+
+        if (Auth::guard('funcionario')->check()) {
+            $id = Auth::guard('funcionario')->user()->id_func;
+            $user = '1';
+            
+        } else if (Auth::guard('cliente')->check()) {
+            $id = Auth::guard('cliente')->user()->id_cliente;
+            $user = '2';
+        }
+        $agendamento = Agendamento::join('funcionario', 'funcionario.id_func', '=', 'agendamento.id_func')
+            ->join('pets', 'pets.id_pet', '=', 'agendamento.id_pet')
+            ->join('procedimento', 'procedimento.id_procedimento', '=', 'agendamento.id_procedimento')
+            ->where(['agendamento.dono' => $user, 'agendamento.usn_cod' => $id])
+            ->select('agendamento.id_agendamento', 'pets.nome', 'funcionario.nome_func', 'agendamento.data', 'procedimento.titulo', 'agendamento.descricao')->get();
+
+
+
+        // dd($agendamento);
+        return view('conta.agendamento', ['agendamento' => $agendamento]);
+
+    }
+
+    public function updatePet(String|int $id): View{
+
+        $pet = Pets::where('id_pet', $id)->first();
+
+        return view('conta.updatePet', ['pet' => $pet]);
     }
 }

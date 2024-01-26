@@ -70,6 +70,7 @@ return new class extends Migration
             $table->string('nome', 50);
             $table->date('data_nasc');
             $table->string('tipo_pet');
+            $table->string('raca');
             $table->tinyInteger('sexo')->nullable(); // 1 = Macho, 2 = Fêmea
             $table->tinyInteger('castrado')->nullable(); // 1 = Sim, 2 = Não
             $table->tinyInteger('dono')->nullable(); // 1 = Cliente, 2 = Funcionário
@@ -132,6 +133,7 @@ return new class extends Migration
             $table->foreignId('id_pet')->constrained('pets', 'id_pet');
             $table->foreignId('id_func')->constrained('funcionario', 'id_func');
             $table->foreignId('id_procedimento')->constrained('procedimento', 'id_procedimento');
+            $table->string('nomeDono', 100)->nullable(false);
             $table->integer('usn_cod')->nullable(false);
             $table->string('dono')->nullable(false);
             $table->longText('descricao')->nullable(false);
