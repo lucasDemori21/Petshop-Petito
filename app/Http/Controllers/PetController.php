@@ -69,7 +69,6 @@ class PetController extends Controller
         $data['peso'] = number_format($data['peso'], 3, '.', '');
         $data['raca'] = $request->raca;
 
-        // dd($data['raca']);
         
         if (Auth::guard('funcionario')->check()) {
             $data['usn_cod'] = Auth::guard('funcionario')->user()->id_func;

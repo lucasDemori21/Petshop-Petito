@@ -110,7 +110,7 @@ return new class extends Migration
 
         Schema::create('venda', function (Blueprint $table) {
             $table->id('id_venda');
-            $table->integer('usn_cod');
+            $table->integer('usn_cod')->nullable(false);
             $table->integer('dono')->nullable(false);
             $table->date('date_compra')->nullable(false);
             $table->decimal('valor_total', 10, 2)->nullable(false);

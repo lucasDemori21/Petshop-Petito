@@ -49,14 +49,14 @@ class CheckoutController extends Controller
             $data['nome'] = Auth::guard('funcionario')->user()->nome_func;
             $data['cpf'] = Auth::guard('funcionario')->user()->cpf;
             $data['id'] = Auth::guard('funcionario')->user()->id_func;
-            $data['dono'] = 2;
+            $data['dono'] = 1;
         } else if (Auth::guard('cliente')->check()) {
 
             $data['email'] = Auth::guard('cliente')->user()->email;
             $data['nome'] = Auth::guard('cliente')->user()->nome_cliente;
             $data['cpf'] = Auth::guard('cliente')->user()->cpf;
             $data['id'] = Auth::guard('cliente')->user()->id_cliente;
-            $data['dono'] = 1;
+            $data['dono'] = 2;
         } else {
 
             $script = "<script>
@@ -72,6 +72,7 @@ class CheckoutController extends Controller
 
         $produtosQuantidades = [];
 
+        
         $venda = Venda::create([
             'date_compra' => now(),
             'usn_cod' => $data['id'],
@@ -116,9 +117,9 @@ class CheckoutController extends Controller
         if ($venda->update(['valor_total' => $totalVenda])) {
 
             if (Auth::guard('funcionario')->check()) {
-                Carrinho::where(['dono' => 1, 'usn_cod' => $data['id']])->delete();
-            } else if (Auth::guard('cliente')->check()) {
                 Carrinho::where(['dono' => 2, 'usn_cod' => $data['id']])->delete();
+            } else if (Auth::guard('cliente')->check()) {
+                Carrinho::where(['dono' => 1, 'usn_cod' => $data['id']])->delete();
             }
 
             $data = [

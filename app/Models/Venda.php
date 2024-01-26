@@ -19,8 +19,8 @@ class Venda extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'id_venda',
-        'id_cliente',
+        'usn_cod',
+        'dono',
         'date_compra',
         'valor_total',
         'forma_pagamento'

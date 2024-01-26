@@ -114,7 +114,10 @@ class ShopController extends Controller
             $data['dono'] = '2';
         }
 
-        $compras = Venda::where(['dono' => $data['dono'], 'usn_cod' => $data['usn_cod']])->paginate(25);
+        $compras = Venda::join('item_venda','item_venda.id_venda', '=', 'venda.id_venda')
+        ->join('produto', 'produto.id_produto', '=', 'item_venda.id_produto')
+        ->where(['dono' => $data['dono'], 'usn_cod' => $data['usn_cod']])->get();
+
         return view('conta.compras', ['compra' => $compras]);
     
     }
