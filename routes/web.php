@@ -38,7 +38,9 @@ Route::middleware(['cliente'])->group(function () {
     Route::get('/agendamento/pet/{id}', [PetController::class, 'showAgendamento'])->name('agendamento.pet');
     Route::get('/exibir/pets', [PetController::class, 'exibirPet'])->name('show.pets'); 
     Route::get('/exibir/agendamento', [PetController::class, 'exibirAgendamento'])->name('show.agendas'); 
-    Route::get('/update/pet/{id}', [PetController::class, 'updatePet'])->name('update.pet'); 
+    Route::get('/show/update/pet/{id}', [PetController::class, 'showUpdatePet'])->name('show.update.pet'); 
+    Route::get('/update/pet/{id}', [PetController::class, 'updatePet'])->name('update.pet');
+    Route::get('/excluir/pet/{id}', [PetController::class, 'excluirPet'])->name('excluir.pet');
 
 });
 

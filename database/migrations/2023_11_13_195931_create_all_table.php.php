@@ -70,7 +70,7 @@ return new class extends Migration
             $table->string('nome', 50);
             $table->date('data_nasc');
             $table->string('tipo_pet');
-            $table->string('raca');
+            $table->string('raca', 100)->nullable();;
             $table->tinyInteger('sexo')->nullable(); // 1 = Macho, 2 = Fêmea
             $table->tinyInteger('castrado')->nullable(); // 1 = Sim, 2 = Não
             $table->tinyInteger('dono')->nullable(); // 1 = Cliente, 2 = Funcionário

@@ -65,15 +65,22 @@
         </div>
 
         <button type="submit" class="btn btn-warning">Atualizar informações</button>
-        {{-- @if ($errors->any())
+        @if ($errors->any())
             <script>
                 document.getElementById('site').classList.add('d-none');
                 document.getElementById('escolhaPet').classList.add('d-none');
                 document.getElementById('cadastrarPet').classList.remove('d-none');
             </script>
             <br>
+            // faca um sweetalert2 para esse erro 
             @foreach ($errors->all() as $error)
-                <span class="text-danger">{{ $error }}<br></span>
+            <script>
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: '{{ $error }}',
+                })
+            </script>
             @endforeach
         @endif
 
@@ -81,11 +88,11 @@
             <script>
                 Swal.fire({
                     title: "Sucesso!",
-                    text: "Pet cadastrado!",
+                    text: "Informações de Pet atualizados!",
                     icon: "success"
                 });
             </script>
-        @endif --}}
+        @endif
 
     </form>
 </div>

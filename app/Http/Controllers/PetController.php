@@ -64,10 +64,13 @@ class PetController extends Controller
         $fileNames = $hashFile;
 
         $data = $request->all();
+
         $data['img_pet'] = $fileNames;
         $data['peso'] = number_format($data['peso'], 3, '.', '');
         $data['raca'] = $request->raca;
 
+        // dd($data['raca']);
+        
         if (Auth::guard('funcionario')->check()) {
             $data['usn_cod'] = Auth::guard('funcionario')->user()->id_func;
             $data['dono'] = '1';
@@ -81,14 +84,16 @@ class PetController extends Controller
         return redirect()->route('show.servicos')->with('status_cadastro', 'success');
     }
 
-    public function showAgendamento(String|int $id){
+    public function showAgendamento(String|int $id)
+    {
         $pet = Pets::where('id_pet', $id)->get();
         $func = Funcionario::all();
-        
+
         return view('shop.agendamento', ['pet' => $pet, 'func' => $func]);
     }
 
-    public function agendar(String|int $id, Request $request){
+    public function agendar(String|int $id, Request $request)
+    {
 
         $request->validate([
             'procedimento' => 'required',
@@ -110,9 +115,9 @@ class PetController extends Controller
             'data.after_or_equal' => 'A data não pode ser anterior a hoje',
             'data.before_or_equal' => 'A data não pode ser mais de 1 ano para frente',
         ]);
-        
+
         $data = $request->only(['descricao', 'id_func']);
-        
+
         if (Auth::guard('funcionario')->check()) {
             $data['usn_cod'] = Auth::guard('funcionario')->user()->id_func;
             $data['dono'] = '1';
@@ -131,15 +136,16 @@ class PetController extends Controller
         $data['created_at'] = now();
         $data['updated_at'] = now();
         $data['forma_pagamento'] = 'Crédito(Fixo)';
-        
-        if(Agendamento::insert($data)){   
+
+        if (Agendamento::insert($data)) {
             return redirect()->back()->with('status_agendamento', 'Agendamento realizado com sucesso');
-        }else{
+        } else {
             return redirect()->back()->withErrors('errors', 'Falha ao realizar o agendamento');
         }
     }
 
-    public function exibirPet(){
+    public function exibirPet()
+    {
         $id = '';
         $user = '';
 
@@ -156,14 +162,14 @@ class PetController extends Controller
         return view('conta.pets', ['pet' => $pet]);
     }
 
-    public function exibirAgendamento(): View{
+    public function exibirAgendamento(): View
+    {
         $id = '';
         $user = '';
 
         if (Auth::guard('funcionario')->check()) {
             $id = Auth::guard('funcionario')->user()->id_func;
             $user = '1';
-            
         } else if (Auth::guard('cliente')->check()) {
             $id = Auth::guard('cliente')->user()->id_cliente;
             $user = '2';
@@ -178,13 +184,84 @@ class PetController extends Controller
 
         // dd($agendamento);
         return view('conta.agendamento', ['agendamento' => $agendamento]);
-
     }
 
-    public function updatePet(String|int $id): View{
+    public function showUpdatePet(String|int $id): View
+    {
 
         $pet = Pets::where('id_pet', $id)->first();
 
         return view('conta.updatePet', ['pet' => $pet]);
+    }
+
+    public function updatePet(String|int $id, Request $request)
+    {
+
+        $request->validate([
+            'nome' => 'required',
+            'tipo_pet' => 'required',
+            'sexo' => 'required',
+            'data_nasc' => 'required',
+            'castrado' => 'required',
+            'raca' => 'required',
+            'peso' => 'required',
+            'img_pet' => 'image|mimes:jpeg,png,jpg,gif',
+            'id_pet' => 'required',
+        ], [
+            'nome.required' => 'O campo nome é obrigatório',
+            'tipo_pet.required' => 'O campo pet é obrigatório',
+            'sexo.required' => 'O campo sexo é obrigatório',
+            'data_nasc.required' => 'O campo idade é obrigatório',
+            'castrado.required' => 'O campo castrado é obrigatório',
+            'raca.required' => 'O campo raça é obrigatório',
+            'peso.required' => 'O campo peso é obrigatório',
+            'img_pet.required' => 'É obrigatório escolher uma imagem para seu pet.',
+            'img_pet.image' => 'O arquivo deve ser uma imagem.',
+            'img_pet.mimes' => 'A imagem deve ser do tipo: jpeg, png, jpg ou gif.',
+        ]);
+
+        $file = $request->file('img_pet');
+        $hashFile = md5($file->getClientOriginalName() . microtime()) . '.' . $file->getClientOriginalExtension();
+        $file->storeAs('public/images/pets/', $hashFile);
+        $fileNames = $hashFile;
+
+        $data = $request->all();
+        $data['img_pet'] = $fileNames;
+        $data['peso'] = number_format($data['peso'], 3, '.', '');
+        $data['raca'] = $request->raca;
+        $data['id_pet'] = $id;
+        $data['updated_at'] = now();
+
+        if (Pets::where('id_pet', $id)->update($data)) {
+            return redirect()->back()->with('status_cadastro', 'Pet atualizado com sucesso');
+        }else{
+            return redirect()->back()->withErrors('errors', 'Falha ao atualizar o pet');
+        }
+    }
+
+    public function excluirPet(String|int $id){
+
+        $pet = Pets::where('id_pet', $id)->first();
+
+        //excluq os agendamentos em que este pet esta.
+        $agendamento = Agendamento::where('id_pet', $id)->get();
+        foreach ($agendamento as $agendamento) {
+            $agendamento->delete();
+        }
+
+        if (Auth::guard('funcionario')->check()) {
+            $id = Auth::guard('funcionario')->user()->id_func;
+            $user = '1';
+        } else if (Auth::guard('cliente')->check()) {
+            $id = Auth::guard('cliente')->user()->id_cliente;
+            $user = '2';
+        }
+
+        if (($pet->dono == $user) && ($pet->usn_cod == $id))  {
+            $pet->delete();
+            return redirect()->back()->with('status_cadastro', 'Pet excluído com sucesso');
+        }else{
+            return redirect()->back()->withErrors('errors', 'Não é possível excluir este pet pois você não é o dono.');
+        }
     }
 }
