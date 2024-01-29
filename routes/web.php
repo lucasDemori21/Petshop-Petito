@@ -41,6 +41,7 @@ Route::middleware(['cliente'])->group(function () {
     Route::get('/show/update/pet/{id}', [PetController::class, 'showUpdatePet'])->name('show.update.pet'); 
     Route::get('/update/pet/{id}', [PetController::class, 'updatePet'])->name('update.pet');
     Route::get('/excluir/pet/{id}', [PetController::class, 'excluirPet'])->name('excluir.pet');
+    Route::get('show/purchasing/info/{id}', [ShopController::class, 'showPurchasingInfo'])->name('show.purchasing.info');
 
 });
 

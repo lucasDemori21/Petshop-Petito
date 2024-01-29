@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Agendamento;
 use App\Models\Carrinho;
+use App\Models\Cliente;
+use App\Models\Funcionario;
 use App\Models\Venda;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -103,7 +106,8 @@ class ShopController extends Controller
         return response()->json(['status' => 1]);
     }
 
-    public function exibirCompras(){
+    public function exibirCompras()
+    {
         $data = [];
 
         if (Auth::guard('funcionario')->check()) {
@@ -114,11 +118,48 @@ class ShopController extends Controller
             $data['dono'] = '2';
         }
 
-        $compras = Venda::join('item_venda','item_venda.id_venda', '=', 'venda.id_venda')
-        ->join('produto', 'produto.id_produto', '=', 'item_venda.id_produto')
-        ->where(['dono' => $data['dono'], 'usn_cod' => $data['usn_cod']])->get();
+        $compras = Venda::join('item_venda', 'item_venda.id_venda', '=', 'venda.id_venda')
+            ->join('produto', 'produto.id_produto', '=', 'item_venda.id_produto')
+            ->where(['dono' => $data['dono'], 'usn_cod' => $data['usn_cod']])->get();
 
         return view('conta.compras', ['compra' => $compras]);
-    
+    }
+
+    public function showPurchasingInfo(String|int $id)
+    {
+
+
+        $info = Venda::join('item_venda', 'item_venda.id_venda', '=', 'venda.id_venda')
+            ->join('produto', 'produto.id_produto', '=', 'item_venda.id_produto')
+            ->where('venda.id_venda', $id)
+            ->select('venda.*', 'item_venda.qtd_produto as quantidade', 'produto.*')
+            ->first();
+
+        // dd($info);
+        if ($info) {
+            if ($info->dono == 1) {
+                $comprador = Funcionario::where('id_func', $info->usn_cod)->first();
+                $nome = $comprador ? $comprador->nome_func : 'Funcionário não encontrado';
+            } elseif ($info->dono == 2) {
+                $comprador = Cliente::where('id_cliente', $info->usn_cod)->first();
+                $nome = $comprador ? $comprador->nome_cliente : 'Cliente não encontrado';
+            }
+        } else {
+            $nome = 'Venda não encontrada';
+        }
+
+
+        $data['id_venda'] = $info->id_venda;
+        $data['created_at'] = $info->created_at->format('d/m/Y - H:i:s');
+        $data['forma_pagamento'] = $info->forma_pagamento;
+        $data['valor_unitario'] = $info->valor_unitario;
+        $data['quantidade'] = $info->quantidade;
+        $data['titulo'] = $info->titulo;
+        $data['descricao'] = $info->descricao;
+        $data['comprador'] = $nome;
+        $data['email'] = $comprador->email;
+        $data['img_produto'] = $info->img_produto;
+
+        return view('conta.purchaseInfo', ['info' => $data]);
     }
 }
