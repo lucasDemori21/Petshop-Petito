@@ -19,7 +19,7 @@
                     <span class="valor-produto mx-5">{{ $produto->valor }}</span>
 
                     <label for="qtd">Quantidade: </label>
-                    <input type="number" class="text-center quantidade" style="width: 50px;"
+                    <input type="number" class="text-center quantidade ms-3" style="width: 50px; height: 25px"
                         name="qtd-{{ $produto->id_produto }}" id="qtd" value="1"
                         max="{{ $produto->qtd_produto }}" data-qtd-estoque="{{ $produto->qtd_produto }}">
                 </div>

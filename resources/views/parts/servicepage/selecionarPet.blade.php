@@ -1,6 +1,6 @@
 
-<div class="container-produtos me-5 mt-5 w-100">
-    <div class="border rounded p-3 text-center">
+<div class="container-produtos me-5 mt-5 w-100 ">
+    <div class="border rounded p-3 text-center mx-auto">
         <h4 style="font-family: 'Cotane Beach', sans-serif; font-size: 30px;">Escolha o pet</h4>
 
         <div class="d-flex justify-content-around w-100">
