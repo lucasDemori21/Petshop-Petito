@@ -86,8 +86,6 @@
 
                                     @if (auth('funcionario')->check())
                                         <li><hr class="dropdown-divider"></li>
-                                        <li><a class="dropdown-item" href="#">Agendamentos</a></li>
-                                        <li><a class="dropdown-item" href="{{ route('admin.dashboard') }}">Dashboard</a></li>
                                         <li><a class="dropdown-item" href="{{ route('show.estoque') }}">Estoque</a></li>
                                         <li><a class="dropdown-item" href="{{ route('show.cadastrar_produto') }}">Cadastrar produto</a></li>
                                     @endif
