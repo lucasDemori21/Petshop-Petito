@@ -33,5 +33,15 @@ $('.file-input').change(function () {
 
 function agendamento(){
     const id_pet = document.getElementById('pet').value;
+
+    if (id_pet == '') {
+        Swal.fire({
+            icon: 'warning',
+            title: 'Oops...',
+            text: 'Selecione um pet',
+        })
+        return false;
+    }
+
     window.location.href = 'agendamento/pet/' + id_pet;
 }
